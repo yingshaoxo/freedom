@@ -2,14 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 
+import MyImagePicker from "./components/ImagePicker"; 
 const axios = require('axios').default;
 var messages = require('./protocol/everyday_pb');
 
-const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
+//const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
+const host = 'http//' + "192.168.31.38" + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
 const upload_url = host + "/api/v1/upload"
 
 
-function make_a_request() {
+function make_a_request(text:String, imageUriList:Array<String>) {
+  console.log(imageUriList.length)
+  console.log(imageUriList)
+
   var everyday = new messages.EveryDay()
   console.log(everyday)
   let oneday = everyday.addOneday()
@@ -35,66 +40,107 @@ function make_a_request() {
   });
 }
 
-
 function UselessTextInput(props) {
   return (
     <TextInput
       {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
       editable
       multiline
-      numberOfLines={4}
+      numberOfLines={8}
       maxLength={40}
-      style={styles.textInput}
     />
   );
 }
 
 export default function App() {
-  const [text, setText] = React.useState('');
+  const [text, setText] = React.useState<String>('');
+  const [imageUriList, setImageUriList] = React.useState<Array<String>>([]);
 
-  const onChange = (text: string) => {
+  const onTextChange = (text: string) => {
     console.log(text)
   }
 
   return (
     <View style={styles.container}>
-      <UselessTextInput
-        onChangeText={(text: string) => {
-            setText(text)
-            onChange(text)
-        }}
-        value={text}
-        placeholder={"What you wanna say?\nType it here."}
-      />
+      <View
+        style={styles.topBar}
+      >
+        <View
+          style={styles.cancelButton}
+        >
+          <Button
+            title="Cancel"
+            color="#90A4AE"
+            onPress={() => {
+              console.log('Button pressed')
+              make_a_request(text, imageUriList)
+            }}
+          >
+          </Button>
+        </View>
+        <View
+          style={styles.saveButton}
+        >
+          <Button
+            title="Save"
+            color="#FF5252"
+            onPress={() => {
+              console.log('Button pressed')
+              make_a_request(text, imageUriList)
+            }}
+          />
+        </View>
+      </View>
 
       <View
-        style={styles.button}
+        style={styles.inputBox}
       >
-        <Button
-          title="Save"
-          onPress={() => {
-            console.log('Button pressed')
-            make_a_request()
+        <UselessTextInput
+          style={styles.textInput}
+          onChangeText={(text: string) => {
+              setText(text)
+              onTextChange(text)
           }}
+          value={text}
+          placeholder={"What's happenning?"}
         />
       </View>
 
+      <MyImagePicker
+        style={styles.imagePicker}
+        imageUriList={imageUriList}
+        setImageUriList={setImageUriList}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#DCEDC8',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  topBar: {
+    //https://reactnative.dev/docs/flexbox
+    marginTop: '0',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  cancelButton: {
+    width: "20vw",
+  },
+  saveButton: {
+    width: "20vw",
+  },
+  inputBox: {
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "2vh",
   },
   textInput: {
-    backgroundColor: '#F1F8E9',
-    width: '100vw',
+    width: "90vw",
   },
-  button: {
-    marginTop: '2vh'
-  }
+  imagePicker: {
+    flex: 1,
+    justifyContent: "center",
+  },
 });
