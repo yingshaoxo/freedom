@@ -4,6 +4,10 @@ import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 
+import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 import { StyleSheet } from 'react-native';
 
 type MyImagePickerProps = {
@@ -17,11 +21,15 @@ export default class MyImagePicker extends React.Component<MyImagePickerProps> {
       <View 
         {...this.props}
       >
-        <Button 
-          title="Pick an image" 
-          color="#FFCC80"
-          onPress={this._pickImage} 
-        />
+        <View
+          style={styles.pickImageButton}
+        >
+          <Button 
+            title="Pick an image" 
+            color="#FFCC80"
+            onPress={this._pickImage} 
+          />
+        </View>
 
         <View
           style={styles.imageBox}
@@ -74,6 +82,9 @@ export default class MyImagePicker extends React.Component<MyImagePickerProps> {
 }
 
 const styles = StyleSheet.create({
+  pickImageButton: {
+    marginBottom: 0.5/100*windowHeight,
+  },
   imageBox: {
     display: "flex",
     flexDirection: "row",
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   image: {
-    width: "33.3vw", 
-    height: "33.3vw",
+    width: 33.3/100*windowWidth, 
+    height: 33.3/100*windowWidth,
   }
 });

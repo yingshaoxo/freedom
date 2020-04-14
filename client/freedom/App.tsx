@@ -2,7 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 
+import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 import MyImagePicker from "./components/ImagePicker"; 
+
 const axios = require('axios').default;
 var messages = require('./protocol/everyday_pb');
 
@@ -12,6 +17,7 @@ const upload_url = host + "/api/v1/upload"
 
 
 function make_a_request(text:String, imageUriList:Array<String>) {
+  /*
   console.log(imageUriList.length)
   console.log(imageUriList)
 
@@ -38,6 +44,7 @@ function make_a_request(text:String, imageUriList:Array<String>) {
   .catch(function (error: any) {
     console.log(error);
   });
+  */
 }
 
 function UselessTextInput(props) {
@@ -62,6 +69,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View
+        style={styles.topWhite}
+      >
+      </View>
+
       <View
         style={styles.topBar}
       >
@@ -117,30 +129,40 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  topWhite: {
+    flex: 0.5,
+    //backgroundColor: "#fff",
   },
   topBar: {
     //https://reactnative.dev/docs/flexbox
-    marginTop: '0',
-    display: "flex",
+    flex: 0.8,
     flexDirection: "row",
     justifyContent: "space-between",
+    //backgroundColor: "#81D4FA"
   },
   cancelButton: {
-    width: "20vw",
+    width: 20/100*windowWidth,
+    justifyContent: "center",
   },
   saveButton: {
-    width: "20vw",
+    width: 20/100*windowWidth,
+    justifyContent: "center",
   },
   inputBox: {
+    flex: 6,
     justifyContent: "center",
     alignItems: "center",
-    margin: "2vh",
+    margin: 2/100*windowHeight,
+    //backgroundColor: "#E57373",
   },
   textInput: {
-    width: "90vw",
+    fontSize: 24,
   },
   imagePicker: {
-    flex: 1,
-    justifyContent: "center",
+    flex: 10,
+    justifyContent: "flex-start",
+    //backgroundColor: "#AB47BC"
   },
 });
