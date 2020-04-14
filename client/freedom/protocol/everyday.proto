@@ -1,0 +1,17 @@
+//protoc --python_out=. everyday.proto
+syntax = "proto3";
+
+message OneDay {
+    string date = 1;
+
+    message Content {
+        string date = 1;
+        string text = 2;
+        repeated bytes image = 3;
+    }
+    repeated Content content = 2;
+}
+
+message EveryDay {
+    repeated OneDay oneday = 1;
+}

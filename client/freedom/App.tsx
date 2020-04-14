@@ -2,6 +2,40 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 
+const axios = require('axios').default;
+var messages = require('./protocol/everyday_pb');
+
+const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
+const upload_url = host + "/api/v1/upload"
+
+
+function make_a_request() {
+  var everyday = new messages.EveryDay()
+  console.log(everyday)
+  let oneday = everyday.addOneday()
+  oneday.setDate("3.1")
+  let content = oneday.addContent()
+  content.setText("hi")
+  content = oneday.addContent()
+  content.setText("I'm yingshaoxo")
+  console.log(everyday)
+  console.log(everyday.serializeBinary())
+  let data = new TextDecoder().decode(everyday.serializeBinary())
+  console.log(data)
+
+  axios.post(upload_url, {
+    action: 'everday',
+    data: data
+  })
+  .then(function (response: any) {
+    console.log(response);
+  })
+  .catch(function (error: any) {
+    console.log(error);
+  });
+}
+
+
 function UselessTextInput(props) {
   return (
     <TextInput
@@ -38,7 +72,10 @@ export default function App() {
       >
         <Button
           title="Save"
-          onPress={() => console.log('Button pressed')}
+          onPress={() => {
+            console.log('Button pressed')
+            make_a_request()
+          }}
         />
       </View>
 
