@@ -12,31 +12,78 @@ const axios = require('axios').default;
 var messages = require('./protocol/everyday_pb');
 
 //const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
-const host = 'http//' + "192.168.31.38" + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
+const host = 'http://' + "192.168.31.38" + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
 const upload_url = host + "/api/v1/upload"
 
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+const Base64 = {
+  btoa: (input:string = '')  => {
+    let str = input;
+    let output = '';
+
+    for (let block = 0, charCode, i = 0, map = chars;
+    str.charAt(i | 0) || (map = '=', i % 1);
+    output += map.charAt(63 & block >> 8 - i % 1 * 8)) {
+
+      charCode = str.charCodeAt(i += 3/4);
+
+      if (charCode > 0xFF) {
+        throw new Error("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.");
+      }
+
+      block = block << 8 | charCode;
+    }
+
+    return output;
+  },
+
+  atob: (input:string = '') => {
+    let str = input.replace(/=+$/, '');
+    let output = '';
+
+    if (str.length % 4 == 1) {
+      throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+    }
+    for (let bc = 0, bs = 0, buffer, i = 0;
+      buffer = str.charAt(i++);
+
+      ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer,
+        bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
+    ) {
+      buffer = chars.indexOf(buffer);
+    }
+
+    return output;
+  }
+};
+
+function arrayBufferToBase64(buffer: Iterable<number>) {
+    let binary = '';
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return Base64.btoa(Base64.btoa(binary));
+}
 
 function make_a_request(text:String, imageUriList:Array<String>) {
-  /*
-  console.log(imageUriList.length)
-  console.log(imageUriList)
+  //console.log(text)
+  //console.log(imageUriList.length)
+  //console.log(upload_url)
 
-  var everyday = new messages.EveryDay()
-  console.log(everyday)
-  let oneday = everyday.addOneday()
-  oneday.setDate("3.1")
+  var oneday = new messages.OneDay()
   let content = oneday.addContent()
-  content.setText("hi")
-  content = oneday.addContent()
-  content.setText("I'm yingshaoxo")
-  console.log(everyday)
-  console.log(everyday.serializeBinary())
-  let data = new TextDecoder().decode(everyday.serializeBinary())
-  console.log(data)
+  content.setText(text)
+  content.setImageList(imageUriList)
+  //let data = Utf8ArrayToStr(oneday.serializeBinary())
+  let data = oneday.serializeBinary()
+  data = arrayBufferToBase64(data)
+  //console.log(data)
 
   axios.post(upload_url, {
-    action: 'everday',
-    data: data
+      action: 'oneday',
+      data: data,
   })
   .then(function (response: any) {
     console.log(response);
@@ -44,7 +91,6 @@ function make_a_request(text:String, imageUriList:Array<String>) {
   .catch(function (error: any) {
     console.log(error);
   });
-  */
 }
 
 function UselessTextInput(props) {
@@ -62,10 +108,7 @@ function UselessTextInput(props) {
 export default function App() {
   const [text, setText] = React.useState<String>('');
   const [imageUriList, setImageUriList] = React.useState<Array<String>>([]);
-
-  const onTextChange = (text: string) => {
-    console.log(text)
-  }
+  const [imageBase64List, setImageBase64List] = React.useState<Array<String>>([]);
 
   return (
     <View style={styles.container}>
@@ -84,8 +127,10 @@ export default function App() {
             title="Cancel"
             color="#90A4AE"
             onPress={() => {
-              console.log('Button pressed')
-              make_a_request(text, imageUriList)
+              //make_a_request(text, imageUriList)
+              setText("")
+              setImageUriList([])
+              setImageBase64List([])
             }}
           >
           </Button>
@@ -97,8 +142,7 @@ export default function App() {
             title="Save"
             color="#FF5252"
             onPress={() => {
-              console.log('Button pressed')
-              make_a_request(text, imageUriList)
+              make_a_request(text, imageBase64List)
             }}
           />
         </View>
@@ -111,7 +155,6 @@ export default function App() {
           style={styles.textInput}
           onChangeText={(text: string) => {
               setText(text)
-              onTextChange(text)
           }}
           value={text}
           placeholder={"What's happenning?"}
@@ -122,6 +165,8 @@ export default function App() {
         style={styles.imagePicker}
         imageUriList={imageUriList}
         setImageUriList={setImageUriList}
+        imageBase64List={imageBase64List}
+        setImageBase64List={setImageBase64List}
       />
     </View>
   );

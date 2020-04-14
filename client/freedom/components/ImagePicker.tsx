@@ -13,6 +13,8 @@ import { StyleSheet } from 'react-native';
 type MyImagePickerProps = {
   imageUriList: Array<String>
   setImageUriList: Function
+  imageBase64List: Array<String>
+  setImageBase64List: Function
 }
 
 export default class MyImagePicker extends React.Component<MyImagePickerProps> {
@@ -68,12 +70,14 @@ export default class MyImagePicker extends React.Component<MyImagePickerProps> {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        base64: true,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
       });
       if (!result.cancelled) {
         this.props.setImageUriList([...this.props.imageUriList, result.uri])
+        this.props.setImageBase64List([...this.props.imageBase64List, result["base64"]])
       }
     } catch (E) {
       console.log(E);
