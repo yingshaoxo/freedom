@@ -253,7 +253,7 @@ proto.OneDay.Content.toObject = function(includeInstance, msg) {
   var f, obj = {
     date: jspb.Message.getFieldWithDefault(msg, 1, ""),
     text: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    imageList: msg.getImageList_asB64()
+    imageList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -299,7 +299,7 @@ proto.OneDay.Content.deserializeBinaryFromReader = function(msg, reader) {
       msg.setText(value);
       break;
     case 3:
-      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      var value = /** @type {string} */ (reader.readString());
       msg.addImage(value);
       break;
     default:
@@ -345,9 +345,9 @@ proto.OneDay.Content.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getImageList_asU8();
+  f = message.getImageList();
   if (f.length > 0) {
-    writer.writeRepeatedBytes(
+    writer.writeRepeatedString(
       3,
       f
     );
@@ -392,40 +392,16 @@ proto.OneDay.Content.prototype.setText = function(value) {
 
 
 /**
- * repeated bytes image = 3;
- * @return {!(Array<!Uint8Array>|Array<string>)}
- */
-proto.OneDay.Content.prototype.getImageList = function() {
-  return /** @type {!(Array<!Uint8Array>|Array<string>)} */ (jspb.Message.getRepeatedField(this, 3));
-};
-
-
-/**
- * repeated bytes image = 3;
- * This is a type-conversion wrapper around `getImageList()`
+ * repeated string image = 3;
  * @return {!Array<string>}
  */
-proto.OneDay.Content.prototype.getImageList_asB64 = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.bytesListAsB64(
-      this.getImageList()));
+proto.OneDay.Content.prototype.getImageList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
 /**
- * repeated bytes image = 3;
- * Note that Uint8Array is not supported on all browsers.
- * @see http://caniuse.com/Uint8Array
- * This is a type-conversion wrapper around `getImageList()`
- * @return {!Array<!Uint8Array>}
- */
-proto.OneDay.Content.prototype.getImageList_asU8 = function() {
-  return /** @type {!Array<!Uint8Array>} */ (jspb.Message.bytesListAsU8(
-      this.getImageList()));
-};
-
-
-/**
- * @param {!(Array<!Uint8Array>|Array<string>)} value
+ * @param {!Array<string>} value
  * @return {!proto.OneDay.Content} returns this
  */
 proto.OneDay.Content.prototype.setImageList = function(value) {
@@ -434,7 +410,7 @@ proto.OneDay.Content.prototype.setImageList = function(value) {
 
 
 /**
- * @param {!(string|Uint8Array)} value
+ * @param {string} value
  * @param {number=} opt_index
  * @return {!proto.OneDay.Content} returns this
  */
