@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x0e\x65veryday.proto\"n\n\x06OneDay\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12 \n\x07\x63ontent\x18\x02 \x03(\x0b\x32\x0f.OneDay.Content\x1a\x34\n\x07\x43ontent\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\x12\r\n\x05image\x18\x03 \x03(\x0c\"#\n\x08\x45veryDay\x12\x17\n\x06oneday\x18\x01 \x03(\x0b\x32\x07.OneDayb\x06proto3'
+  serialized_pb=b'\n\x0e\x65veryday.proto\"n\n\x06OneDay\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12 \n\x07\x63ontent\x18\x02 \x03(\x0b\x32\x0f.OneDay.Content\x1a\x34\n\x07\x43ontent\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0c\n\x04text\x18\x02 \x01(\t\x12\r\n\x05image\x18\x03 \x03(\t\"#\n\x08\x45veryDay\x12\x17\n\x06oneday\x18\x01 \x03(\x0b\x32\x07.OneDayb\x06proto3'
 )
 
 
@@ -47,7 +47,7 @@ _ONEDAY_CONTENT = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='image', full_name='OneDay.Content.image', index=2,
-      number=3, type=12, cpp_type=9, label=3,
+      number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

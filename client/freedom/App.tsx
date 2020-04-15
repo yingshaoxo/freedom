@@ -2,30 +2,30 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-import MyImagePicker from "./components/ImagePicker"; 
+import MyImagePicker from "./components/ImagePicker";
 
 const axios = require('axios').default;
 var messages = require('./protocol/everyday_pb');
 
 //const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
-const host = 'http://' + "192.168.31.38" + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
+const host = 'http://' + "192.168.31.38" + ':' + "8888"
 const upload_url = host + "/api/v1/upload"
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 const Base64 = {
-  btoa: (input:string = '')  => {
+  btoa: (input: string = '') => {
     let str = input;
     let output = '';
 
     for (let block = 0, charCode, i = 0, map = chars;
-    str.charAt(i | 0) || (map = '=', i % 1);
-    output += map.charAt(63 & block >> 8 - i % 1 * 8)) {
+      str.charAt(i | 0) || (map = '=', i % 1);
+      output += map.charAt(63 & block >> 8 - i % 1 * 8)) {
 
-      charCode = str.charCodeAt(i += 3/4);
+      charCode = str.charCodeAt(i += 3 / 4);
 
       if (charCode > 0xFF) {
         throw new Error("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.");
@@ -37,7 +37,7 @@ const Base64 = {
     return output;
   },
 
-  atob: (input:string = '') => {
+  atob: (input: string = '') => {
     let str = input.replace(/=+$/, '');
     let output = '';
 
@@ -58,32 +58,26 @@ const Base64 = {
 };
 
 function arrayBufferToBase64(buffer: Iterable<number>) {
-    let binary = '';
-    let bytes = new Uint8Array(buffer);
-    let len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-        binary += String.fromCharCode(bytes[i]);
-    }
-    return Base64.btoa(Base64.btoa(binary));
+  let binary = '';
+  let bytes = new Uint8Array(buffer);
+  let len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return Base64.btoa(Base64.btoa(binary));
 }
 
-function make_a_request(text:String, imageUriList:Array<String>) {
-  //console.log(text)
-  //console.log(imageUriList.length)
-  //console.log(upload_url)
-
+function make_a_request(text: String, imageBase64List: Array<String>) {
   var oneday = new messages.OneDay()
   let content = oneday.addContent()
   content.setText(text)
-  content.setImageList(imageUriList)
-  //let data = Utf8ArrayToStr(oneday.serializeBinary())
+  content.setImageList(imageBase64List)
   let data = oneday.serializeBinary()
   data = arrayBufferToBase64(data)
   //console.log(data)
-
   axios.post(upload_url, {
-      action: 'oneday',
-      data: data,
+    action: 'oneday',
+    data: data,
   })
   .then(function (response: any) {
     console.log(response);
@@ -154,7 +148,7 @@ export default function App() {
         <UselessTextInput
           style={styles.textInput}
           onChangeText={(text: string) => {
-              setText(text)
+            setText(text)
           }}
           value={text}
           placeholder={"What's happenning?"}
@@ -176,10 +170,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
   topWhite: {
     flex: 0.5,
     //backgroundColor: "#fff",
   },
+
   topBar: {
     //https://reactnative.dev/docs/flexbox
     flex: 0.8,
@@ -188,23 +184,25 @@ const styles = StyleSheet.create({
     //backgroundColor: "#81D4FA"
   },
   cancelButton: {
-    width: 20/100*windowWidth,
+    width: 20 / 100 * windowWidth,
     justifyContent: "center",
   },
   saveButton: {
-    width: 20/100*windowWidth,
+    width: 20 / 100 * windowWidth,
     justifyContent: "center",
   },
+
   inputBox: {
     flex: 6,
     justifyContent: "center",
     alignItems: "center",
-    margin: 2/100*windowHeight,
+    margin: 2 / 100 * windowHeight,
     //backgroundColor: "#E57373",
   },
   textInput: {
     fontSize: 24,
   },
+
   imagePicker: {
     flex: 10,
     justifyContent: "flex-start",
