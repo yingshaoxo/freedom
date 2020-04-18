@@ -2,8 +2,8 @@
   "expo": {
     "name": "freedom",
     "slug": "freedom",
+    "description": "Help you to record your life, say whatever you wanna say.",
     "platforms": [
-      "ios",
       "android",
       "web"
     ],
@@ -21,8 +21,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+        "package": "xyz.yingshaoxo.freedom",
+        "versionCode": 1
     }
   }
 }
