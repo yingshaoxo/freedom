@@ -1,2 +1,3 @@
-expo publish
-expo build:android --no-publish
+#expo publish
+#expo build:android --no-publish
+expo build:web
