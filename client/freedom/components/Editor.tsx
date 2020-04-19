@@ -12,7 +12,9 @@ const axios = require('axios').default;
 var messages = require('../protocol/everyday_pb');
 
 //const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
-const host = 'http://' + "192.168.31.38" + ':' + "8888"
+//const host = 'http://' + "192.168.31.38" + ':' + "8888"
+const host = 'http://' + "192.168.49.31" + ':' + "8888"
+//const host = 'http://' + "127.0.0.1" + ':' + "8888"
 const upload_url = host + "/api/v1/upload"
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';

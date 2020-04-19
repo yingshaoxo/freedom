@@ -66,6 +66,21 @@ export default class MyImagePicker extends React.Component<MyImagePickerProps> {
     }
   };
 
+  toDataUrl(url: string, callback: Function) {
+      let self = this
+      var xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+          var reader = new FileReader();
+          reader.onloadend = function() {
+              callback(self, reader.result);
+          }
+          reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.responseType = 'blob';
+      xhr.send();
+  }
+
   _pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -77,7 +92,11 @@ export default class MyImagePicker extends React.Component<MyImagePickerProps> {
       });
       if (!result.cancelled) {
         this.props.setImageUriList([...this.props.imageUriList, result.uri])
-        this.props.setImageBase64List([...this.props.imageBase64List, result["base64"]])
+        //console.log(result["base64"]) //It should work, but not
+        this.toDataUrl(result.uri, function(self, mybase64) {
+          self.props.setImageBase64List([...self.props.imageBase64List, mybase64])
+          //console.log(mybase64)
+        })
       }
     } catch (E) {
       console.log(E);
