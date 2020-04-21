@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, Button } from 'react-native';
 
@@ -6,16 +6,11 @@ import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+import { store } from '../Store';
 import MyImagePicker from "./ImagePicker";
 
 const axios = require('axios').default;
 var messages = require('../protocol/everyday_pb');
-
-//const host = location.protocol + '//' + document.domain + ':' + "8888" //location.protocol + '//' + document.domain + ':' + location.port
-//const host = 'http://' + "192.168.31.38" + ':' + "8888"
-const host = 'http://' + "192.168.49.31" + ':' + "8888"
-//const host = 'http://' + "127.0.0.1" + ':' + "8888"
-const upload_url = host + "/api/v1/upload"
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 const Base64 = {
@@ -69,7 +64,7 @@ function arrayBufferToBase64(buffer: Iterable<number>) {
   return Base64.btoa(Base64.btoa(binary));
 }
 
-function make_a_request(text: String, imageBase64List: Array<String>) {
+function make_a_request(url: String, text: String, imageBase64List: Array<String>) {
   var oneday = new messages.OneDay()
   let content = oneday.addContent()
   content.setText(text)
@@ -77,7 +72,7 @@ function make_a_request(text: String, imageBase64List: Array<String>) {
   let data = oneday.serializeBinary()
   data = arrayBufferToBase64(data)
   //console.log(data)
-  axios.post(upload_url, {
+  axios.post(url, {
     action: 'oneday',
     data: data,
   })
@@ -105,6 +100,8 @@ export default function Editor( {navigation} ) {
   const [text, setText] = React.useState<String>('');
   const [imageUriList, setImageUriList] = React.useState<Array<String>>([]);
   const [imageBase64List, setImageBase64List] = React.useState<Array<String>>([]);
+
+  const [state, dispatch] = useContext(store)
 
   return (
     <View style={styles.container}>
@@ -139,7 +136,7 @@ export default function Editor( {navigation} ) {
             title="Save"
             color="#FF5252"
             onPress={() => {
-              make_a_request(text, imageBase64List)
+              make_a_request(state.urls.upload_url, text, imageBase64List)
             }}
           />
         </View>
