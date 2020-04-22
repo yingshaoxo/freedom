@@ -78,6 +78,9 @@ function make_a_request(url: String, text: String, imageBase64List: Array<String
   })
   .then(function (response: any) {
     console.log(response);
+    setTimeout(()=>{
+      location.reload();
+    }, 1000)
   })
   .catch(function (error: any) {
     console.log(error);
@@ -137,6 +140,7 @@ export default function Editor( {navigation} ) {
             color="#FF5252"
             onPress={() => {
               make_a_request(state.urls.upload_url, text, imageBase64List)
+              navigation.navigate('Your History')
             }}
           />
         </View>
