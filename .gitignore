@@ -1,4 +1,5 @@
 #fetch
+*.db
 *.zip
 .ipynb_checkpoints/
 .vscode/
