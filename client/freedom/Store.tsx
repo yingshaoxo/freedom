@@ -13,6 +13,7 @@ if (Platform.OS == "web") {
 
 const upload_url = host + "/api/v1/upload"
 const get_url = host + "/api/v1/get"
+const download_url = host + "/api/v1/download"
 
 const initialState = {
     platform: Platform.OS,
@@ -20,8 +21,11 @@ const initialState = {
         host: host,
         upload_url: upload_url,
         get_url: get_url,
+        download_url,
     },
     oneday_list: [],
+    fetched_at_boot: false,
+    data_download_url: undefined,
 };
 export const store = createContext(null);
 
@@ -31,6 +35,12 @@ switch(action.type) {
       return {
         ...state,
         oneday_list: action.payload,
+        fetched_at_boot: true,
+      };
+    case 'setDataDownloadUrl':
+      return {
+        ...state,
+        data_download_url: action.payload,
       };
     default:
       throw new Error();

@@ -75,17 +75,21 @@ function OneDay(props) {
   let content_view = []
   content_list.map((content, index) => {
     //console.log(content.getImageList())
+    let has_text = content.getText().trim().length > 0
     content_view.push(
       <View
         style={styles.content}
         key={index}
       >
 
+        {
+        has_text && 
         <Text
           style={styles.text}
         >
           {content.getText()}
         </Text>
+        }
 
         <Images
           image_list={content.getImageList()}
@@ -119,7 +123,7 @@ export default function History() {
   }
 
   let everyday_view = []
-  if (state.oneday_list.length == 0) {
+  if (state.fetched_at_boot == false) {
     getData()
   } else {
     state.oneday_list.map((oneday, index) => {
@@ -136,36 +140,33 @@ export default function History() {
 
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
+      contentContainerStyle={styles.everyday}
     >
-      <View style={styles.everyday}>
-          {everyday_view}
-      </View>
+      {everyday_view}
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   everyday: {
-    //justifyContent: 'center', alignItems: 'center', 
-    flex: 1, 
-    flexDirection: 'column',
-    //justifyContent: "space-between",
-    justifyContent: "flex-start",
+    flexGrow: 1,
+    backgroundColor: "#ECEFF1",
   },
   oneday: {
     width: windowWidth,
-    marginVertical: 1/100 * windowHeight,
+    marginBottom: 2/100 * windowHeight,
     backgroundColor: "#fff",
   },
   date: {
     textAlign: 'center', // <-- the magic
-    marginBottom: 1/100 * windowHeight,
+    marginBottom: 4/100 * windowHeight,
   },
   content: {
   },
   text: {
     textAlign: 'center', // <-- the magic
+    fontSize: 16,
+    marginBottom: 4/100 * windowHeight,
   },
   images: {
     display: "flex",
