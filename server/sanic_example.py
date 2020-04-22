@@ -1,6 +1,5 @@
-from flask import Flask, request
-from flask_cors import CORS
-import json
+from sanic import Sanic, response
+from sanic_cors import CORS
 from datetime import datetime
 import pprint
 
@@ -37,17 +36,16 @@ def show_image(base64_string):
 everyday = everyday_pb2.EveryDay()
 
 
-app = Flask(__name__)
+app = Sanic(name="freedom")
 CORS(app)
 
 
 @app.route('/api/v1/upload', methods=['POST'])
-def upload():
+async def upload(request):
     result = {"status": "wrong"}
-    request_json = request.get_json()
-    if request_json:
-        action = request_json.get("action")
-        data = request_json.get("data")
+    if request.json:
+        action = request.json.get("action")
+        data = request.json.get("data")
         if action and data:
             printit(data[:30])  # raw data
             data = base64.b64decode(data)  # encoded by our self with our own javascript function
@@ -67,13 +65,12 @@ def upload():
             printit(everyday)
 
             result["status"] = "ok"
-    return json.dumps(result)
+    return response.json(result)
 
 
 @app.route('/api/v1/get', methods=['GET'])
-async def get_today_message():
-    request_json = request.get_json()
-    return json.dumps(my_data.get_todays_data())
+async def get_today_message(request):
+    return response.json(my_data.get_todays_data())
 
 
 if __name__ == "__main__":
