@@ -6,3 +6,4 @@ Record your life, say whatever you wanna say.
 
 ### Feature
 1. Show the world what you have said today in history.
+2. You can download your data at anywhere anytime.
