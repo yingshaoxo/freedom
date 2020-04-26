@@ -93,6 +93,7 @@ function UselessTextInput(props) {
       {...props} // Inherit any props passed to it; e.g., multiline, numberOfLines below
       editable
       multiline
+      autoFocus
       numberOfLines={8}
       maxLength={40}
     />
