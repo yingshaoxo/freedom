@@ -10,14 +10,17 @@ import { store } from '../Store';
 
 const axios = require('axios').default;
 
-async function make_a_request(state) {
-  return axios.post(state.urls.download_url, {
-    action: 'get_everyday',
+async function make_a_search_request(state, text: string) {
+  return axios.post(state.urls.search_url, {
+    text,
   })
   .then(function (response: any) {
-    //console.log(response);
     let data = response.data;
-    return data
+    if (data.status == "ok") {
+      return data.result
+    } else {
+      return undefined
+    }
   })
   .catch(function (error: any) {
     console.log(error);
@@ -25,31 +28,64 @@ async function make_a_request(state) {
 }
 
 async function download_it(state, dispatch) {
-  /*
-  let string = await make_a_request(state)
-  string = string.sql
-  var file;
-  var data = [];
-  data.push(string);
-  var properties = {type: 'text/plain'}; // Specify the file's mime-type.
-  try {
-    // Specify the filename using the File constructor, but ...
-    file = new File(data, "data.txt", properties);
-  } catch (e) {
-    // ... fall back to the Blob constructor if that isn't supported.
-    file = new Blob(data, properties);
-  }
-  var url = URL.createObjectURL(file);
-  console.log(url)
-  */
   let url = state.urls.download_url
   if (state.data_download_url == undefined) {
     dispatch({type: "setDataDownloadUrl", payload: url})
   }
 }
 
+function SearchTextInput(props) {
+  let {text, onTextChange, state, dispatch} = props
+
+  return (
+    <TextInput
+      style={{ height: 5/100*windowHeight, borderColor: '#E0E0E0', borderWidth: 1 }}
+      onChangeText={text => {
+        onTextChange(text.trim())
+      }}
+      onKeyPress={(event) => {
+        if (event.nativeEvent.key == "Enter") {
+          async function do_it() {
+            let search_result_list = await make_a_search_request(state, text)
+            dispatch({type: "setSearchResultList", payload: search_result_list})
+          }
+          do_it()
+        }
+      }}
+      value={text}
+      placeholder={"What you wanna know?"}
+      autoFocus
+    />
+  );
+}
+
 export default function Search() {
   const [state, dispatch] = useContext(store)
+  const [text, onTextChange] = React.useState('');
+
+  let search_output_view = []
+  if (state.search_result_list != undefined) {
+    state.search_result_list.map((message, index) => {
+      //console.log(oneday.getDate())
+      search_output_view.push(
+        <View
+          key={index}
+        >
+          <Text>
+            {message.date}
+          </Text>
+          <Text>
+            {message.text}
+          </Text>
+          { index+1 != state.search_result_list.length &&
+            <Text>
+              {"\n" + "---------------------" + "\n\n"}
+            </Text>
+          }
+        </View>
+      )
+    })
+  }
 
   return (
     <View
@@ -58,7 +94,25 @@ export default function Search() {
       <View
         style={styles.search_area}
       >
-
+        <View
+          style={styles.search_inputbox}
+        >
+          <SearchTextInput
+            text={text}
+            onTextChange={onTextChange}
+            state={state}
+            dispatch={dispatch}
+          />
+        </View>
+        <View
+          style={styles.search_outputbox}
+        >
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+          >
+            {search_output_view}
+          </ScrollView>
+        </View>
       </View>
       <View
         style={styles.download_area}
@@ -98,6 +152,8 @@ const styles = StyleSheet.create({
   },
   search_area: {
     flex: 1,
+    justifyContent:"center",
+    alignItems: "center",
     backgroundColor: "#E1F5FE",
   },
   download_area: {
@@ -105,6 +161,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     //backgroundColor: "#000",
     backgroundColor: "#FCE4EC",
+  },
+  search_inputbox: {
+    flex: 1,
+    width: windowWidth,
+  },
+  search_outputbox: {
+    flex: 8,
+    width: windowWidth,
+    backgroundColor: "#E1F5FE",
+    //backgroundColor: "#000",
   },
   download_button: {
     flex: 1,

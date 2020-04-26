@@ -19,7 +19,7 @@ export default function App() {
   return (
     <StateProvider>
       <NavigationContainer>
-        <Tab.Navigator initialRouteName="Your History">
+        <Tab.Navigator initialRouteName="Search">
           <Tab.Screen name="Your History" component={History} />
           <Tab.Screen name="Add More" component={Editor} />
           <Tab.Screen name="Search" component={Search} />
