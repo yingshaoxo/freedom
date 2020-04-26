@@ -71,6 +71,7 @@ class Data():
                     day.MergeFromString(row[1])
                     days.append(day)
             if days:
+                days.reverse()
                 everyday = everyday_pb2.EveryDay()
                 everyday.oneday.extend(days)
                 bytes_data = everyday.SerializeToString()
@@ -171,6 +172,7 @@ class NewData():
                 "text": row[2],
                 "images": json.loads(row[3]),
             })
+        days.reverse()
         return days
 
     def get_database(self):
