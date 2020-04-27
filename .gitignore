@@ -1,3 +1,6 @@
+server/web-build/
+*.apk
+
 #fetch
 *.db
 *.zip
