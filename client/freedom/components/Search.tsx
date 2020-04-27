@@ -54,7 +54,6 @@ function SearchTextInput(props) {
       }}
       value={text}
       placeholder={"What you wanna know?"}
-      autoFocus
     />
   );
 }
