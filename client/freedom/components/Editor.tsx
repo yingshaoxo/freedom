@@ -94,7 +94,6 @@ function UselessTextInput(props) {
       editable
       multiline
       numberOfLines={8}
-      maxLength={40}
     />
   );
 }
@@ -205,6 +204,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 24,
+    //borderColor: '#E0E0E0', 
+    //borderWidth: 1,
+    //width: 80/100 * windowWidth,
   },
 
   imagePicker: {
