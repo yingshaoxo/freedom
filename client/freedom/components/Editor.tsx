@@ -80,7 +80,7 @@ function make_a_request(url: String, text: String, imageBase64List: Array<String
     console.log(response);
     setTimeout(()=>{
       location.reload();
-    }, 1000)
+    }, 500)
   })
   .catch(function (error: any) {
     console.log(error);
@@ -122,7 +122,6 @@ export default function Editor( {navigation} ) {
             title="Cancel"
             color="#90A4AE"
             onPress={() => {
-              //make_a_request(text, imageUriList)
               setText("")
               setImageUriList([])
               setImageBase64List([])
@@ -139,6 +138,9 @@ export default function Editor( {navigation} ) {
             color="#FF5252"
             onPress={() => {
               make_a_request(state.urls.upload_url, text, imageBase64List)
+              setText("")
+              setImageUriList([])
+              setImageBase64List([])
               navigation.navigate('Your History')
             }}
           />

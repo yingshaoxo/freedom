@@ -18,7 +18,8 @@ async function make_a_request(state) {
   .then(function (response: any) {
     //console.log(response);
     let data = response.data;
-    let everyday = messages.EveryDay.deserializeBinary(data.sql)
+    //console.log(data)
+    let everyday = messages.EveryDay.deserializeBinary(data.mine)
     //console.log(everyday)
     let oneday_list = everyday.getOnedayList()
     //console.log(oneday_list)
