@@ -2,6 +2,7 @@ server/web-build/
 *.apk
 
 #fetch
+*.swp
 *.db
 *.zip
 .ipynb_checkpoints/
