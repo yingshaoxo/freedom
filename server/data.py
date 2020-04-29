@@ -61,8 +61,11 @@ class NewData():
                     (date TEXT, type TEXT, text TEXT, images TEXT)''')
 
     def _iterate_database(self):
+        days = []
         for row in self._sql_cursor.execute('SELECT * FROM thoughts ORDER BY date'):
             print(row[0], row[1])
+            days.append(row)
+        return days
 
     def save_a_day(self, date, type, text, images):
         status = False
