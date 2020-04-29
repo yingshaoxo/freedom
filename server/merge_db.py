@@ -23,6 +23,11 @@ _sql_cursor = _sql_conn.cursor()
 _sql_cursor.execute('''CREATE TABLE IF NOT EXISTS thoughts
             (date TEXT, type TEXT, text TEXT, images TEXT)''')
 
+_sql_cursor.execute('''
+DELETE FROM thoughts 
+WHERE type LIKE '%qzone%';
+''')
+_sql_conn.commit()
 
 for row in self._sql_cursor.execute('SELECT * FROM thoughts ORDER BY date'):
     _sql_cursor.execute("INSERT INTO thoughts VALUES (?,?,?,?)",
