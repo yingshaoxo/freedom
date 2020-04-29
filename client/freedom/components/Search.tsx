@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   search_area: {
-    flex: 1,
+    flex: 5,
     justifyContent:"center",
     alignItems: "center",
     backgroundColor: "#E1F5FE",
