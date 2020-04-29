@@ -62,11 +62,13 @@ class NewData():
 
     def _iterate_database(self):
         for row in self._sql_cursor.execute('SELECT * FROM thoughts ORDER BY date'):
-            print(row)
+            print(row[0], row[1])
 
     def save_a_day(self, date, type, text, images):
         status = False
         if isinstance(date, str):
+            if "." in date:
+                date = date.split(".")[0]
             if isinstance(type, str):
                 if isinstance(text, str):
                     if isinstance(images, str):
@@ -79,7 +81,7 @@ class NewData():
 
     def search(self, text):
         days = []
-        for row in self._sql_cursor.execute('SELECT * FROM thoughts WHERE text REGEXP (?)', [r'[\s\S.]*'+text+'[\s\S.]*']):
+        for row in self._sql_cursor.execute('SELECT * FROM thoughts WHERE text REGEXP (?) ORDER BY date', [r'[\s\S.]*'+text+'[\s\S.]*']):
             days.append({
                 "date": row[0],
                 "type": row[1],
@@ -141,9 +143,16 @@ if __name__ == "__main__":
     todays_data = my_data.get_todays_data()
     print(todays_data)
     """
+    """
     # test2
     my_data = NewData(".")
     my_data.save_a_day("28.22", "qzone", "dddddhhhhhhhhi", "[]")
     my_data._iterate_database()
     path = my_data.get_database()
     print(path)
+    """
+    # test3
+    my_data = NewData(".")
+    r = my_data.search("垃圾")
+    from pprint import pprint
+    pprint(r)
