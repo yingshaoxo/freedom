@@ -42,7 +42,6 @@ class Data():
 class NewData():
     def __init__(self, root_path):
         self._root_path = root_path
-        self.SQL = None
         self._initialize_SQL()
 
     def _initialize_SQL(self):
@@ -50,7 +49,6 @@ class NewData():
         if not os.path.exists(self.SQL_DATA_FILE):
             print(f"SQL doesn't exist: {self.SQL_DATA_FILE}")
             print(f"We'll create a new one!")
-            self.SQL = None
         self._sql_conn = sqlite3.connect(self.SQL_DATA_FILE, check_same_thread=False)
 
         def regular_expression(expr, item):
@@ -61,12 +59,10 @@ class NewData():
         self._sql_cursor = self._sql_conn.cursor()
         self._sql_cursor.execute('''CREATE TABLE IF NOT EXISTS thoughts
                     (date TEXT, type TEXT, text TEXT, images TEXT)''')
-        self.SQL = self._sql_cursor
 
     def _iterate_database(self):
-        if self.SQL:
-            for row in self.SQL.execute('SELECT * FROM thoughts ORDER BY date'):
-                print(row)
+        for row in self._sql_cursor.execute('SELECT * FROM thoughts ORDER BY date'):
+            print(row)
 
     def save_a_day(self, date, type, text, images):
         status = False
@@ -74,9 +70,9 @@ class NewData():
             if isinstance(type, str):
                 if isinstance(text, str):
                     if isinstance(images, str):
-                        self.SQL.execute("INSERT INTO thoughts VALUES (?,?,?,?)",
-                                         (date, type, text, images)
-                                         )
+                        self._sql_cursor.execute("INSERT INTO thoughts VALUES (?,?,?,?)",
+                                                 (date, type, text, images)
+                                                 )
                         self._sql_conn.commit()
                         status = True
         return status
@@ -119,6 +115,23 @@ class NewData():
             bytes_data = everyday.SerializeToString()
             base64_string = base64.encodebytes(bytes_data)
             return base64_string.decode("ascii")
+
+    def merge_from_a_database(self, path):
+        if not os.path.exists(path):
+            print(f"Target SQL doesn't exist: {path}")
+            return False
+
+        target_sql_conn = sqlite3.connect(path, check_same_thread=False)
+        target_sql_cursor = target_sql_conn.cursor()
+        for row in target_sql_cursor.execute('SELECT * FROM thoughts ORDER BY date'):
+            date = row[0]
+            type = row[1]
+            result = self._sql_cursor.execute(''' SELECT * FROM thoughts WHERE date=:date and type=:type ''', {"date": date, "type": type}).fetchall()
+            if len(result) == 0:
+                self._sql_cursor.execute("INSERT INTO thoughts VALUES (?,?,?,?)",
+                                         row
+                                         )
+                self._sql_conn.commit()
 
 
 if __name__ == "__main__":
