@@ -63,7 +63,6 @@ class NewData():
     def _iterate_database(self):
         days = []
         for row in self._sql_cursor.execute('SELECT * FROM thoughts ORDER BY date'):
-            print(row[0], row[1])
             days.append(row)
         return days
 
