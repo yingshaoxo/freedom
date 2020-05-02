@@ -104,7 +104,8 @@ class NewData():
             text = row[2]
             images = json.loads(row[3])
             that_day_date = datetime.fromisoformat(date).date()
-            if that_day_date == datetime.now().date():
+            today_date = datetime.now().date()
+            if that_day_date.month == today_date.month and that_day_date.day == today_date.day:
                 day = everyday_pb2.OneDay()
                 day.date = date
                 content = day.content.add()
