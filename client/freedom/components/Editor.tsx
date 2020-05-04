@@ -66,9 +66,8 @@ function arrayBufferToBase64(buffer: Iterable<number>) {
 
 function make_a_request(url: String, text: String, imageBase64List: Array<String>) {
   var oneday = new messages.OneDay()
-  let content = oneday.addContent()
-  content.setText(text.trim())
-  content.setImageList(imageBase64List)
+  oneday.setText(text.trim())
+  oneday.setImageList(imageBase64List)
   let data = oneday.serializeBinary()
   data = arrayBufferToBase64(data)
   //console.log(data)
@@ -208,7 +207,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     //borderColor: '#E0E0E0', 
     //borderWidth: 1,
-    //width: 80/100 * windowWidth,
+    textAlign: "center",
+    width: 90/100 * windowWidth,
   },
 
   imagePicker: {

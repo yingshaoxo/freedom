@@ -15,6 +15,7 @@ const upload_url = host + "/api/v1/upload"
 const get_url = host + "/api/v1/get"
 const download_url = host + "/api/v1/download"
 const search_url = host + "/api/v1/search"
+const delete_url = host + "/api/v1/delete"
 
 const initialState = {
     platform: Platform.OS,
@@ -23,7 +24,8 @@ const initialState = {
         upload_url: upload_url,
         get_url: get_url,
         download_url,
-        search_url
+        search_url,
+        delete_url,
     },
     oneday_list: [],
     fetched_at_boot: false,

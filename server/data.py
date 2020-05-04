@@ -25,12 +25,12 @@ class Data():
         date = oneday.date
         type = "mine"
         try:
-            text = oneday.content[0].text
+            text = oneday.text
         except Exception as e:
             print(e)
             text = ""
         images = []
-        for image in oneday.content[0].image:
+        for image in oneday.image:
             images.append(image)
         images = json.dumps(images)
         return (date, type, text, images)
@@ -81,6 +81,46 @@ class NewData():
                         status = True
         return status
 
+    def edit_a_day(self, date, type, text, images, new_text):
+        status = False
+
+        if not isinstance(new_text, str):
+            return status
+
+        if isinstance(date, str):
+            if "." in date:
+                date = date.split(".")[0]
+            if isinstance(type, str):
+                if isinstance(text, str):
+                    if isinstance(images, str):
+                        self._sql_cursor.execute(''' SELECT * FROM thoughts WHERE date=:date AND type=:type AND text=:text AND images=:images ''',
+                                                 {"date": date, "type": type, "text": text, "images": images}
+                                                 )
+                        if len(self._sql_cursor.fetchall()) == 1:
+                            self._sql_cursor.execute(''' UPDATE thoughts SET text=:new_text WHERE date=:date AND type=:type AND text=:text ''',
+                                                     {"date": date, "type": type, "text": text, "images": images, "new_text": new_text}
+                                                     )
+                            self._sql_conn.commit()
+                            status = True
+        return status
+
+    def delete_a_day(self, date, type, text):
+        status = False
+        if isinstance(date, str):
+            if "." in date:
+                date = date.split(".")[0]
+            if isinstance(type, str):
+                if isinstance(text, str):
+                    self._sql_cursor.execute(''' SELECT * FROM thoughts WHERE date=:date AND type=:type AND text=:text ''',
+                                             {"date": date, "type": type, "text": text}
+                                             )
+                    if len(self._sql_cursor.fetchall()) == 1:
+                        self._sql_cursor.execute(''' DELETE FROM thoughts WHERE date=:date AND type=:type AND text=:text ''',
+                                                 {"date": date, "type": type, "text": text}
+                                                 )
+                        self._sql_conn.commit()
+                        status = True
+
     def search(self, text):
         days = []
         for row in self._sql_cursor.execute('SELECT * FROM thoughts WHERE text REGEXP (?) ORDER BY date', [r'[\s\S.]*'+text+'[\s\S.]*']):
@@ -108,10 +148,8 @@ class NewData():
             if that_day_date.month == today_date.month and that_day_date.day == today_date.day:
                 day = everyday_pb2.OneDay()
                 day.date = date
-                content = day.content.add()
-                content.date = date
-                content.text = text
-                content.image.extend(images)
+                day.text = text
+                day.image.extend(images)
                 days.append(day)
         if days:
             days.reverse()

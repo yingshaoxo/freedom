@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import { TextInput, Button } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
@@ -23,21 +25,21 @@ async function make_a_request(state) {
     //console.log(everyday)
     let oneday_list = everyday.getOnedayList()
     //console.log(oneday_list)
-    /*
-    oneday_list.map((oneday) => {
-      console.log(oneday.getDate())
-      let contents = oneday.getContentList()
-      contents.map((content, index) => {
-        let images = content.getImageList()
-        if (images) {
-          images.map((image, index) => {
-            console.log(image)
-          })
-        }
-      })
-    })
-    */
     return oneday_list
+  })
+  .catch(function (error: any) {
+    console.log(error);
+  });
+}
+
+async function make_a_post_deletion_request(state, date: string, type: string, text: string) {
+  axios.post(state.urls.delete_url, {
+    date,
+    type,
+    text,
+  })
+  .then(function (response: any) {
+    location.reload();
   })
   .catch(function (error: any) {
     console.log(error);
@@ -70,47 +72,59 @@ function Images(props) {
 }
 
 function OneDay(props) {
-  let {oneday} = props
-  let content_list = oneday.getContentList()
+  let {oneday, state} = props
 
-  let content_view = []
-  content_list.map((content, index) => {
-    //console.log(content.getImageList())
-    let has_text = content.getText().trim().length > 0
-    content_view.push(
-      <View
-        style={styles.content}
-        key={index}
-      >
+  //console.log(content.getImageList())
+  let has_text = oneday.getText().trim().length > 0
 
-        {
-        has_text && 
-        <Text
-          style={styles.text}
-        >
-          {content.getText()}
-        </Text>
-        }
+  let text_and_images = (
+  <View
+      style={styles.content}
+  >
+    {
+    has_text && 
+    <Text
+      style={styles.text}
+    >
+      {oneday.getText()}
+    </Text>
+    }
 
-        <Images
-          image_list={content.getImageList()}
-        >
-        </Images>
+    <Images
+      image_list={oneday.getImageList()}
+    >
+    </Images>
 
-      </View>
-    )
-  })
+  </View>
+  )
+
+  let delete_this_post = () => {
+    make_a_post_deletion_request(state, oneday.getDate(), "mine", oneday.getText())
+  }
 
   return (
     <View
       style={styles.oneday}
     >
-      <Text
-        style={styles.date}
-      >{oneday.getDate()}
-      </Text>
+      <View
+        style={styles.datebar}
+      >
+        <TouchableOpacity onPress={() => {
+          delete_this_post()
+        }}
+        > 
+          <Ionicons name="md-close" color="#E0E0E0" />
+        </TouchableOpacity>
+        <Text
+          style={styles.date}
+        >{oneday.getDate()}
+        </Text>
+        <TouchableOpacity onPress={() => {}}> 
+          <Ionicons name="md-create" color="#E0E0E0" />
+        </TouchableOpacity>
+      </View>
 
-      {content_view}
+      {text_and_images}
     </View>
   )
 }
@@ -133,6 +147,7 @@ export default function History() {
         <OneDay
           key={index}
           oneday={oneday}
+          state={state}
         >
         </OneDay>
       )
@@ -157,6 +172,10 @@ const styles = StyleSheet.create({
     width: windowWidth,
     marginBottom: 2/100 * windowHeight,
     backgroundColor: "#fff",
+  },
+  datebar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   date: {
     textAlign: 'center', // <-- the magic
