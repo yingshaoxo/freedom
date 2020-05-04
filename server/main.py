@@ -75,8 +75,8 @@ def upload():
             oneday.MergeFromString(data)
             # printit(oneday.content[0].text)
 
-            if len(oneday.content[0].image):
-                base64_image_string = oneday.content[0].image[0]
+            if len(oneday.image):
+                base64_image_string = oneday.image[0]
                 # printit(base64_image_string[:30])
                 show_image(base64_image_string)
 
@@ -109,6 +109,19 @@ def search():
 def download_it():
     # return send_file(io.BytesIO(text), as_attachment=True, attachment_filename="yourData.json", mimetype="text/plain")
     return send_file(my_data._new_data.get_database(), as_attachment=True)
+
+
+@app.route('/api/v1/delete', methods=['POST'])
+def delete_a_post():
+    result = {"status": "wrong"}
+    request_json = request.get_json()
+    if "date" in request_json and "type" in request_json and "text" in request_json:
+        date = request_json.get("date")
+        type = request_json.get("type")
+        text = request_json.get("text")
+        my_data._new_data.delete_a_day(date, type, text)
+        result["status"] = "ok"
+    return json.dumps(result)
 
 
 if __name__ == "__main__":

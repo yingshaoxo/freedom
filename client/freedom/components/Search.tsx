@@ -39,7 +39,7 @@ function SearchTextInput(props) {
 
   return (
     <TextInput
-      style={{ height: 5/100*windowHeight, borderColor: '#E0E0E0', borderWidth: 1 }}
+      style={{ flexGrow: 1, borderColor: '#E0E0E0', borderWidth: 1 }}
       onChangeText={text => {
         onTextChange(text.trim())
       }}
@@ -71,10 +71,13 @@ export default function Search() {
           key={index}
         >
           <Text>
-            {message.date}
+            {message.date.trim()}
           </Text>
           <Text>
-            {message.text}
+            {"\n\n"}
+          </Text>
+          <Text>
+            {message.text.trim()}
           </Text>
           { index+1 != state.search_result_list.length &&
             <Text>
@@ -166,7 +169,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
   },
   search_outputbox: {
-    flex: 8,
+    flex: 14,
     width: windowWidth,
     backgroundColor: "#E1F5FE",
     //backgroundColor: "#000",
