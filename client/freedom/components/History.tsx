@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 import { TextInput, Button } from 'react-native';
+
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
@@ -73,6 +74,7 @@ function Images(props) {
 
 function OneDay(props) {
   let {oneday, state} = props
+  const [modalVisible, setModalVisible] = useState(false);
 
   //console.log(content.getImageList())
   let has_text = oneday.getText().trim().length > 0
@@ -109,10 +111,7 @@ function OneDay(props) {
       <View
         style={styles.datebar}
       >
-        <TouchableOpacity onPress={() => {
-          delete_this_post()
-        }}
-        > 
+        <TouchableOpacity onPress={delete_this_post}> 
           <Ionicons name="md-close" color="#E0E0E0" />
         </TouchableOpacity>
         <Text
