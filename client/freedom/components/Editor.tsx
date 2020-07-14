@@ -93,6 +93,7 @@ function UselessTextInput(props) {
       editable
       multiline
       numberOfLines={8}
+      textAlign={"center"}
     />
   );
 }
