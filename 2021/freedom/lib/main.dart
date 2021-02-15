@@ -5,9 +5,26 @@ import 'package:provider/provider.dart';
 import 'components/lists.dart';
 import 'store/lists.dart';
 
+import 'dart:async';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+
 import 'settings.dart';
 
-void main() {
+Database database;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  database = await openDatabase(
+    join(await getDatabasesPath(), 'database.db'),
+    onCreate: (db, version) {
+      return db.execute(
+        "CREATE TABLE messages(date TEXT, content TEXT)",
+      );
+    },
+    version: 1,
+  );
+
   runApp(
     MultiProvider(
       providers: [
@@ -81,6 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    final listsModel = Provider.of<ListsModel>(context, listen: false);
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -146,7 +165,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
+          onPressed: () async {
+            _incrementCounter();
+            listsModel.insertMessage(
+                Message(date: _counter.toString(), content: "ahsidhfaslk"));
+          },
           tooltip: 'Increment',
           child: Icon(Icons.add),
         ), // This trailing comma makes auto-formatting nicer for build methods.
