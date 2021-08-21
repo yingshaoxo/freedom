@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freedom/store/lists.dart';
 
 class MyCard extends StatelessWidget {
-  Message message;
+  Message? message;
   MyCard({this.message});
 
   @override
@@ -21,7 +21,7 @@ class MyCard extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                child: Text(message.date,
+                child: Text(message!.date!,
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold)),
               ),
@@ -29,7 +29,7 @@ class MyCard extends StatelessWidget {
                 margin: EdgeInsets.only(top: 5.0),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  message.content,
+                  message!.content!,
                   style: TextStyle(color: Colors.black),
                 ),
               ),

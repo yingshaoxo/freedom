@@ -7,8 +7,8 @@ import 'package:sqflite/sqflite.dart';
 import '../main.dart';
 
 class Message {
-  String date;
-  String content;
+  String? date;
+  String? content;
 
   Message({this.date, this.content});
 
