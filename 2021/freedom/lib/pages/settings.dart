@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
+import 'package:freedom/store/store.dart';
 
 class SettingPage extends StatelessWidget {
   @override
@@ -22,8 +22,8 @@ class SettingPage extends StatelessWidget {
                   bottom: MediaQuery.of(context).size.height * 0.1),
               child: ElevatedButton(
                 child: Text('Export'),
-                onPressed: () {
-                  // Navigate to second route when tapped.
+                onPressed: () async {
+                  await databaseController.exportDatabase();
                 },
               ),
             ),

@@ -1,29 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:freedom/store/lists.dart';
-import 'package:provider/provider.dart';
+
+import 'package:freedom/store/database_controller.dart';
 import 'card.dart';
 
-class MyList extends StatelessWidget {
+class MessageListView extends StatefulWidget {
+  final List<Message> messageList;
+
+  MessageListView({Key? key, required this.messageList}) : super(key: key);
+
+  @override
+  _MessageListViewState createState() => _MessageListViewState();
+}
+
+class _MessageListViewState extends State<MessageListView> {
+  @protected
+  @mustCallSuper
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<ListsModel>(builder: (context, listsModel, child) {
-      return Container(
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-            border: Border(
-                bottom: BorderSide(
-                    color: Colors.grey, style: BorderStyle.solid, width: 0.3))),
-        child: ListView.separated(
-          separatorBuilder: (context, index) => Divider(
-            thickness: 0.4,
-            color: Colors.grey,
-          ),
-          itemCount: listsModel.messages.length,
-          itemBuilder: (BuildContext context, int index) {
-            return InkWell(child: MyCard(message: listsModel.messages[index]));
-          },
+    return Container(
+      padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+          border: Border(
+              bottom: BorderSide(
+                  color: Colors.grey, style: BorderStyle.solid, width: 0.3))),
+      child: ListView.separated(
+        separatorBuilder: (context, index) => Divider(
+          thickness: 0.4,
+          color: Colors.grey,
         ),
-      );
-    });
+        itemCount: widget.messageList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: 50.0,
+            ),
+            child: InkWell(child: MyCard(message: widget.messageList[index])),
+          );
+        },
+      ),
+    );
   }
 }
