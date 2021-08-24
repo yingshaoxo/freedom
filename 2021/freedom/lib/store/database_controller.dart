@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:share/share.dart';
@@ -18,7 +20,7 @@ class DatabaseControlelr extends GetxController {
 
   Future<void> initializeDatabase() async {
     database = await openDatabase(
-      await getDatbasePath(),
+      await getDatbaseFilePath(),
       onCreate: (db, version) {
         return db.execute(
           "CREATE TABLE messages(date TEXT, content TEXT, images TEXT)",
@@ -30,16 +32,27 @@ class DatabaseControlelr extends GetxController {
     await syncMessageList();
   }
 
-  Future<String> getDatbasePath() async {
+  Future<String> getDatbaseFilePath() async {
     return join(await getDatabasesPath(), 'database.db');
   }
 
-  Future<void> exportDatabase() async {
-    await Share.shareFiles([await getDatbasePath()],
-        text: 'Your Ideas Database');
+  Future<void> replaceOldDatabaseFileWithNewOne(
+      {required String newFilePath}) async {
+    print("new file path: $newFilePath");
+    File newFile = File(newFilePath);
+    var bytes = await newFile.readAsBytes();
+
+    File oldFile = File(await getDatbaseFilePath());
+    print("old file path: ${oldFile.path}");
+    await oldFile.writeAsBytes(bytes, flush: true);
+
+    await syncMessageList();
   }
 
-  void importDatabase() {}
+  Future<void> exportDatabase() async {
+    await Share.shareFiles([await getDatbaseFilePath()],
+        text: 'Your Ideas Database');
+  }
 
   Future<void> insertMessage(Message msg) async {
     await database.insert(
@@ -47,6 +60,11 @@ class DatabaseControlelr extends GetxController {
       msg.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  Future<void> updateMessage(Message msg) async {
+    await database.update("messages", msg.toMap(),
+        where: 'date = ?', whereArgs: [msg.date]);
   }
 
   Future<void> deleteMessage(Message msg) async {

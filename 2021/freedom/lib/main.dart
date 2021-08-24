@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:freedom/pages/editing.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+
+import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:freedom/pages/settings.dart';
 import 'package:freedom/store/store.dart';
-import 'package:get/get.dart';
-
+import 'package:freedom/pages/editing.dart';
 import 'components/lists.dart';
-
 import 'pages/settings.dart';
 
 void main() async {
@@ -14,25 +17,28 @@ void main() async {
 
   await initialization();
 
-  runApp(
-    GetMaterialApp(
-      initialRoute: RouterRoutings.home,
-      getPages: [
-        GetPage(
-          name: RouterRoutings.home,
-          page: () => MyApp(),
-        ),
-        GetPage(
-          name: RouterRoutings.editing,
-          page: () => EditingPage(),
-        ),
-        GetPage(
-          name: RouterRoutings.settings,
-          page: () => SettingPage(),
-        ),
-      ],
-    ),
-  );
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(
+      GetMaterialApp(
+        initialRoute: RouterRoutings.home,
+        getPages: [
+          GetPage(
+            name: RouterRoutings.home,
+            page: () => MyApp(),
+          ),
+          GetPage(
+            name: RouterRoutings.editing,
+            page: () => EditingPage(),
+          ),
+          GetPage(
+            name: RouterRoutings.settings,
+            page: () => SettingPage(),
+          ),
+        ],
+      ),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -59,6 +65,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  late StreamSubscription _intentDataStreamSubscription;
+
   late TabController tabController;
 
   @protected
@@ -73,10 +81,84 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         await databaseController.syncMessageList(newMessageList: results);
       } else if (tabController.index == 1) {
         //print("search");
+        await databaseController.syncMessageList(newMessageList: []);
       }
     });
 
+    // For sharing images coming from outside the app while the app is in the memory
+    _intentDataStreamSubscription = ReceiveSharingIntent.getMediaStream()
+        .listen((List<SharedMediaFile> files) async {
+      if (files.isEmpty) {
+        return;
+      }
+      if (files.length > 1) {
+        return;
+      }
+      for (SharedMediaFile file in files) {
+        List<String>? splits = file.path.split(".");
+        if (splits.isNotEmpty) {
+          if (splits.last == "db") {
+            print("database we received: " + file.path);
+
+            // show the dialog
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text("Warning"),
+                  content: Text(
+                      "Are your sure you want to replace old data with the data you gave?"),
+                  actions: [
+                    TextButton(
+                      child: Text("Cancel"),
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    TextButton(
+                      child: Text("Confirm"),
+                      onPressed: () async {
+                        await databaseController
+                            .replaceOldDatabaseFileWithNewOne(
+                                newFilePath: file.path);
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        }
+      }
+    }, onError: (err) {
+      print("getIntentDataStream error: $err");
+    });
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _intentDataStreamSubscription.cancel();
+    super.dispose();
+  }
+
+  String getTheImagePath() {
+    DateTime now = DateTime.now();
+
+    bool isHKTime = true;
+    if ((now.hour >= 8) && (now.hour <= 20)) {
+      isHKTime = true;
+    } else {
+      isHKTime = false;
+    }
+
+    if (isHKTime) {
+      return 'assets/images/cn_flag.png';
+    } else {
+      return 'assets/images/us_flag.png';
+    }
   }
 
   @override
@@ -99,10 +181,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Icon(
-                  Icons.person_outline,
-                  color: Colors.green[300],
-                ),
+                child: Image(
+                    image: AssetImage(getTheImagePath()), fit: BoxFit.fill),
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
@@ -143,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             Get.toNamed(RouterRoutings.editing,
                 arguments: RouterArguments(
                     editingPageArguments:
-                        EditingPageArguments(addNewOne: true)));
+                        EditingPageArguments(oldMessage: null)));
           },
           tooltip: 'add',
           child: Icon(Icons.add),
@@ -184,9 +264,16 @@ class _SearchTabState extends State<SearchTab> {
   void dispose() {
     searchInputBoxController.dispose();
 
-    print("hi");
-
     super.dispose();
+  }
+
+  Future<void> doASearch() async {
+    print(searchInputBoxController.text);
+
+    var results = await databaseController.searchMessages(
+        text: searchInputBoxController.text);
+
+    await databaseController.syncMessageList(newMessageList: results);
   }
 
   @override
@@ -208,13 +295,11 @@ class _SearchTabState extends State<SearchTab> {
                     BorderSide(color: Colors.blue.withAlpha(200), width: 0.5),
               ),
             ),
+            onChanged: (_) async {
+              await doASearch();
+            },
             onEditingComplete: () async {
-              print(searchInputBoxController.text);
-
-              var results = await databaseController.searchMessages(
-                  text: searchInputBoxController.text);
-
-              await databaseController.syncMessageList(newMessageList: results);
+              await doASearch();
             },
             /*
             expands: true,

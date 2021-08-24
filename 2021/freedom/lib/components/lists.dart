@@ -21,6 +21,7 @@ class _MessageListViewState extends State<MessageListView> {
 
   @override
   Widget build(BuildContext context) {
+    var theMessageList = widget.messageList.reversed.toList();
     return Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
@@ -32,13 +33,13 @@ class _MessageListViewState extends State<MessageListView> {
           thickness: 0.4,
           color: Colors.grey,
         ),
-        itemCount: widget.messageList.length,
+        itemCount: theMessageList.length,
         itemBuilder: (BuildContext context, int index) {
           return ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: 50.0,
             ),
-            child: InkWell(child: MyCard(message: widget.messageList[index])),
+            child: InkWell(child: MyCard(message: theMessageList[index])),
           );
         },
       ),

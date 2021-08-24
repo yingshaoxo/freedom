@@ -15,9 +15,9 @@ class RouterRoutings {
 }
 
 class EditingPageArguments {
-  late bool addNewOne;
+  Message? oldMessage;
 
-  EditingPageArguments({required this.addNewOne});
+  EditingPageArguments({this.oldMessage});
 }
 
 class RouterArguments {

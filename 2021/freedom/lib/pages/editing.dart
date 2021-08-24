@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:freedom/components/image.dart';
 import 'package:freedom/store/database_controller.dart';
 import 'package:freedom/store/store.dart';
 import 'package:get/get.dart';
@@ -20,15 +21,29 @@ class _EditingPageState extends State<EditingPage> {
   late String title;
 
   final TextEditingController textInputController = TextEditingController();
-  final ImagePicker _picker = ImagePicker();
+  final ImagePicker image_picker = ImagePicker();
 
-  final List<String> seletctedImages = [];
+  List<String> seletctedImages = [];
+
+  Message? oldMessage;
 
   @protected
   @mustCallSuper
   @override
   void initState() {
-    title = arguments.editingPageArguments?.addNewOne ?? true ? "Add" : "Edit";
+    oldMessage = arguments.editingPageArguments?.oldMessage;
+
+    title = oldMessage == null ? "Add" : "Edit";
+
+    if (oldMessage != null) {
+      if (oldMessage?.images != null) {
+        seletctedImages.assignAll(oldMessage?.images ?? []);
+      }
+
+      if (oldMessage?.content != null) {
+        textInputController.text = oldMessage?.content ?? "";
+      }
+    }
 
     super.initState();
   }
@@ -38,6 +53,16 @@ class _EditingPageState extends State<EditingPage> {
     textInputController.dispose();
 
     super.dispose();
+  }
+
+  String getDate() {
+    String now = DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
+
+    if (oldMessage != null) {
+      return oldMessage?.date ?? now;
+    } else {
+      return now;
+    }
   }
 
   @override
@@ -52,18 +77,20 @@ class _EditingPageState extends State<EditingPage> {
         iconTheme: IconThemeData(color: Colors.blue),
         actions: [
           TextButton(
-              onPressed: () {
+              onPressed: () async {
                 String text = textInputController.text.trim();
 
                 if (text != "" || seletctedImages.isNotEmpty) {
-                  DateTime now = DateTime.now();
                   Message msg = Message(
-                      date: DateFormat("yyyy-MM-dd HH:mm:ss").format(now),
-                      content: text,
-                      images: seletctedImages);
+                      date: getDate(), content: text, images: seletctedImages);
 
-                  databaseController.insertMessage(msg);
-                  databaseController.syncMessageList();
+                  if (oldMessage != null) {
+                    await databaseController.updateMessage(msg);
+                  } else {
+                    await databaseController.insertMessage(msg);
+                  }
+
+                  await databaseController.syncMessageList();
 
                   Get.offAndToNamed(RouterRoutings.home);
                 }
@@ -115,7 +142,8 @@ class _EditingPageState extends State<EditingPage> {
               child: TextButton(
                 onPressed: () async {
                   // Pick multiple images
-                  final List<XFile>? xFileList = await _picker.pickMultiImage();
+                  final List<XFile>? xFileList =
+                      await image_picker.pickMultiImage();
 
                   seletctedImages.clear();
 
@@ -150,13 +178,12 @@ class _EditingPageState extends State<EditingPage> {
                     crossAxisSpacing: 5,
                     crossAxisCount: 3,
                     // Generate 100 widgets that display their index in the List.
-                    children: seletctedImages
-                        .map((e) => Container(
-                            color: Colors.grey.withAlpha(30),
-                            child: Image(
-                                image: getImageFromBase64String(e).image,
-                                fit: BoxFit.fill)))
-                        .toList()))
+                    children: seletctedImages.map((e) {
+                      Image image = Image(
+                          image: getImageFromBase64String(e).image,
+                          fit: BoxFit.contain);
+                      return MyImage(image: image);
+                    }).toList()))
           ],
         ),
       ),
