@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:freedom/components/image.dart';
 import 'package:freedom/store/database_controller.dart';
 import 'package:freedom/store/store.dart';
 import 'package:clipboard/clipboard.dart';
+import 'package:get/get.dart';
 
 class MyCard extends StatelessWidget {
   final Message message;
@@ -24,6 +26,10 @@ class MyCard extends StatelessWidget {
         },
         onDoubleTap: () async {
           print('go to edit page');
+          Get.toNamed(RouterRoutings.editing,
+              arguments: RouterArguments(
+                  editingPageArguments:
+                      EditingPageArguments(oldMessage: message)));
         },
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -74,9 +80,10 @@ class MyCard extends StatelessWidget {
                       children: (message.images ?? [])
                           .map((e) => Container(
                               color: Colors.grey.withAlpha(30),
-                              child: Image(
-                                  image: getImageFromBase64String(e).image,
-                                  fit: BoxFit.fill)))
+                              child: MyImage(
+                                  image: Image(
+                                      image: getImageFromBase64String(e).image,
+                                      fit: BoxFit.contain))))
                           .toList()),
                 ),
               ] else ...[

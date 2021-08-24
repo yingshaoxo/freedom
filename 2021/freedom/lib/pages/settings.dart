@@ -30,8 +30,23 @@ class SettingPage extends StatelessWidget {
             Container(
               child: ElevatedButton(
                 child: Text('Import'),
-                onPressed: () {
-                  // Navigate to second route when tapped.
+                onPressed: () async {
+                  return showDialog<void>(
+                      context: context,
+                      barrierDismissible: false, // user must tap button!
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                            title: const Text('Tips'),
+                            content: Text(
+                                'You need to find your database.db file in a file manager APP, \n\nthen share it to me.'),
+                            actions: <Widget>[
+                              TextButton(
+                                  child: const Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  })
+                            ]);
+                      });
                 },
               ),
             ),
