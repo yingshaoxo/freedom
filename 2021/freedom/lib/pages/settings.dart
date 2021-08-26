@@ -21,6 +21,19 @@ class SettingPage extends StatelessWidget {
               margin: EdgeInsets.only(
                   bottom: MediaQuery.of(context).size.height * 0.1),
               child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.green)),
+                child: Text('Export (json)'),
+                onPressed: () async {
+                  await databaseController.exportJsonData();
+                },
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).size.height * 0.1),
+              child: ElevatedButton(
                 child: Text('Export'),
                 onPressed: () async {
                   await databaseController.exportDatabase();

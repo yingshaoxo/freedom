@@ -154,6 +154,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       isHKTime = false;
     }
 
+    return 'assets/images/us_flag.png';
+
     if (isHKTime) {
       return 'assets/images/cn_flag.png';
     } else {

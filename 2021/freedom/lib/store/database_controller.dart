@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:share/share.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -34,6 +35,21 @@ class DatabaseControlelr extends GetxController {
 
   Future<String> getDatbaseFilePath() async {
     return join(await getDatabasesPath(), 'database.db');
+  }
+
+  Future<String> getJsonFilePath() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return join(directory.path, 'data.json');
+  }
+
+  Future<void> exportJsonData() async {
+    String jsonFilePath = await getJsonFilePath();
+
+    final List<Map<String, dynamic>> maps = await database.query('messages');
+    String jsonContent = jsonEncode(maps);
+    await File(jsonFilePath).writeAsString(jsonContent);
+
+    await Share.shareFiles([jsonFilePath], text: 'Your Ideas Data');
   }
 
   Future<void> replaceOldDatabaseFileWithNewOne(
