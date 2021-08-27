@@ -162,11 +162,11 @@ class _EditingPageState extends State<EditingPage> {
                 },
                 child: Text(
                   "PICK AN IMAGE",
-                  style: TextStyle(color: Colors.grey.withBlue(100)),
+                  style: TextStyle(color: Colors.white),
                 ),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        Colors.orangeAccent.withAlpha(100))),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.blue.withAlpha(50))),
               ),
             ),
             SizedBox(
