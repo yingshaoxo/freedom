@@ -1,5 +1,6 @@
 import 'package:freedom/store/database_controller.dart';
 import 'package:freedom/store/home_controller.dart';
+import 'package:hive/hive.dart';
 
 DatabaseControlelr databaseController = DatabaseControlelr();
 HomeControlelr homeController = HomeControlelr();

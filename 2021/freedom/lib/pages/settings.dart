@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:freedom/store/store.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends StatefulWidget {
+  const SettingPage({Key? key}) : super(key: key);
+
+  @override
+  _SettingPageState createState() => _SettingPageState();
+}
+
+class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +70,28 @@ class SettingPage extends StatelessWidget {
                 },
               ),
             ),
+            SizedBox(
+              height: 100,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Checkbox(
+                  checkColor: Colors.white,
+                  fillColor: MaterialStateProperty.all<Color>(Colors.green),
+                  value: databaseController.onlyShowTodayInHistory,
+                  onChanged: (bool? value) {
+                    if (value != null) {
+                      databaseController.onlyShowTodayInHistory = value;
+                      databaseController.box
+                          .put("onlyShowTodayInHistory", value);
+                      setState(() {});
+                    }
+                  },
+                ),
+                Text("Only show today over years")
+              ],
+            )
           ],
         ),
       ),

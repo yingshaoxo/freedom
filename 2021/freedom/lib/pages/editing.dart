@@ -161,7 +161,7 @@ class _EditingPageState extends State<EditingPage> {
                   setState(() {});
                 },
                 child: Text(
-                  "Pick AN IMAGE",
+                  "PICK AN IMAGE",
                   style: TextStyle(color: Colors.grey.withBlue(100)),
                 ),
                 style: ButtonStyle(
