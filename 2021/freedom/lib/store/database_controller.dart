@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:freedom/tools/time_tools.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:share/share.dart';
@@ -10,14 +11,18 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:hive/hive.dart';
 
 class DatabaseControlelr extends GetxController {
   DatabaseControlelr() {
     print("database Controller initialized");
   }
 
+  var box;
+  bool onlyShowTodayInHistory = false;
+
   late Database database;
-  RxList<Rx<Message>> messageList = RxList([]);
+  RxList<Message> messageList = RxList([]);
 
   Future<void> initializeDatabase() async {
     database = await openDatabase(
@@ -29,6 +34,14 @@ class DatabaseControlelr extends GetxController {
       },
       version: 1,
     );
+
+    final dir = await getApplicationDocumentsDirectory();
+    Hive.init(dir.path);
+
+    await Hive.openBox("myBox");
+    box = Hive.box('myBox');
+    onlyShowTodayInHistory =
+        box.get("onlyShowTodayInHistory", defaultValue: false);
 
     await syncMessageList();
   }
@@ -124,8 +137,18 @@ class DatabaseControlelr extends GetxController {
       newList.assignAll(newMessageList);
     }
 
-    RxList<Rx<Message>> tempMessageList = RxList();
-    tempMessageList.addAll(newList.map((e) => Rx(e)));
+    // we only act when the list got change
+    if (newList.isNotEmpty) {
+      if (deepEqualityCheck(newList, messageList)) {
+        return;
+      }
+    }
+
+    RxList<Message> tempMessageList = RxList();
+    tempMessageList.addAll(newList.map((e) => e));
+    newList.forEach((element) {
+      print(convertStringToTime(time: element.date));
+    });
     messageList.assignAll(tempMessageList);
   }
 }
@@ -159,6 +182,14 @@ class Message {
   List<String>? images;
 
   Message({this.date, this.content, this.images});
+
+  @override
+  bool operator ==(other) {
+    return (other is Message) &&
+        other.date == date &&
+        other.content == content &&
+        deepEqualityCheck(other.images, images);
+  }
 
   static String convertListOfStringToString(List<String>? images) {
     return jsonEncode(images);

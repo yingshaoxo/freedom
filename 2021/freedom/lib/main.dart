@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:freedom/tools/time_tools.dart';
 import 'package:get/get.dart';
 
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
@@ -165,72 +166,74 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            widget.title!,
-            style: TextStyle(color: Colors.blue),
-          ),
-          backgroundColor: Colors.white, // status bar color
-          iconTheme: IconThemeData(color: Colors.blue),
-          brightness: Brightness.light, // status bar brightness
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          widget.title!,
+          style: TextStyle(color: Colors.blue),
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Image(
-                    image: AssetImage(getTheImagePath()), fit: BoxFit.fill),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-              ),
-              ListTile(
-                title: Text('Settings'),
-                onTap: () {
-                  Navigator.pop(context);
-                  Get.toNamed(RouterRoutings.settings);
-                },
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: TabBar(
-          controller: tabController,
-          tabs: [
-            Tab(
-              icon: Icon(
-                Icons.home,
-                color: Colors.blue,
-              ),
-            ),
-            Tab(
-              icon: Icon(
-                Icons.search,
-                color: Colors.blue,
-              ),
-            ),
-          ],
-        ),
-        body: TabBarView(
-          controller: tabController,
-          children: [HomeTab(), SearchTab()],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            Get.toNamed(RouterRoutings.editing,
-                arguments: RouterArguments(
-                    editingPageArguments:
-                        EditingPageArguments(oldMessage: null)));
-          },
-          tooltip: 'add',
-          child: Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
+        backgroundColor: Colors.white, // status bar color
+        iconTheme: IconThemeData(color: Colors.blue),
+        brightness: Brightness.light, // status bar brightness
+        centerTitle: true,
       ),
+      drawer: Drawer(
+          child: Column(
+        children: [
+          DrawerHeader(
+            child:
+                Image(image: AssetImage(getTheImagePath()), fit: BoxFit.fill),
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+          ),
+          ListTile(
+            title: Text('Settings'),
+            onTap: () {
+              Navigator.pop(context);
+              Get.toNamed(RouterRoutings.settings);
+            },
+          ),
+          Expanded(
+              child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    "yingshaoxo",
+                    style: TextStyle(color: Colors.grey[300]),
+                  )))
+        ],
+      )),
+      bottomNavigationBar: TabBar(
+        controller: tabController,
+        tabs: [
+          Tab(
+            icon: Icon(
+              Icons.home,
+              color: Colors.blue,
+            ),
+          ),
+          Tab(
+            icon: Icon(
+              Icons.search,
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      ),
+      body: TabBarView(
+        controller: tabController,
+        children: [HomeTab(), SearchTab()],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          Get.toNamed(RouterRoutings.editing,
+              arguments: RouterArguments(
+                  editingPageArguments:
+                      EditingPageArguments(oldMessage: null)));
+        },
+        tooltip: 'add',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
@@ -242,11 +245,11 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Obx(() {
+        databaseController.messageList.value;
         return MessageListView(
-          messageList: databaseController.messageList
-              .map((element) => element.value)
-              .toList(),
-        );
+            messageList: databaseController.onlyShowTodayInHistory
+                ? getTodayInHistory(messageList: databaseController.messageList)
+                : databaseController.messageList);
       }),
     );
   }
@@ -316,7 +319,7 @@ class _SearchTabState extends State<SearchTab> {
         Expanded(child: Obx(() {
           return MessageListView(
             messageList: databaseController.messageList
-                .map((element) => element.value)
+                .map((element) => element)
                 .toList(),
           );
         }))
