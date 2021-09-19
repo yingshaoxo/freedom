@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:freedom/tools/time_tools.dart';
 import 'package:get/get.dart';
 
@@ -96,10 +97,22 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         return;
       }
       for (SharedMediaFile file in files) {
+        // Fluttertoast.showToast(
+        //   msg: file.path,
+        //   toastLength: Toast.LENGTH_LONG,
+        //   gravity: ToastGravity.CENTER,
+        // );
+
         List<String>? splits = file.path.split(".");
         if (splits.isNotEmpty) {
-          if (splits.last == "db") {
+          if (splits.last == "json") {
             print("database we received: " + file.path);
+
+            Fluttertoast.showToast(
+              msg: "database we received: " + file.path,
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.CENTER,
+            );
 
             // show the dialog
             showDialog(
