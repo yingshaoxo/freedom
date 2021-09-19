@@ -31,19 +31,9 @@ class _SettingPageState extends State<SettingPage> {
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.green)),
-                child: Text('Export (json)'),
-                onPressed: () async {
-                  await databaseController.exportJsonData();
-                },
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.1),
-              child: ElevatedButton(
                 child: Text('Export'),
                 onPressed: () async {
-                  await databaseController.exportDatabase();
+                  await databaseController.exportJsonData();
                 },
               ),
             ),
@@ -58,7 +48,7 @@ class _SettingPageState extends State<SettingPage> {
                         return AlertDialog(
                             title: const Text('Tips'),
                             content: Text(
-                                'You need to find your database.db file in a file manager APP, \n\nthen share it to me.'),
+                                'You need to find your database.json file in a file manager APP, \n\nthen share it to me.'),
                             actions: <Widget>[
                               TextButton(
                                   child: const Text('OK'),

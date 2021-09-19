@@ -4,7 +4,7 @@ import 'package:freedom/tools/time_tools.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:share/share.dart';
-import 'package:sqflite/sqflite.dart';
+// import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'dart:convert';
@@ -21,19 +21,36 @@ class DatabaseControlelr extends GetxController {
   var box;
   bool onlyShowTodayInHistory = false;
 
-  late Database database;
+  // late Database database;
+  List<Message> realMessageList = [];
   RxList<Message> messageList = RxList([]);
 
   Future<void> initializeDatabase() async {
-    database = await openDatabase(
-      await getDatbaseFilePath(),
-      onCreate: (db, version) {
-        return db.execute(
-          "CREATE TABLE messages(date TEXT, content TEXT, images TEXT)",
-        );
-      },
-      version: 1,
-    );
+    String jsonDatabasePath = await getDatbaseFilePath();
+
+    bool fileExists = await File(jsonDatabasePath).exists();
+
+    if (fileExists == false) {
+      List aList = [];
+      String jsonString = jsonEncode(aList);
+      await writeTextDataToFile(File(jsonDatabasePath), jsonString);
+    } else {
+      String jsonString = await File(jsonDatabasePath).readAsString();
+      Iterable list = json.decode(jsonString);
+      List<Message> messages =
+          List<Message>.from(list.map((mapObj) => Message.fromJson(mapObj)));
+      realMessageList.clear();
+      realMessageList.addAll(messages);
+    }
+
+    // database = await openDatabase(
+    //   onCreate: (db, version) {
+    //     return db.execute(
+    //       "CREATE TABLE messages(date TEXT, content TEXT, images TEXT)",
+    //     );
+    //   },
+    //   version: 1,
+    // );
 
     final dir = await getApplicationDocumentsDirectory();
     Hive.init(dir.path);
@@ -46,22 +63,46 @@ class DatabaseControlelr extends GetxController {
     await syncMessageList();
   }
 
-  Future<String> getDatbaseFilePath() async {
-    return join(await getDatabasesPath(), 'database.db');
+  Future<void> writeTextDataToFile(File file, String text) async {
+    await file.writeAsString(text);
   }
 
-  Future<String> getJsonFilePath() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return join(directory.path, 'data.json');
+  Future<String> readTextDataFromFile(File file) async {
+    return await file.readAsString();
   }
+
+  Future<void> saveMemoryMessageListIntoTheJsonFile() async {
+    List<Map> theData = [];
+    for (var value in realMessageList) {
+      theData.add(value.toMap());
+    }
+
+    String jsonString = jsonEncode(theData);
+
+    String jsonDatabasePath = await getDatbaseFilePath();
+    await writeTextDataToFile(File(jsonDatabasePath), jsonString);
+  }
+
+  Future<String> getDatbaseFilePath() async {
+    final directory = await getApplicationDocumentsDirectory();
+    return join(directory.path, 'database.json');
+  }
+
+  // Future<String> getJsonFilePath() async {
+  //   final directory = await getApplicationDocumentsDirectory();
+  //   return join(directory.path, 'data.json');
+  // }
 
   Future<void> exportJsonData() async {
-    String jsonFilePath = await getJsonFilePath();
+    // String jsonFilePath = await getJsonFilePath();
 
-    final List<Map<String, dynamic>> maps = await database.query('messages');
-    String jsonContent = jsonEncode(maps);
-    await File(jsonFilePath).writeAsString(jsonContent);
+    // final List<Map<String, dynamic>> maps = await database.query('messages');
+    // String jsonContent = jsonEncode(maps);
+    // await File(jsonFilePath).writeAsString(jsonContent);
 
+    // await Share.shareFiles([jsonFilePath], text: 'Your Ideas Data');
+
+    String jsonFilePath = await getDatbaseFilePath();
     await Share.shareFiles([jsonFilePath], text: 'Your Ideas Data');
   }
 
@@ -75,7 +116,7 @@ class DatabaseControlelr extends GetxController {
     print("old file path: ${oldFile.path}");
     await oldFile.writeAsBytes(bytes, flush: true);
 
-    await syncMessageList();
+    await initializeDatabase();
   }
 
   Future<void> exportDatabase() async {
@@ -84,43 +125,82 @@ class DatabaseControlelr extends GetxController {
   }
 
   Future<void> insertMessage(Message msg) async {
-    await database.insert(
-      'messages',
-      msg.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    // await database.insert(
+    //   'messages',
+    //   msg.toMap(),
+    //   conflictAlgorithm: ConflictAlgorithm.replace,
+    // );
+    realMessageList.add(msg);
+
+    await saveMemoryMessageListIntoTheJsonFile();
   }
 
   Future<void> updateMessage(Message msg) async {
-    await database.update("messages", msg.toMap(),
-        where: 'date = ?', whereArgs: [msg.date]);
+    // await database.update("messages", msg.toMap(),
+    //     where: 'date = ?', whereArgs: [msg.date]);
+
+    // for (var message in messageList) {
+    //   if (message.date == msg.date) {
+    //     message.content = msg.content;
+    //     message.images = msg.images;
+    //   }
+    // }
+    int index =
+        realMessageList.indexWhere((element) => element.date == msg.date);
+
+    if (index != -1) {
+      realMessageList[index] = msg;
+    }
+
+    await saveMemoryMessageListIntoTheJsonFile();
   }
 
   Future<void> deleteMessage(Message msg) async {
-    String images = Message.convertListOfStringToString(msg.images);
+    //String images = Message.convertListOfStringToString(msg.images);
 
-    await database.delete('messages',
-        where: 'date = ? AND content = ? AND images = ?',
-        whereArgs: [msg.date, msg.content, images]);
+    // await database.delete('messages',
+    //     where: 'date = ? AND content = ? AND images = ?',
+    //     whereArgs: [msg.date, msg.content, images]);
+
+    int index = realMessageList.indexWhere((element) =>
+        element.date == msg.date &&
+        element.content == msg.content &&
+        msg.images == msg.images);
+
+    if (index != -1) {
+      realMessageList.removeAt(index);
+    }
+
+    await saveMemoryMessageListIntoTheJsonFile();
   }
 
   Future<List<Message>> searchMessages({required String text}) async {
     List<String> keywords = text.split(" ");
 
-    String whereString =
-        keywords.map((e) => "content LIKE ?").toList().join(" AND ");
-    List<String> whereArgs = keywords.map((e) => "%$e%").toList();
+    // String whereString =
+    //     keywords.map((e) => "content LIKE ?").toList().join(" AND ");
+    // List<String> whereArgs = keywords.map((e) => "%$e%").toList();
 
-    final List<Map<String, dynamic>> maps = await database.query('messages',
-        where: whereString, whereArgs: whereArgs);
+    // final List<Map<String, dynamic>> maps = await database.query('messages',
+    //     where: whereString, whereArgs: whereArgs);
 
-    return maps.map((e) => Message.fromJson(e)).toList();
+    // return maps.map((e) => Message.fromJson(e)).toList();
+
+    return realMessageList.where((message) {
+      for (String keyword in keywords) {
+        if ((message.content?.contains(keyword) ?? false) == false) {
+          return false;
+        }
+      }
+      return true;
+    }).toList();
   }
 
   Future<List<Message>> getMessageList() async {
-    final List<Map<String, dynamic>> maps = await database.query('messages');
+    // final List<Map<String, dynamic>> maps = await database.query('messages');
 
-    return maps.map((e) => Message.fromJson(e)).toList();
+    // return maps.map((e) => Message.fromJson(e)).toList();
+    return realMessageList.toList();
   }
 
   Message getAFakeMessage() {
@@ -132,7 +212,7 @@ class DatabaseControlelr extends GetxController {
     List<Message> newList = [];
 
     if (newMessageList == null) {
-      newList = await getMessageList();
+      newList = realMessageList;
     } else {
       newList.assignAll(newMessageList);
     }
