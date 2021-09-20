@@ -77,7 +77,9 @@ class DatabaseControlelr extends GetxController {
       theData.add(value.toMap());
     }
 
-    String jsonString = jsonEncode(theData);
+    var spaces = ' ' * 4;
+    var encoder = JsonEncoder.withIndent(spaces);
+    String jsonString = encoder.convert(theData); //jsonEncode(theData);
 
     String jsonDatabasePath = await getDatbaseFilePath();
     await writeTextDataToFile(File(jsonDatabasePath), jsonString);
