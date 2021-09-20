@@ -13,4 +13,6 @@ class HomeControlelr extends GetxController {
   double getScreenWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;
   }
+
+  bool gotBackupData = false;
 }

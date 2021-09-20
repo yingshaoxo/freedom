@@ -108,11 +108,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           if (splits.last == "json") {
             print("database we received: " + file.path);
 
-            Fluttertoast.showToast(
-              msg: "database we received: " + file.path,
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.CENTER,
-            );
+            // Fluttertoast.showToast(
+            //   msg: "database we received: " + file.path,
+            //   toastLength: Toast.LENGTH_LONG,
+            //   gravity: ToastGravity.CENTER,
+            // );
+            if (homeController.gotBackupData == true) {
+              continue;
+            }
+            homeController.gotBackupData = true;
 
             // show the dialog
             showDialog(
@@ -126,12 +130,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     TextButton(
                       child: Text("Cancel"),
                       onPressed: () async {
+                        homeController.gotBackupData = false;
                         Navigator.pop(context);
                       },
                     ),
                     TextButton(
                       child: Text("Confirm"),
                       onPressed: () async {
+                        homeController.gotBackupData = false;
                         await databaseController
                             .replaceOldDatabaseFileWithNewOne(
                                 newFilePath: file.path);
