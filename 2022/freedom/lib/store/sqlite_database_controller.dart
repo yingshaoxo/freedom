@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -10,6 +12,8 @@ import 'package:hive/hive.dart';
 import 'package:freedom/data_structures/message.dart';
 import 'package:freedom/store/store.dart';
 import 'package:freedom/tools/disk_tools.dart';
+
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SqliteDatabaseControlelr extends GetxController {
@@ -18,7 +22,9 @@ class SqliteDatabaseControlelr extends GetxController {
   }
 
   var box;
-  bool onlyShowTodayInHistory = false;
+  RxBool onlyShowTodayInHistory = RxBool(false);
+
+  var databaseFactory = databaseFactoryFfi;
 
   late Database database_handler;
   String message_table_string = "message_table";
@@ -31,28 +37,47 @@ class SqliteDatabaseControlelr extends GetxController {
     await Hive.openBox("myBox");
     box = Hive.box('myBox');
     onlyShowTodayInHistory =
-        box.get("onlyShowTodayInHistory", defaultValue: false);
+        RxBool(box.get("onlyShowTodayInHistory", defaultValue: false));
   }
 
   Future<void> initializeDatabase() async {
+    if (Platform.isWindows || Platform.isLinux) {
+      // Initialize FFI
+      sqfliteFfiInit();
+    }
+
     String database_folder_path = await getDatabasesPath();
     String sqlite_database_file_path =
         path_join(path1: database_folder_path, path2: "database.db");
 
-    database_handler = await openDatabase(
-      sqlite_database_file_path,
-      onCreate: (db, version) async {
-        await db.execute(
-          "CREATE TABLE ${message_table_string}(type TEXT, date TEXT, content TEXT, images TEXT)",
-        );
-        await db.execute(
-          "CREATE TABLE ${image_table_string}(hash_id TEXT, base64_image_string TEXT)",
-        );
-      },
-      version: 1,
-    );
+    database_handler =
+        await databaseFactory.openDatabase(sqlite_database_file_path,
+            options: OpenDatabaseOptions(
+              version: 1,
+              onCreate: (db, version) async {
+                await db.execute(
+                  "CREATE TABLE ${message_table_string}(type TEXT, date TEXT, content TEXT, images TEXT)",
+                );
+                await db.execute(
+                  "CREATE TABLE ${image_table_string}(hash_id TEXT, base64_image_string TEXT)",
+                );
+              },
+            ));
 
-    sync_messages_data_to_view();
+    // database_handler = await openDatabase(
+    //   sqlite_database_file_path,
+    //   version: 1,
+    //   onCreate: (db, version) async {
+    //     await db.execute(
+    //       "CREATE TABLE ${message_table_string}(type TEXT, date TEXT, content TEXT, images TEXT)",
+    //     );
+    //     await db.execute(
+    //       "CREATE TABLE ${image_table_string}(hash_id TEXT, base64_image_string TEXT)",
+    //     );
+    //   },
+    // );
+
+    await sync_messages_data_to_view();
   }
 
   Future<void> insertMessage(Message msg) async {
@@ -61,6 +86,18 @@ class SqliteDatabaseControlelr extends GetxController {
       msg.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  Future<void> insert_a_list_of_messages(List<Message> msg_list) async {
+    var batch = database_handler.batch();
+    for (Message msg in msg_list) {
+      batch.insert(
+        message_table_string,
+        msg.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+    await batch.commit();
   }
 
   Future<void> updateMessage(Message msg) async {

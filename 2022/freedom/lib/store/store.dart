@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freedom/data_structures/message.dart' as message_data_structure;
 import 'package:freedom/store/json_export_and_import_controller.dart';
 import 'package:freedom/store/memory_database_controller.dart';
@@ -18,6 +20,8 @@ HomeControlelr homeController = HomeControlelr();
 Future<void> initialization() async {
   await sqlite_database_controlelr.initializeSettings();
   await sqlite_database_controlelr.initializeDatabase();
+
+  EasyLoading.instance.indicatorType = EasyLoadingIndicatorType.fadingCircle;
 }
 
 class RouterRoutings {

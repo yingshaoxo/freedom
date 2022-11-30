@@ -1,20 +1,13 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freedom/data_structures/message.dart';
 import 'package:freedom/store/store.dart';
-import 'package:freedom/tools/time_tools.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:share/share.dart';
-// import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-
-import 'dart:convert';
-import 'dart:typed_data';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:hive/hive.dart';
 
 class JsonExportAndImportControlelr extends GetxController {
   JsonExportAndImportControlelr() {
@@ -34,9 +27,16 @@ class JsonExportAndImportControlelr extends GetxController {
     return join(directory.path, 'database.json');
   }
 
-  Future<void> saveMemoryMessageListIntoTheJsonFile() async {
+  Future<void> saveDatabaseMessageListIntoTheJsonFile() async {
     List<Message> theData = await sqlite_database_controlelr.getMessageList();
-    List<Map<String, dynamic>> theList = theData.map((e) => e.toMap()).toList();
+    List<Map<String, dynamic>> theList = theData.map((e) {
+      return {
+        'type': e.type,
+        'date': e.date,
+        'content': e.content,
+        'images': e.images,
+      };
+    }).toList();
 
     var spaces = ' ' * 4;
     var encoder = JsonEncoder.withIndent(spaces);
@@ -47,18 +47,23 @@ class JsonExportAndImportControlelr extends GetxController {
   }
 
   Future<void> exportJsonData() async {
-    await saveMemoryMessageListIntoTheJsonFile();
+    EasyLoading.instance.loadingStyle = EasyLoadingStyle.light;
+    EasyLoading.show(status: 'processing...');
+
+    await saveDatabaseMessageListIntoTheJsonFile();
+
+    EasyLoading.dismiss();
+
     String jsonFilePath = await getDatbaseFilePath();
     await Share.shareFiles([jsonFilePath], text: 'Your Ideas Data');
   }
 
   Future<void> refill_sqlite_database_with_the_content_inside_of_a_json_file(
       {required String newFilePath}) async {
-    EasyLoading.show(status: 'loading...');
-
     print("new file path: $newFilePath");
-    File newFile = File(newFilePath);
-    var bytes = await newFile.readAsBytes();
+
+    EasyLoading.instance.loadingStyle = EasyLoadingStyle.dark;
+    EasyLoading.show(status: 'processing...');
 
     // do a check to see if the database.json has the old structure or not, if so, convert it to the new one
     String jsonString = await File(newFilePath).readAsString();
@@ -68,23 +73,28 @@ class JsonExportAndImportControlelr extends GetxController {
       if (!msg.containsKey('type')) {
         msg['type'] = 'freedom';
       }
+      if (msg.containsKey('images')) {
+        var image_value = msg['images'];
+        if (image_value is String) {
+          // the_string = json.dumps([])
+          // the Message class will handle it later in Message.fromJson() function
+        } else {
+          // the_value = ['', '']
+          // the data come from python or new version
+          // we need to convert it to a single string, so that the sqlite database can save it without any problem
+          msg['images'] = jsonEncode(image_value);
+        }
+      }
       new_list.add(msg);
     }
     List<Message> new_messages =
         List<Message>.from(new_list.map((mapObj) => Message.fromJson(mapObj)));
 
     await sqlite_database_controlelr.clean_database();
-    for (Message msg in new_messages) {
-      sqlite_database_controlelr.insertMessage(msg);
-    }
+    await sqlite_database_controlelr.insert_a_list_of_messages(new_messages);
 
     await sqlite_database_controlelr.sync_messages_data_to_view();
 
-    EasyLoading.dismiss();
-  }
-
-  Future<void> exportDatabase() async {
-    await Share.shareFiles([await getDatbaseFilePath()],
-        text: 'Your Ideas Database');
+    await EasyLoading.dismiss();
   }
 }

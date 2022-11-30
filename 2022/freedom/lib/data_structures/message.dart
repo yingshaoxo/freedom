@@ -37,7 +37,12 @@ class Message {
   }
 
   static Message fromJson(Map<String, dynamic> json) {
-    List<dynamic> imageBase64StringList = jsonDecode(json['images']);
+    var images_value = json['images'];
+    if (!(images_value is String)) {
+      images_value = Message.convertListOfStringToString(images_value);
+    }
+    List<dynamic> imageBase64StringList = jsonDecode(images_value);
+
     return Message(
         type: json['type'],
         date: json['date'],
