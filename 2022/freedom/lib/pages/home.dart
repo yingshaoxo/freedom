@@ -13,7 +13,7 @@ class HomeTab extends StatelessWidget {
       child: Obx(() {
         memory_database_controller.messageList.toList();
         return MessageListView(
-            messageList: sqlite_database_controlelr.onlyShowTodayInHistory
+            messageList: sqlite_database_controlelr.onlyShowTodayInHistory.value
                 ? getTodayInHistory(
                     messageList: memory_database_controller.messageList)
                 : memory_database_controller.messageList);
