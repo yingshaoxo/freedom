@@ -21,7 +21,21 @@
 
 > In the sqlite database, the `images` column is a json dumps string
 
-### New One
+## New One
+
+add type in:
+
+```
+{
+    type: 'qzone', # freedom and so on
+    date: '2022-11-28   09:30',
+    content: 'Morning',
+    images: [image_base64_string1,
+             image_base64_string2]
+}
+```
+
+<!-- ### New One
 
 #### JSON Version, which still has the old data structure, it is used for export and import the data
 
@@ -31,7 +45,7 @@
     date: '2022-11-28   09:30',
     content: 'Morning',
     images: [image_base64_string1,
-             image_base64_string2]
+                image_base64_string2]
 }
 ```
 
@@ -45,7 +59,7 @@ Table1, message_table
     date: '2022-11-28   09:30',
     content: 'Morning',
     images: [hash_string_for_an_base64_image_1,
-             hash_string_for_an_base64_image_2]
+                hash_string_for_an_base64_image_2]
 }
 ```
 
@@ -58,4 +72,4 @@ Table2, image_table
     hash_id: '5fe5c00', # we use first 31 chars
     base64_image_string: 'VBORw0KGgoAAAANS...'
 }
-```
+``` -->
