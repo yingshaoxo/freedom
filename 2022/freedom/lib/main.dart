@@ -12,7 +12,6 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:freedom/pages/settings.dart';
 import 'package:freedom/store/store.dart';
 import 'package:freedom/pages/editing.dart';
-import 'pages/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
