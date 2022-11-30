@@ -19,7 +19,7 @@ class MyCard extends StatelessWidget {
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onLongPress: () async {
-          FlutterClipboard.copy(message.content ?? "")
+          FlutterClipboard.copy(message.content)
               .then((value) => Fluttertoast.showToast(
                     msg: "copied",
                     gravity: ToastGravity.CENTER,
@@ -43,7 +43,7 @@ class MyCard extends StatelessWidget {
                 children: [
                   Container(
                     alignment: Alignment.centerLeft,
-                    child: Text(message.date ?? "--",
+                    child: Text(message.date,
                         style: TextStyle(
                             color: Colors.grey, fontWeight: FontWeight.normal)),
                   ),
@@ -64,11 +64,11 @@ class MyCard extends StatelessWidget {
                 margin: EdgeInsets.only(top: 5.0),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  message.content ?? "",
+                  message.content,
                   style: TextStyle(color: Colors.black),
                 ),
               ),
-              if ((message.images ?? []).isNotEmpty) ...[
+              if (message.images.isNotEmpty) ...[
                 SizedBox(
                   height: 10,
                 ),
@@ -79,7 +79,7 @@ class MyCard extends StatelessWidget {
                       crossAxisSpacing: 5,
                       crossAxisCount: 3,
                       // Generate 100 widgets that display their index in the List.
-                      children: (message.images ?? [])
+                      children: (message.images)
                           .map((e) => Container(
                               color: Colors.grey.withAlpha(30),
                               child: MyImage(
@@ -115,7 +115,7 @@ class MyCard extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () async {
-                        FlutterClipboard.copy(message.content ?? "")
+                        FlutterClipboard.copy(message.content)
                             .then((value) => Fluttertoast.showToast(
                                   msg: "copied",
                                   gravity: ToastGravity.CENTER,

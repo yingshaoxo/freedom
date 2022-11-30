@@ -38,16 +38,28 @@ class Message {
 
   static Message fromJson(Map<String, dynamic> json) {
     var images_value = json['images'];
-    if (!(images_value is String)) {
-      images_value = Message.convertListOfStringToString(images_value);
+
+    List<String> imageBase64StringList;
+    if (images_value is String) {
+      imageBase64StringList = jsonDecode(images_value).cast<String>().toList();
+    } else {
+      imageBase64StringList = images_value.cast<String>().toList();
     }
-    List<dynamic> imageBase64StringList = jsonDecode(images_value);
 
     return Message(
         type: json['type'],
         date: json['date'],
         content: json['content'],
-        images: imageBase64StringList.map((e) => e.toString()).toList());
+        images: imageBase64StringList);
+  }
+
+  Map<String, dynamic> toSqliteMap() {
+    return {
+      'type': type,
+      'date': date,
+      'content': content,
+      'images': Message.convertListOfStringToString(images),
+    };
   }
 
   Map<String, dynamic> toMap() {
@@ -55,7 +67,7 @@ class Message {
       'type': type,
       'date': date,
       'content': content,
-      'images': Message.convertListOfStringToString(images),
+      'images': images,
     };
   }
 }
@@ -81,7 +93,6 @@ class HashIdToBase64ImageStringClass {
     return (other is HashIdToBase64ImageStringClass) &&
         other.hash_id == hash_id &&
         other.base64_image_string == base64_image_string;
-    ;
   }
 
   static HashIdToBase64ImageStringClass fromJson(Map<String, dynamic> json) {

@@ -137,11 +137,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     TextButton(
                       child: Text("Confirm"),
                       onPressed: () async {
+                        EasyLoading.instance.loadingStyle =
+                            EasyLoadingStyle.dark;
+                        EasyLoading.show(status: 'processing...');
+
                         homeController.gotBackupData = false;
                         await json_export_and_import_controller
                             .refill_sqlite_database_with_the_content_inside_of_a_json_file(
                                 newFilePath: file.path);
                         Navigator.pop(context);
+
+                        await EasyLoading.dismiss();
                       },
                     ),
                   ],
@@ -165,22 +171,21 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   String getTheImagePath() {
-    DateTime now = DateTime.now();
-
-    bool isHKTime = true;
-    if ((now.hour >= 8) && (now.hour <= 20)) {
-      isHKTime = true;
-    } else {
-      isHKTime = false;
-    }
+    // DateTime now = DateTime.now();
+    // bool isHKTime = true;
+    // if ((now.hour >= 8) && (now.hour <= 20)) {
+    //   isHKTime = true;
+    // } else {
+    //   isHKTime = false;
+    // }
 
     return 'assets/images/us_flag.png';
 
-    if (isHKTime) {
-      return 'assets/images/cn_flag.png';
-    } else {
-      return 'assets/images/us_flag.png';
-    }
+    // if (isHKTime) {
+    //   return 'assets/images/cn_flag.png';
+    // } else {
+    //   return 'assets/images/us_flag.png';
+    // }
   }
 
   @override
@@ -193,7 +198,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         ),
         backgroundColor: Colors.white, // status bar color
         iconTheme: IconThemeData(color: Colors.blue),
-        brightness: Brightness.light, // status bar brightness
+        // brightness: Brightness.light, // status bar brightness
+        systemOverlayStyle: SystemUiOverlayStyle.light,
         centerTitle: true,
       ),
       drawer: Drawer(

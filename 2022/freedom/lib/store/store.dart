@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freedom/data_structures/message.dart' as message_data_structure;
 import 'package:freedom/store/json_export_and_import_controller.dart';

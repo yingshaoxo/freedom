@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'dart:convert';
@@ -64,26 +65,13 @@ class SqliteDatabaseControlelr extends GetxController {
               },
             ));
 
-    // database_handler = await openDatabase(
-    //   sqlite_database_file_path,
-    //   version: 1,
-    //   onCreate: (db, version) async {
-    //     await db.execute(
-    //       "CREATE TABLE ${message_table_string}(type TEXT, date TEXT, content TEXT, images TEXT)",
-    //     );
-    //     await db.execute(
-    //       "CREATE TABLE ${image_table_string}(hash_id TEXT, base64_image_string TEXT)",
-    //     );
-    //   },
-    // );
-
     await sync_messages_data_to_view();
   }
 
   Future<void> insertMessage(Message msg) async {
     await database_handler.insert(
       message_table_string,
-      msg.toMap(),
+      msg.toSqliteMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -93,7 +81,7 @@ class SqliteDatabaseControlelr extends GetxController {
     for (Message msg in msg_list) {
       batch.insert(
         message_table_string,
-        msg.toMap(),
+        msg.toSqliteMap(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     }
@@ -101,7 +89,7 @@ class SqliteDatabaseControlelr extends GetxController {
   }
 
   Future<void> updateMessage(Message msg) async {
-    await database_handler.update(message_table_string, msg.toMap(),
+    await database_handler.update(message_table_string, msg.toSqliteMap(),
         where: 'type = ? AND date = ?', whereArgs: [msg.type, msg.date]);
   }
 
@@ -131,6 +119,26 @@ class SqliteDatabaseControlelr extends GetxController {
     return maps.map((e) => Message.fromJson(e)).toList();
   }
 
+  Future<List<Message>>
+      search_messages_that_sent_on_the_same_day_of_the_years() async {
+    DateTime now = new DateTime.now();
+    String month_and_day = (new DateFormat('MM-dd')).format(now);
+    //2020-02-24 00:00:00 -> 02-24
+    final date_filter = "%${month_and_day}%";
+
+    // var result = await database_handler.rawQuery("""
+    //   SELECT * FROM ${message_table_string} WHERE date LIKE '${date_filter}' ORDER BY DATE DESC;
+    // """);
+    // print(result);
+
+    final List<Map<String, dynamic>> maps = await database_handler.query(
+        message_table_string,
+        where: "date LIKE ?",
+        whereArgs: [date_filter]);
+
+    return maps.map((e) => Message.fromJson(e)).toList();
+  }
+
   Future<List<Message>> getMessageList() async {
     final List<Map<String, dynamic>> maps =
         await database_handler.query(message_table_string);
@@ -138,14 +146,16 @@ class SqliteDatabaseControlelr extends GetxController {
     return maps.map((e) => Message.fromJson(e)).toList();
   }
 
-  // Message getAFakeMessage() {
-  //   return Message(
-  //       type: "freedom", date: "1.1", content: "I love you.", images: []);
-  //   //new Message(date: "2.1", content: "I don't love you anymore.")
-  // }
-
   Future<void> sync_messages_data_to_view() async {
-    var message_list = await getMessageList();
+    var message_list;
+
+    if (onlyShowTodayInHistory.value) {
+      message_list = await sqlite_database_controlelr
+          .search_messages_that_sent_on_the_same_day_of_the_years();
+    } else {
+      message_list = await getMessageList();
+    }
+
     await memory_database_controller.syncMessageList(
         newMessageList: message_list);
   }
