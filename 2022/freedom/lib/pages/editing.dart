@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freedom/components/image.dart';
 import 'package:freedom/data_structures/message.dart';
 import 'package:freedom/store/store.dart';
@@ -79,6 +80,8 @@ class _EditingPageState extends State<EditingPage> {
         actions: [
           TextButton(
               onPressed: () async {
+                EasyLoading.show(status: "processing...");
+
                 String text = textInputController.text.trim();
 
                 if (text != "" || seletctedImages.isNotEmpty) {
@@ -97,6 +100,8 @@ class _EditingPageState extends State<EditingPage> {
                   await sqlite_database_controlelr.sync_messages_data_to_view();
 
                   Get.offAndToNamed(RouterRoutings.home);
+
+                  EasyLoading.dismiss();
                 }
               },
               child: Text("Save"))

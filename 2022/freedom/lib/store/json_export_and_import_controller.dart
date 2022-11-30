@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
 
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+// import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freedom/data_structures/message.dart';
 import 'package:freedom/store/store.dart';
 import 'package:get/get.dart';
@@ -29,14 +29,7 @@ class JsonExportAndImportControlelr extends GetxController {
 
   Future<void> saveDatabaseMessageListIntoTheJsonFile() async {
     List<Message> theData = await sqlite_database_controlelr.getMessageList();
-    List<Map<String, dynamic>> theList = theData.map((e) {
-      return {
-        'type': e.type,
-        'date': e.date,
-        'content': e.content,
-        'images': e.images,
-      };
-    }).toList();
+    List<Map<String, dynamic>> theList = theData.map((e) => e.toMap()).toList();
 
     var spaces = ' ' * 4;
     var encoder = JsonEncoder.withIndent(spaces);
@@ -47,12 +40,7 @@ class JsonExportAndImportControlelr extends GetxController {
   }
 
   Future<void> exportJsonData() async {
-    EasyLoading.instance.loadingStyle = EasyLoadingStyle.light;
-    EasyLoading.show(status: 'processing...');
-
     await saveDatabaseMessageListIntoTheJsonFile();
-
-    EasyLoading.dismiss();
 
     String jsonFilePath = await getDatbaseFilePath();
     await Share.shareFiles([jsonFilePath], text: 'Your Ideas Data');
@@ -62,9 +50,6 @@ class JsonExportAndImportControlelr extends GetxController {
       {required String newFilePath}) async {
     print("new file path: $newFilePath");
 
-    EasyLoading.instance.loadingStyle = EasyLoadingStyle.dark;
-    EasyLoading.show(status: 'processing...');
-
     // do a check to see if the database.json has the old structure or not, if so, convert it to the new one
     String jsonString = await File(newFilePath).readAsString();
     Iterable list = json.decode(jsonString);
@@ -72,18 +57,6 @@ class JsonExportAndImportControlelr extends GetxController {
     for (Map<String, dynamic> msg in list) {
       if (!msg.containsKey('type')) {
         msg['type'] = 'freedom';
-      }
-      if (msg.containsKey('images')) {
-        var image_value = msg['images'];
-        if (image_value is String) {
-          // the_string = json.dumps([])
-          // the Message class will handle it later in Message.fromJson() function
-        } else {
-          // the_value = ['', '']
-          // the data come from python or new version
-          // we need to convert it to a single string, so that the sqlite database can save it without any problem
-          msg['images'] = jsonEncode(image_value);
-        }
       }
       new_list.add(msg);
     }
@@ -94,7 +67,5 @@ class JsonExportAndImportControlelr extends GetxController {
     await sqlite_database_controlelr.insert_a_list_of_messages(new_messages);
 
     await sqlite_database_controlelr.sync_messages_data_to_view();
-
-    await EasyLoading.dismiss();
   }
 }

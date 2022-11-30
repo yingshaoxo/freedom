@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:freedom/store/store.dart';
 
 class SettingPage extends StatefulWidget {
@@ -33,7 +34,12 @@ class _SettingPageState extends State<SettingPage> {
                         MaterialStateProperty.all<Color>(Colors.green)),
                 child: Text('Export'),
                 onPressed: () async {
+                  EasyLoading.instance.loadingStyle = EasyLoadingStyle.light;
+                  EasyLoading.show(status: 'processing...');
+
                   await json_export_and_import_controller.exportJsonData();
+
+                  EasyLoading.dismiss();
                 },
               ),
             ),
