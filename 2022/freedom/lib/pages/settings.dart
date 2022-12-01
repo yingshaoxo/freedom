@@ -75,14 +75,14 @@ class _SettingPageState extends State<SettingPage> {
                 Checkbox(
                   checkColor: Colors.white,
                   fillColor: MaterialStateProperty.all<Color>(Colors.green),
-                  value:
-                      sqlite_database_controlelr.onlyShowTodayInHistory.value,
-                  onChanged: (bool? value) {
+                  value: sqlite_database_controlelr.onlyShowTodayInHistory,
+                  onChanged: (bool? value) async {
                     if (value != null) {
-                      sqlite_database_controlelr.onlyShowTodayInHistory
-                          .trigger(value);
                       sqlite_database_controlelr.box
                           .put("onlyShowTodayInHistory", value);
+                      sqlite_database_controlelr.onlyShowTodayInHistory = value;
+                      await memory_database_controller
+                          .show_default_message_list();
                       setState(() {});
                     }
                   },

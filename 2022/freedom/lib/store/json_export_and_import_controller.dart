@@ -66,6 +66,6 @@ class JsonExportAndImportControlelr extends GetxController {
     await sqlite_database_controlelr.clean_database();
     await sqlite_database_controlelr.insert_a_list_of_messages(new_messages);
 
-    await sqlite_database_controlelr.sync_messages_data_to_view();
+    await memory_database_controller.show_default_message_list();
   }
 }

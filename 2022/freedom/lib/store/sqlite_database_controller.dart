@@ -23,7 +23,7 @@ class SqliteDatabaseControlelr extends GetxController {
   }
 
   var box;
-  RxBool onlyShowTodayInHistory = RxBool(false);
+  bool onlyShowTodayInHistory = false;
 
   var databaseFactory = databaseFactoryFfi;
 
@@ -38,7 +38,7 @@ class SqliteDatabaseControlelr extends GetxController {
     await Hive.openBox("myBox");
     box = Hive.box('myBox');
     onlyShowTodayInHistory =
-        RxBool(box.get("onlyShowTodayInHistory", defaultValue: false));
+        box.get("onlyShowTodayInHistory", defaultValue: false);
   }
 
   Future<void> initializeDatabase() async {
@@ -65,7 +65,7 @@ class SqliteDatabaseControlelr extends GetxController {
               },
             ));
 
-    await sync_messages_data_to_view();
+    await memory_database_controller.show_default_message_list();
   }
 
   Future<void> insertMessage(Message msg) async {
@@ -106,6 +106,20 @@ class SqliteDatabaseControlelr extends GetxController {
     await database_handler.execute("DELETE FROM ${image_table_string};");
   }
 
+  Future<Message?> search_message_by_type_and_date(
+      {required Message msg}) async {
+    final List<Map<String, dynamic>> maps = await database_handler.query(
+        message_table_string,
+        where: 'type = ? AND date = ?',
+        whereArgs: [msg.type, msg.date]);
+    final msg_list = maps.map((e) => Message.fromJson(e)).toList();
+    if (msg_list.isEmpty) {
+      return null;
+    } else {
+      return msg_list[0];
+    }
+  }
+
   Future<List<Message>> searchMessages({required String text}) async {
     List<String> keywords = text.split(" ");
 
@@ -119,24 +133,44 @@ class SqliteDatabaseControlelr extends GetxController {
     return maps.map((e) => Message.fromJson(e)).toList();
   }
 
-  Future<List<Message>>
-      search_messages_that_sent_on_the_same_day_of_the_years() async {
+  Future<List<Message>> search_messages_that_sent_on_the_same_day_of_the_years(
+      {required bool go_back_to_past_order}) async {
     DateTime now = new DateTime.now();
     String month_and_day = (new DateFormat('MM-dd')).format(now);
     //2020-02-24 00:00:00 -> 02-24
-    final date_filter = "%${month_and_day}%";
-
-    // var result = await database_handler.rawQuery("""
-    //   SELECT * FROM ${message_table_string} WHERE date LIKE '${date_filter}' ORDER BY DATE DESC;
-    // """);
-    // print(result);
+    final date_filter = "%%%%-${month_and_day} %";
 
     final List<Map<String, dynamic>> maps = await database_handler.query(
         message_table_string,
         where: "date LIKE ?",
         whereArgs: [date_filter]);
 
-    return maps.map((e) => Message.fromJson(e)).toList();
+    final result_list = maps.map((e) => Message.fromJson(e)).toList();
+    if (go_back_to_past_order) {
+      return result_list.reversed.toList();
+    } else {
+      return result_list;
+    }
+  }
+
+  Future<List<Message>> get_message_list_by_page_number_and_page_size(
+      {required int page_number,
+      required int page_size,
+      required bool go_back_to_past_order}) async {
+    var raw_result = await database_handler.rawQuery(
+        "SELECT * FROM ${message_table_string} ORDER BY date ${go_back_to_past_order ? 'DESC' : 'ASC'} LIMIT ${page_size} OFFSET ${page_number * page_size}");
+    var message_list = raw_result.map((e) => Message.fromJson(e)).toList();
+    return message_list;
+  }
+
+  Future<List<Message>> get_message_list_by_offset_and_limit(
+      {required int offset,
+      required int limit,
+      required bool go_back_to_past_order}) async {
+    var raw_result = await database_handler.rawQuery(
+        "SELECT * FROM ${message_table_string} ORDER BY date ${go_back_to_past_order ? 'DESC' : 'ASC'} LIMIT ${limit} OFFSET ${offset}");
+    var message_list = raw_result.map((e) => Message.fromJson(e)).toList();
+    return message_list;
   }
 
   Future<List<Message>> getMessageList() async {
@@ -147,14 +181,7 @@ class SqliteDatabaseControlelr extends GetxController {
   }
 
   Future<void> sync_messages_data_to_view() async {
-    var message_list;
-
-    if (onlyShowTodayInHistory.value) {
-      message_list = await sqlite_database_controlelr
-          .search_messages_that_sent_on_the_same_day_of_the_years();
-    } else {
-      message_list = await getMessageList();
-    }
+    var message_list = await getMessageList();
 
     await memory_database_controller.syncMessageList(
         newMessageList: message_list);

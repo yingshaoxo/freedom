@@ -79,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     tabController.addListener(() async {
       if (tabController.index == 0) {
         //print("home tab");
-        await sqlite_database_controlelr.sync_messages_data_to_view();
+        // await sqlite_database_controlelr.sync_messages_data_to_view();
+        await memory_database_controller.show_default_message_list();
       } else if (tabController.index == 1) {
         //print("search tab");
         await memory_database_controller.syncMessageList(newMessageList: []);
@@ -250,6 +251,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
+          // await sqlite_database_controlelr
+          //     .get_message_list_by_page_number_and_page_size(
+          //         page_number: 1, page_size: 3);
+          // return;
+
           Get.toNamed(RouterRoutings.editing,
               arguments: RouterArguments(
                   editingPageArguments:

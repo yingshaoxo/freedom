@@ -93,13 +93,15 @@ class _EditingPageState extends State<EditingPage> {
 
                   if (oldMessage != null) {
                     await sqlite_database_controlelr.updateMessage(msg);
+                    await memory_database_controller.refresh_the_list_view();
                   } else {
                     await sqlite_database_controlelr.insertMessage(msg);
+                    await memory_database_controller
+                        .show_default_message_list();
                   }
 
-                  await sqlite_database_controlelr.sync_messages_data_to_view();
-
-                  Get.offAndToNamed(RouterRoutings.home);
+                  //Get.offAndToNamed(RouterRoutings.home);
+                  Navigator.of(context).pop();
 
                   EasyLoading.dismiss();
                 }
