@@ -29,7 +29,13 @@ class JsonExportAndImportControlelr extends GetxController {
 
   Future<void> saveDatabaseMessageListIntoTheJsonFile() async {
     List<Message> theData = await sqlite_database_controlelr.getMessageList();
-    List<Map<String, dynamic>> theList = theData.map((e) => e.toMap()).toList();
+    List<Map<String, dynamic>> theList = theData.map((e) {
+      // if (e.content.contains('中秋')) {
+      //   print(e);
+      //   print('.');
+      // }
+      return e.toMap();
+    }).toList();
 
     var spaces = ' ' * 4;
     var encoder = JsonEncoder.withIndent(spaces);
@@ -55,6 +61,13 @@ class JsonExportAndImportControlelr extends GetxController {
     Iterable list = json.decode(jsonString);
     List<Map<String, dynamic>> new_list = [];
     for (Map<String, dynamic> msg in list) {
+      // if (msg.containsKey('content')) {
+      //   String content = msg['content'];
+      //   if (content.contains("中秋")) {
+      //     print(msg);
+      //     print(".");
+      //   }
+      // }
       if (!msg.containsKey('type')) {
         msg['type'] = 'freedom';
       }

@@ -85,23 +85,30 @@ class _EditingPageState extends State<EditingPage> {
                 String text = textInputController.text.trim();
 
                 if (text != "" || seletctedImages.isNotEmpty) {
-                  Message msg = Message(
-                      type: "freedom",
-                      date: getDate(),
-                      content: text,
-                      images: seletctedImages);
-
                   if (oldMessage != null) {
+                    // edit
+                    Message msg = Message(
+                        type: oldMessage?.type ?? "freedom",
+                        date: getDate(),
+                        content: text,
+                        images: seletctedImages);
                     await sqlite_database_controlelr.updateMessage(msg);
                     await memory_database_controller.refresh_the_list_view();
+
+                    Navigator.of(context).pop();
                   } else {
+                    // add
+                    Message msg = Message(
+                        type: "freedom",
+                        date: getDate(),
+                        content: text,
+                        images: seletctedImages);
                     await sqlite_database_controlelr.insertMessage(msg);
                     await memory_database_controller
                         .show_default_message_list();
-                  }
 
-                  //Get.offAndToNamed(RouterRoutings.home);
-                  Navigator.of(context).pop();
+                    Get.offAndToNamed(RouterRoutings.home);
+                  }
 
                   EasyLoading.dismiss();
                 }
