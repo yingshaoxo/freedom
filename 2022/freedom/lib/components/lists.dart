@@ -21,7 +21,8 @@ class _MessageListViewState extends State<MessageListView> {
 
   @override
   Widget build(BuildContext context) {
-    var theMessageList = widget.messageList.reversed.toList();
+    // var theMessageList = widget.messageList.reversed.toList();
+    var theMessageList = widget.messageList.toList();
     return Container(
       padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(

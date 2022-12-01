@@ -50,7 +50,7 @@ class MyCard extends StatelessWidget {
                   GestureDetector(
                     onTap: () async {
                       sqlite_database_controlelr.deleteMessage(message);
-                      sqlite_database_controlelr.sync_messages_data_to_view();
+                      memory_database_controller.refresh_the_list_view();
                     },
                     child: Icon(
                       Icons.delete_outline,
