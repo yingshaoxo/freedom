@@ -28,7 +28,14 @@ class JsonExportAndImportControlelr extends GetxController {
   }
 
   Future<void> saveDatabaseMessageListIntoTheJsonFile() async {
-    List<Message> theData = await sqlite_database_controlelr.getMessageList();
+    List<Message> theData = [];
+    if (sqlite_database_controlelr.only_export_freedom_message) {
+      theData =
+          await sqlite_database_controlelr.get_all_messages_with_freedom_tag();
+    } else {
+      theData = await sqlite_database_controlelr.getMessageList();
+    }
+
     List<Map<String, dynamic>> theList = theData.map((e) {
       // if (e.content.contains('中秋')) {
       //   print(e);

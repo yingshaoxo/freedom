@@ -24,6 +24,7 @@ class SqliteDatabaseControlelr extends GetxController {
 
   var box;
   bool onlyShowTodayInHistory = false;
+  bool only_export_freedom_message = false;
 
   var databaseFactory = databaseFactoryFfi;
 
@@ -39,6 +40,8 @@ class SqliteDatabaseControlelr extends GetxController {
     box = Hive.box('myBox');
     onlyShowTodayInHistory =
         box.get("onlyShowTodayInHistory", defaultValue: false);
+    only_export_freedom_message =
+        box.get("only_export_freedom_message", defaultValue: false);
   }
 
   Future<void> initializeDatabase() async {
@@ -178,6 +181,13 @@ class SqliteDatabaseControlelr extends GetxController {
         await database_handler.query(message_table_string);
 
     return maps.map((e) => Message.fromJson(e)).toList();
+  }
+
+  Future<List<Message>> get_all_messages_with_freedom_tag() async {
+    final List<Map<String, dynamic>> maps = await database_handler
+        .query(message_table_string, where: 'type = ?', whereArgs: ['freedom']);
+    final msg_list = maps.map((e) => Message.fromJson(e)).toList();
+    return msg_list;
   }
 
   Future<void> sync_messages_data_to_view() async {

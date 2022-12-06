@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freedom/pages/home.dart';
 import 'package:freedom/pages/search.dart';
 import 'package:get/get.dart';
@@ -17,12 +18,17 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await initialization();
+  await ScreenUtil.ensureScreenSize();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(
       GetMaterialApp(
-        builder: EasyLoading.init(),
+        // builder: EasyLoading.init(),
+        builder: (context, child) {
+          ScreenUtil.init(context);
+          return EasyLoading.init()(context, child);
+        },
         initialRoute: RouterRoutings.home,
         getPages: [
           GetPage(
