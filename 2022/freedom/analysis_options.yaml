@@ -9,5 +9,7 @@
 # linter:
 #   rules:
 #     - cancel_subscriptions
+#     non_constant_identifier_names: false
+#     avoid_print: false
 
 #https://dart.dev/guides/language/analysis-options
