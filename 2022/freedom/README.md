@@ -1,6 +1,6 @@
 # freedom
 
-A new Flutter project.
+Record your life, review when you have time.
 
 ## Getting Started
 
@@ -11,3 +11,7 @@ flutter run
 
 flutter build apk --release
 ```
+
+## Dev Plans
+
+* Put all those data into the `Downloads` folder.
