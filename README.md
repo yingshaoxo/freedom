@@ -1,6 +1,6 @@
 # Freedom
 
-![freedom](./yeah.png)
+<img src='./yeah.png' width='50%'>
 
 Record your life, say whatever you wanna say.
 
