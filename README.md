@@ -1,10 +1,10 @@
 # Freedom
 
-Record your life, say whatever you wanna say.
-
 ![freedom](./yeah.png)
 
-___
+Record your life, say whatever you wanna say.
+
+### Download
 
 Google Play: https://play.google.com/store/apps/details?id=xyz.yingshaoxo.freedom&hl=en_US&gl=US
 
