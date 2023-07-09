@@ -7,7 +7,6 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:hive/hive.dart';
 
 import 'package:freedom/data_structures/message.dart';
@@ -204,17 +203,6 @@ String getBase64StringFromUint8List(Uint8List data) {
 
 Uint8List getUint8ListFromBase64String(String base64String) {
   return base64Decode(base64String);
-}
-
-Future<Uint8List> uint8ListImageCompress(Uint8List list) async {
-  if (list.lengthInBytes > 300000) {
-    // if the image size > 300KB, we compress
-    var result = await FlutterImageCompress.compressWithList(list,
-        minHeight: 1920, minWidth: 1080, quality: 50);
-    return result;
-  } else {
-    return list;
-  }
 }
 
 Image getImageFromBase64String(String base64String) {

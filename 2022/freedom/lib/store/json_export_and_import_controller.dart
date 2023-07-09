@@ -9,6 +9,8 @@ import 'package:path/path.dart';
 import 'package:share/share.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../tools/disk_tools.dart';
+
 class JsonExportAndImportControlelr extends GetxController {
   JsonExportAndImportControlelr() {
     print("json controller initialized");
@@ -36,13 +38,17 @@ class JsonExportAndImportControlelr extends GetxController {
       theData = await sqlite_database_controlelr.getMessageList();
     }
 
-    List<Map<String, dynamic>> theList = theData.map((e) {
-      // if (e.content.contains('中秋')) {
-      //   print(e);
-      //   print('.');
-      // }
-      return e.toMap();
-    }).toList();
+    List<Map<String, dynamic>> theList = [];
+    for (var one_element in theData) {
+      List<String> new_image_list = [];
+      for (var one_image in one_element.images) {
+        var bytes_data = getUint8ListFromBase64String(one_image);
+        bytes_data = await uint8ListImageCompress(bytes_data);
+        new_image_list.add(getBase64StringFromUint8List(bytes_data));
+      }
+      one_element.images = new_image_list;
+      theList.add(one_element.toMap());
+    }
 
     var spaces = ' ' * 4;
     var encoder = JsonEncoder.withIndent(spaces);
