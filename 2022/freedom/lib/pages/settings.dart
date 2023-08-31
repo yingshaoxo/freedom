@@ -57,7 +57,7 @@ class _SettingPageState extends State<SettingPage> {
                           return AlertDialog(
                               title: const Text('Tips'),
                               content: Text(
-                                  'You need to find your database.json file in a file manager APP, \n\nthen share it to me.'),
+                                  'You need to find your "database.json" file in a file manager, \n\nChange its name to "database.json.jpg", \n\nThen share it to me.'),
                               actions: <Widget>[
                                 TextButton(
                                     child: const Text('OK'),

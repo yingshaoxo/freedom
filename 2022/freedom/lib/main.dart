@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     // For sharing images coming from outside the app while the app is in the memory
     _intentDataStreamSubscription = ReceiveSharingIntent.getMediaStream()
         .listen((List<SharedMediaFile> files) async {
+      print(files);
       if (files.isEmpty) {
         return;
       }
@@ -111,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
         List<String>? splits = file.path.split(".");
         if (splits.isNotEmpty) {
-          if (splits.last == "json") {
+          if (splits.contains("json")) {
             print("database we received: " + file.path);
 
             // Fluttertoast.showToast(
