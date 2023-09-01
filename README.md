@@ -8,4 +8,4 @@ Record your life, say whatever you wanna say.
 
 Google Play: https://play.google.com/store/apps/details?id=xyz.yingshaoxo.freedom&hl=en_US&gl=US
 
-APK: https://github.com/yingshaoxo/freedom/releases/download/v0.3/freedom_v0.3.apk
+APK: https://github.com/yingshaoxo/freedom/releases/download/v0.4/freedom_v0.4.apk
