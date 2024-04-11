@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,12 +8,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freedom/pages/home.dart';
 import 'package:freedom/pages/search.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import 'package:freedom/pages/settings.dart';
 import 'package:freedom/store/store.dart';
 import 'package:freedom/pages/editing.dart';
+
+import 'tools/disk_tools.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,6 +61,7 @@ class MyApp extends StatelessWidget {
       title: 'Freedom',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // useMaterial3: false,
       ),
       home: MyHomePage(title: 'Freedom'),
     );
@@ -152,6 +157,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         await json_export_and_import_controller
                             .refill_sqlite_database_with_the_content_inside_of_a_json_file(
                                 newFilePath: file.path);
+                        await File(file.path).delete();
                         Navigator.pop(context);
 
                         await EasyLoading.dismiss();
@@ -167,6 +173,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     }, onError: (err) {
       print("getIntentDataStream error: $err");
     });
+
+    /*
+    () async {
+      Future.delayed(const Duration(seconds: 10), () async {
+      });
+    }();
+    */
 
     super.initState();
   }

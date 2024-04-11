@@ -7,7 +7,7 @@ class MemoryDatabaseController extends GetxController {
     print("memory database controller initialized");
   }
 
-  int stream_size_for_a_bunch_of_messages = 3;
+  int stream_size_for_a_bunch_of_messages = 12;
   RxList<Message> messageList = RxList([]);
 
   Future<void> syncMessageList({required List<Message> newMessageList}) async {

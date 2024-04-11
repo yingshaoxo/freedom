@@ -65,33 +65,38 @@ class JsonExportAndImportControlelr extends GetxController {
     await Share.shareFiles([jsonFilePath], text: 'Your Ideas Data');
   }
 
-  Future<void> refill_sqlite_database_with_the_content_inside_of_a_json_file(
+  Future<bool> refill_sqlite_database_with_the_content_inside_of_a_json_file(
       {required String newFilePath}) async {
-    print("new file path: $newFilePath");
+    try {
+      print("new file path: $newFilePath");
 
-    // do a check to see if the database.json has the old structure or not, if so, convert it to the new one
-    String jsonString = await File(newFilePath).readAsString();
-    Iterable list = json.decode(jsonString);
-    List<Map<String, dynamic>> new_list = [];
-    for (Map<String, dynamic> msg in list) {
-      // if (msg.containsKey('content')) {
-      //   String content = msg['content'];
-      //   if (content.contains("中秋")) {
-      //     print(msg);
-      //     print(".");
-      //   }
-      // }
-      if (!msg.containsKey('type')) {
-        msg['type'] = 'freedom';
+      // do a check to see if the database.json has the old structure or not, if so, convert it to the new one
+      String jsonString = await File(newFilePath).readAsString();
+      Iterable list = json.decode(jsonString);
+      List<Map<String, dynamic>> new_list = [];
+      for (Map<String, dynamic> msg in list) {
+        // if (msg.containsKey('content')) {
+        //   String content = msg['content'];
+        //   if (content.contains("中秋")) {
+        //     print(msg);
+        //     print(".");
+        //   }
+        // }
+        if (!msg.containsKey('type')) {
+          msg['type'] = 'freedom';
+        }
+        new_list.add(msg);
       }
-      new_list.add(msg);
+      List<Message> new_messages = List<Message>.from(
+          new_list.map((mapObj) => Message.fromJson(mapObj)));
+
+      await sqlite_database_controlelr.clean_database();
+      await sqlite_database_controlelr.insert_a_list_of_messages(new_messages);
+
+      await memory_database_controller.show_default_message_list();
+      return true;
+    } catch (e) {
+      return false;
     }
-    List<Message> new_messages =
-        List<Message>.from(new_list.map((mapObj) => Message.fromJson(mapObj)));
-
-    await sqlite_database_controlelr.clean_database();
-    await sqlite_database_controlelr.insert_a_list_of_messages(new_messages);
-
-    await memory_database_controller.show_default_message_list();
   }
 }
