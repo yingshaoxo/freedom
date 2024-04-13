@@ -6,6 +6,8 @@ Record your life, review when you have time.
 
 ```bash
 # flutter 3.10.0, other version can't run it. I suggest you abandon flutter and android development chain, because it is not stable.
+# flutter config --no-analytics
+# dart --disable-analytics  
 
 flutter pub get -v
 
