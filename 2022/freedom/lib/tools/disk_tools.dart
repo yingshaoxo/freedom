@@ -32,7 +32,6 @@ Uint8List getUint8ListFromBase64String(String base64String) {
 }
 
 Future<Uint8List> uint8ListImageCompress(Uint8List list) async {
-  /*
   if (list.lengthInBytes > 100000) {
     // if the image size > 100KB, we compress
     //return Uint8List(0);
@@ -42,10 +41,6 @@ Future<Uint8List> uint8ListImageCompress(Uint8List list) async {
   } else {
     return list;
   }
-  */
-  var result = await FlutterImageCompress.compressWithList(list,
-      minWidth: 720, quality: 60);
-  return result;
 }
 
 Image getImageFromBase64String(String base64String) {
