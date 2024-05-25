@@ -87,7 +87,9 @@ class _SettingPageState extends State<SettingPage> {
                   child: Text('Import'),
                   onPressed: () async {
                     String the_json_path = await get_my_json_path();
+                    print(the_json_path);
                     bool result = await import_my_json_data_if_it_exists();
+                    print(result);
                     if (result == true) {
                       Navigator.of(context).pop();
                       return;

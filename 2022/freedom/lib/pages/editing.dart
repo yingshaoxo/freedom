@@ -168,7 +168,7 @@ class _EditingPageState extends State<EditingPage> {
                   for (XFile xfile in xFileList ?? []) {
                     Uint8List imageBytes = await xfile.readAsBytes();
 
-                    imageBytes = await uint8ListImageCompress(imageBytes);
+                    imageBytes = await uint8ListImageToPngFormat(imageBytes);
 
                     String imageBase64 =
                         getBase64StringFromUint8List(imageBytes);

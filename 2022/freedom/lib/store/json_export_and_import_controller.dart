@@ -43,7 +43,7 @@ class JsonExportAndImportControlelr extends GetxController {
       List<String> new_image_list = [];
       for (var one_image in one_element.images) {
         var bytes_data = getUint8ListFromBase64String(one_image);
-        bytes_data = await uint8ListImageCompress(bytes_data);
+        bytes_data = await uint8ListImageToPngFormat(bytes_data);
         new_image_list.add(getBase64StringFromUint8List(bytes_data));
       }
       one_element.images = new_image_list;
