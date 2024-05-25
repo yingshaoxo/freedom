@@ -159,6 +159,10 @@ class _EditingPageState extends State<EditingPage> {
               width: homeController.getScreenWidth(context),
               child: TextButton(
                 onPressed: () async {
+                  EasyLoading.instance.loadingStyle = EasyLoadingStyle.dark;
+                  EasyLoading.instance.maskType = EasyLoadingMaskType.black;
+                  EasyLoading.show(status: 'processing...');
+
                   // Pick multiple images
                   final List<XFile>? xFileList =
                       await image_picker.pickMultiImage();
@@ -175,6 +179,8 @@ class _EditingPageState extends State<EditingPage> {
 
                     seletctedImages.add(imageBase64);
                   }
+
+                  EasyLoading.dismiss();
 
                   setState(() {});
                 },

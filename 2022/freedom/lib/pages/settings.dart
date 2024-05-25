@@ -74,6 +74,7 @@ class _SettingPageState extends State<SettingPage> {
                   child: Text('Export'),
                   onPressed: () async {
                     EasyLoading.instance.loadingStyle = EasyLoadingStyle.light;
+                    EasyLoading.instance.maskType = EasyLoadingMaskType.black;
                     EasyLoading.show(status: 'processing...');
 
                     await json_export_and_import_controller.exportJsonData();
@@ -83,6 +84,8 @@ class _SettingPageState extends State<SettingPage> {
                 ),
               ),
               Container(
+                margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height * 0.1),
                 child: ElevatedButton(
                   child: Text('Import'),
                   onPressed: () async {
@@ -113,6 +116,25 @@ class _SettingPageState extends State<SettingPage> {
                   },
                 ),
               ),
+              /*
+              Container(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.grey)),
+                  child: Text('Export with friendly format'),
+                  onPressed: () async {
+                    EasyLoading.instance.loadingStyle = EasyLoadingStyle.light;
+                    EasyLoading.instance.maskType = EasyLoadingMaskType.black;
+                    EasyLoading.show(status: 'processing...');
+
+                    await json_export_and_import_controller.export_text_data();
+
+                    EasyLoading.dismiss();
+                  },
+                ),
+              ),
+              */
               SizedBox(
                 height: 100,
               ),
