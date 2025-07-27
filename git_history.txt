@@ -1,0 +1,110 @@
+2025-07-27 delete some duplicate data
+2025-07-15 remove some stupid pictures
+2025-07-10 update
+2025-07-05 update diary
+2025-06-12 add a sync script
+2024-05-25 update diary link
+2024-05-25 change image compression algorithm; update diary
+2024-05-25 update diary and freedom app image compression method
+2024-04-18 test update, to see if image compression in flutter is shit or not, because it change image bytes for everytime we save diary
+2024-04-12 change icon
+2024-04-11 upload a smaller diary and update the freedom to allow a new way of import
+2023-11-13 add a convertion script
+2023-11-13 update diary
+2023-09-02 upadate freedom app
+2023-09-02 update download link
+2023-09-02 0.4 released
+2023-09-01 let the freedom app support json importing again (by change the file name to **.jpg) (fuck the android dev team, they are depress freedom, just like what apple or mac did)
+2023-07-10 remove qzone data
+2023-07-10 add yingshaoxo social media txt data
+2023-07-09 update my_data.json
+2023-07-09 update git ignore file
+2023-07-09 update my diary; update freedom to compress image when export
+2023-02-26 ignore js and ipynb for this repo
+2023-02-26 ignore js and ipynb for this repo
+2023-02-26 update readme file
+2023-02-26 update readme file
+2023-02-26 add readme file
+2023-01-16 Create LICENSE
+2023-01-16 update
+2023-01-16 update
+2023-01-16 update policy
+2022-12-27 update
+2022-12-18 update lint
+2022-12-18 update lint
+2022-12-06 add a new option: only export freedom messages
+2022-12-01 fix another bug related to edit/add page
+2022-12-01 fix a bunch of bugs
+2022-12-01 did an upgrade on those dependencies
+2022-11-30 did another refactoring: use sqlite to speed up the data process; add a lot of loading indicator
+2022-11-30 change the data format
+2022-11-30 did another refactor
+2022-11-29 we made a refactoring on the old freedom app
+2022-11-28 add 2022 folder, add a python script to get and merge old data
+2021-11-08 update diary
+2021-09-20 we are done
+2021-09-19 replace the sqlite database to json file
+2021-08-27 done
+2021-08-27 done
+2021-08-27 add icons
+2021-08-27 add json export button
+2021-08-24 finished 98% needs
+2021-08-22 finished almost 90% of the needs
+2021-08-21 更新 (update)
+2021-04-03 update data
+2021-02-15 now we can create a sql file
+2021-02-07 update the plans
+2021-02-04 add an idea
+2021-02-03 add a setting page and import&&export button
+2021-02-02 update plan; add a drawer
+2021-02-01 add a plan
+2021-01-31 start to make 2021 version of freedom
+2020-12-03 update diary
+2020-11-10 update
+2020-11-09 update
+2020-10-15 update mine database
+2020-07-26 update mine
+2020-07-15 we just fixed the Qzone data error
+2020-06-03 update
+2020-05-14 update mine database
+2020-05-05 I'm OK with the new version of this app
+2020-05-05 change protobuf protocol; add delete a post UI
+2020-05-02 fix a problem related to history today
+2020-05-01 add analyze script for my words
+2020-05-01 fix twitter bugs
+2020-05-01 Twitter parse script added but without images
+2020-05-01 add twitter data
+2020-04-30 kivydiary updated
+2020-04-30 next step: parse twitter
+2020-04-30 fix the error of sorting when searching
+2020-04-30 add fetch method for kivydiary and mine; next one is twitter
+2020-04-30 add diary raw text
+2020-04-30 rebuild merge script
+2020-04-29 decrease the size of download box area; add blacklist for p4a
+2020-04-29 now we support sqlite db merging 2
+2020-04-29 now we support sqlite db merging
+2020-04-29 now we can convert qzone data to sqlite db
+2020-04-28 remove old database, use the new one
+2020-04-28 remove the limitation of text length
+2020-04-28 icon added, now every development will be done in here
+2020-04-26 I really love it
+2020-04-26 I love this design
+2020-04-26 add new base database; add search functionality
+2020-04-23 finish the downloading feature
+2020-04-23 add download function for backup user's data; improve the UI of history
+2020-04-22 sync the server code
+2020-04-22 forward after message sent
+2020-04-22 now we use useContext and useReducer to act like global state; solved most of the critical part of data transmition between python and javascript
+2020-04-20 add homepage config to client, so we can use it in an embeded way; add flask example
+2020-04-19 add navigation tabs
+2020-04-18 server structure design finished
+2020-04-17 Qzone parse finished
+2020-04-16 data is ready
+2020-04-15 finally solved the base64 image transferring problem
+2020-04-15 we got a big problem with base64 encoding
+2020-04-15 now we use Dimensions than vw and vh
+2020-04-15 web view finished
+2020-04-14 I have made my mind to only use protobuf without grpc
+2020-04-12 add react native
+2020-04-11 this is just the beginning
+2020-04-09 Initial commit

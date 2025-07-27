@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "freedom",
+    "slug": "freedom",
+    "description": "Help you to record your life, say whatever you wanna say.",
+    "platforms": [
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+        "package": "xyz.yingshaoxo.freedom",
+        "versionCode": 1
+    }
+  }
+}

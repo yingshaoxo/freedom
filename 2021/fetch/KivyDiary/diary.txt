@@ -1,0 +1,2216 @@
+Dec 01, 2017 
+
+I don't learn everything that I won't use again.
+
+——————————————
+
+Dec 14, 2017
+
+
+我们这一代人，只会跟着指令走，却从不思考指令背后的含义。
+
+——————————————
+
+Dec 16, 2017
+
+
+下了 spy camera, 准备长期奋战制作室友游戏粗口鬼畜合集
+
+不回击就和平，一回击我要让它们体验极客的厉害
+
+
+同时也提醒我没能力就没引战
+
+——————————————
+
+Dec 26, 2017
+
+
+When you failed, dried, tired, and can't figure out the answer of a problem, all you need to do is: sleep.
+
+Try to do it again after you waken up.
+
+If still can't find the answer, maybe Google or your friends will help you.
+
+——————————————
+
+Jan 10, 2018
+
+
+我个人最大的缺陷应该是执行力不够强，不够专注，容易开多线程
+
+这样是很难做大事的
+
+——————————————
+
+Jan 12, 2018
+
+
+大学就是一个垃圾聚集场
+
+但这里也是社会模拟场
+
+
+
+这里有的只是不择手段，达成目的罢了(作弊、摇尾讨好)
+
+所以我努力的重心还应该是不在意垃圾们的目光，去出其不意地想出解决方法，提升自己
+
+随波逐流还不如现在就去跳河
+
+——————————————
+
+Jan 28, 2018
+
+
+人生就像写小说
+
+如果每次都能用上以前埋下的伏笔，就能荡气回肠、绝处逢生
+
+——————————————
+
+Feb 02, 2018
+
+
+现在我唯一能感受到的，就是知识的更新换代
+
+前面还没死绝，是构成社会的基础要素，后面的已经上来了，大有干掉前面的趋势
+
+然后突然一天、一年，世界变了，社会被某个技术翻新了一遍
+
+——————————————
+
+Feb 08, 2018
+
+
+成为伟大的人物，克服的就是大人心理
+
+你不能像大人一样畏首畏尾，没有一件事是蜻蜓点水能出成绩的
+
+不下定决心在某一职业深耕，怎能有所建树？
+
+怕付出是没用的，不能因为想保存以前付出得到的东西就停止付出
+
+物质守恒定律规定了必须有付出才有回报
+
+哪怕赌上变老的代价，(你不付出也会变老，时光不能倒流
+
+这时小孩心理就出来帮你了：你还年轻就什么也不怕
+
+——————————————
+
+Feb 21, 2018
+
+
+遇到挫折不放手是一种态度
+
+Never Never Never give up
+
+——————————————
+
+Feb 25, 2018
+
+
+成为大人
+
+越来越觉得除了食物、水、房子、电、网以外的东西都没有意义
+
+越来越不在乎别人的感受
+
+精神世界越来越小
+
+
+
+不，我不能成为那样的大人
+
+——————————————
+
+Feb 28, 2018
+
+
+决定了，在（系统学习AI）维护服务器时，慢慢学会用 traefik 替代 apache
+
+https://docs.traefik.io/
+
+
+
+这样就兑现了 use Golang 的承诺
+
+同时，维护那些 web service project，我们也用了 Javascript 和 Python
+
+学习 Tensorflow 向 AI 的同时，我们会用到 Kotlin 做安卓 AI Application
+
+最后完成任务的同时，我们也收获了快乐
+
+最终，2018的任务会圆满完成！
+
+——————————————
+
+Apr 12, 2018
+
+
+硬件开发不好玩，实现的功能太单一，同时制作困难。
+
+——————————————
+
+Mar 04, 2018
+
+
+我坚持，只是因为我坚信，有更广大的世界在等着我
+
+——————————————
+
+Mar 14, 2018
+
+
+我的择偶标准： 
+
+智商(知识面得广；得喜欢解决问题)
+>
+英语(第二语言者可以证明你有毅力做到你想做的事；包容性强、视野开阔、反传统、追求自由)
+>
+文明(遵守社会文明公约，比如噪声控制：与别人在一起时不用外放、不喧哗)
+>
+外表(洁净、对称、白与嫩)
+
+——————————————
+
+Mar 21, 2018
+
+
+I'm not worry about where I'm gonna go. 
+
+I'm worry about if I can't reach that level, what my life would be! 
+
+——————————————
+
+May 08, 2018
+
+
+学好数学的关键：用自然语言的思维思考它(比如 khan Academy)
+
+——————————————
+
+May 11, 2018
+
+
+大师是那些可以把复杂的事变得简单、枯燥的事变得有趣的人
+
+——————————————
+
+Jun 10, 2018
+
+
+The thing that really killing me is being normal, being ordinary.
+
+Those shit will never understood what I'm looking for, what I'm dieing to achieve.
+
+They are just live in their stupid numb life without knowing anything behind the lights.
+
+——————————————
+
+Jun 15, 2018
+
+
+Me: You know, I have never see someone like you, staying cool and beautiful at the same time
+
+Her: 你想拽英文吗？
+
+Me: No, I just want to express my thoughts
+
+Her: 你可以和我讲中文
+
+Me: But some times, 我觉得英文更能表达一些事情
+
+... silence ...
+
+Her: (Laughed out)
+
+
+
+Anyway, this is the first time in my life.
+
+——————————————
+
+Jun 23, 2018
+
+
+On the very bottom, all you need to do is: do things with one way!
+
+After you can do many things, you'll then think about how you could do one thing with different way based on different circumstances.
+
+If you, at the beginning, only has been taught or struggled in solving one thing in different way, then, I could say, you are useless! 
+
+Because all you got or all you can do is solving 1 problem which maybe 1 + 1 = 2, while others could solve 20 times problem than you do.
+
+That's why we encourage people to start from little, go far with much. 
+(E_language->C++->Python->JavaScript->Kotlin->Golang->AI(ML))
+(Windows->Deepin->Ubuntu->Kali->Popos->Lubuntu)
+
+Don't be silly that think you could learn all those stuff from scratch easily.
+
+Just say no to those details, start from the main ideas, start from what's essential.
+
+With that, you'll be good at learning everything!
+
+——————————————
+
+Jun 24, 2018
+
+
+技术只是一种手段
+
+我们有时候更看重如何把你独特的想法用技术转换出来
+
+并以一种生产环境的高效率展示给世人
+
+——————————————
+
+Jun 25, 2018
+
+
+我只是隐隐觉得，在现实生活中，很多人，你跟他说再多话也不会有提升、一起做的事通常是浪费时间。
+
+而在国际网上，我做的事基本就是传播知识，做实际的事情，每天解锁一点新技能。
+
+没准这才是某国落后的根本原因：封闭。
+
+——————————————
+
+Jul 05, 2018
+
+
+要想留住梦想
+
+就要把梦想变成现实或者让梦想与现实融合
+
+保证你 实现梦想的过程 = keep you alive 的过程
+
+——————————————
+
+Jul 09, 2018
+
+
+什么样的人足以成功？
+
+是那些失败3000次仍进行下一次实验的人。
+
+——————————————
+
+Jul 12, 2018
+
+
+What their are thinking may not match what their are look like. 
+
+At least nothing like me. 
+
+So stop imagination no matter how beautiful their are.
+
+——————————————
+
+Jul 13, 2018
+
+
+爱迪生是机器学习的祖师爷
+
+因为他 don't believe in 虚无缥缈的 model( method
+
+But he believed in data( 实践带给他的大量可行与否的 data 给予他智力( experience
+
+——————————————
+
+Jul 15, 2018
+
+
+在学校参加比赛的那些日子里
+
+
+我慢慢认识到只有 `极限开发` 是完成团体项目最好的方法
+
+
+
+https://wapbaike.baidu.com/item/极限编程
+
+——————————————
+
+Jul 16, 2018
+
+
+我当初学 Machine Learning，很基础的一个原因是：我想终结智力天生论，证明就算是笨蛋也可以创造出智能。
+
+现在看起来一切都如我所料，科学果然是一剂良药( 在黑暗的日子里寻找光明 。
+
+——————————————
+
+Jul 25, 2018
+
+
+Anything that can't kill me makes me stronger.
+
+——————————————
+
+Aug 06, 2018
+
+
+Money is secondary, goal is primary.
+
+——————————————
+
+Aug 08, 2018
+
+
+“墙对于技术 就像 高考对于凡人”
+
+“只在于加强难度，增加价值，剥夺普通人成神、变成自由的魂灵的权利”
+
+
+
+GFW is a fucking obstacle aim to reduce your feeling of alive.
+
+——————————————
+
+Aug 10, 2018
+
+
+Anything human can do, supervised learning can do.
+
+Everything human can't do, reinforcement learning can do.
+
+——————————————
+
+Aug 19, 2018
+
+
+共产主义是一切落后思想的集合物，表明了保护一切落后事物
+
+——————————————
+
+Sep 05, 2018
+
+
+当你做了大量的功，你将不再有 doubt，随时随地有 confidence.
+
+当你保持稳定的高速功率输出，你会坚信你能改变世界，事实也是如此。
+
+——————————————
+
+Sep 29, 2018
+
+
+中国教育失败的关键在于：
+
+
+只重视监督学习，而忽略掉强化学习。
+
+事实是，监督学习只能让学生的能力等于或小于老师(现有资源)，而强化学习可以超越老师。
+
+但是强化学习者前期像傻逼，做什么事都要不断试错，所以极其容易被应试教育淘汰。
+
+几乎所有的自学成才的伟人都是强化学习者。
+
+——————————————
+
+Nov 14, 2018
+
+
+我应该继续写笔记
+
+不然思想的灵活性和可表示性就会丧失
+
+——————————————
+
+Nov 28, 2018
+
+
+目的性强的人雄性激素多，雄性激素多的人好色。(优秀的程序员、政客都好强且好色)
+
+——————————————
+
+Dec 03, 2018
+
+
+勤奋转化为现实的生产力、经济利益才有意义。
+
+——————————————
+
+Dec 20, 2018
+
+
+刚才一不小心偷偷看了看 空间动态
+
+
+发现…嗯…那不是我的世界
+
+
+
+
+我早就被边缘化了
+
+我每天面对的都是 computer, codes, webpage
+
+
+听的是 English Pop Song,
+
+看的是 American Movies (that's not true, but one thing i'm pretty sure: it's not Chinese Movie)
+
+
+
+
+然后接受的资讯也是来自精英阶层
+
+金融界、编程界、互联网界的大佬们 的 Twitter
+
+
+
+
+收入也不稳定
+
+外包项目(如果我全职在家的话)，应该是有外国人找我做开发，但在学校…
+
+最近只有一个创业团队找我做一个小项目
+
+
+
+
+而且他们是中国人
+
+我不太喜欢和中国人打交道，他们规则意识不够强，说到做不到
+
+
+
+
+然后关于 人工智能
+
+由于没有全日制的时间
+
+
+一碰到高深的数学原理，只能放一放
+因为时间不够(马上就要上中文课，脑子切换不过来
+
+
+
+对了，还有一个深刻的感受就是：感觉中文课基本在讲 bullshit, 听不进去，没用还费精力
+
+——————————————
+
+Dec 26, 2018
+
+
+我讨厌那些文科专家
+
+就是因为能一句话讲明白的事
+
+他们要讲几十分钟
+
+——————————————
+
+Jan 14, 2019
+
+
+人生中第一次去麦当劳，并在那儿过了一夜。
+
+美国公司真好。
+
+——————————————
+
+Jan 30, 2019
+
+
+如果说软件开发的最高境界是完全自动化，取代人
+
+那么游戏的最高境界就是完全模拟，取代世界
+
+——————————————
+
+Feb 06, 2019
+
+
+真正的程序员
+
+在独处时仍能自我提升
+
+他们把自我视为敌人，只要每天比昨天多解决一个问题、多学一点知识，他们就感到十分满足
+
+Real programmer will always seeking for self-improvement even if they stay alone.
+
+——————————————
+
+Feb 27, 2019
+
+
+适应了学校图书馆的发电机轰鸣声，基本上就能在嘈杂的环境下思考。
+
+(人的神经网络去噪比想象中厉害多了)
+
+——————————————
+
+Apr 09, 2019
+
+
+stay conscious, stay awake.
+
+——————————————
+
+Apr 11, 2019
+
+
+21岁，在浴室看 A 片洗澡
+
+越看越软…
+
+我觉得我快长大了
+
+——————————————
+
+Apr 13, 2019
+
+
+突然想到 源代码、教程 和工业生产是一个道理
+
+都属于粗加工，附加值低
+
+
+
+
+
+只有 闭源商业软件 才是深加工，附加值高
+
+——————————————
+
+Oct 04, 2019
+
+
+The good part about being alone is that you don't have to be slaves anymore.
+
+You can have full control over your happiness.
+
+You can decide when you start to work, when to eat, and when to sleep. No one would stop you from your natural needs.
+
+——————————————
+
+Nov 19, 2019
+
+
+人生第一次被人掐脖子：昨晚12点我就说了几句闭嘴，某室友就冲下床拎着板凳掐我脖子了。
+
+感想：
+1. 力到用时方恨少，被掐住的瞬间我就不想反抗了，因为感觉对方力量比我大
+2. 想到普通人的死活上面根本不在乎，也不会上新闻，也没有全国哀悼 或者 背个处分比较难从正常渠道找到工作，于是也就没有报复的念头
+3. 我都没课了，为啥不申请离校？自己找罪受？
+
+当然我也会觉得自己孬种，
+
+可是在没有人权的地方，正当防卫都会被抓起来，我还能怎么着呢？
+
+自由、民主、人权、法制
+
+缺一不可
+
+——————————————
+
+Dec 08, 2019
+
+
+凡是普通学校教不了的，都是值得学的
+
+比如一个人同时会8种语言
+
+比如一个人同时精通10种主流编程语言
+
+比如一个人精通所有军事武器、拥有特工级别的体术（就像生化危机里的 Alice 一样
+
+一句话：凡是学校批量生产不了的东西，都值得学。
+
+——————————————
+
+Dec 09, 2019
+
+
+不限制人身自由的学校，就是好学校
+
+——————————————
+
+Dec 10, 2019
+
+
+有多少学校打着教育的旗号，实质上干的是奴役人的勾当。（他们把学生关在学校，一方面赚他们的课时费，另一方面用他们给校园经济输血）
+
+——————————————
+
+Dec 14, 2019
+
+
+School is not a place for smart people.
+
+--- Rick and Morty
+
+——————————————
+
+Dec 25, 2019
+
+
+中国的大学，有一个重要的任务，那就是增强学生的奴性
+
+以毕业证为威胁，制定各种不合理的规则，让你 follow, 你要是不遵守，就毕不了业
+
+——————————————
+
+Jan 07, 2020
+
+
+自恋的人喜欢听自己唱的歌
+
+——————————————
+
+Jan 08, 2020
+
+
+Software development is all about motivations.
+
+It can be money, or it can be a need of you that haven't been fulfilled yet.
+
+Unfortunately, 我能找到几乎所有能满足我需求的软件，同时那些要求太高的需求，别人做不出来，我也做不出来
+
+But is that true? 要是别人能做出来，还要我干嘛？复制粘贴？
+
+
+
+Recently I found that if I want to do ML in the browser, I'll need to reimplement all ML model by using JavaScript. It's a lot of work.
+
+Even sometimes including the preprocessing if I want to do text based ML.
+
+——————————————
+
+Jan 12, 2020
+
+
+很多时候，我们不是喜欢某个特定的人。
+
+我们只是喜欢 a concept of beauty.
+
+
+
+
+For perfect life, you gonna do two things:
+
+1. Write diary or books that settled down your mind
+2. Collect and manage useful resources or information
+
+——————————————
+
+Jan 15, 2020
+
+
+Dark Net is the part of the Internet below the private deep web that uses custom software and hidden networks superimposed on the architecture of the Internet.
+
+I have confidence that we all in dark network in China. (You can not get anything useful from local search engine like baidu)
+
+——————————————
+
+Jan 16, 2020
+
+
+英语好的一大特点可能就是 我能清楚的知道我哪些地方讲错了
+
+凡是我 感觉异样、无法理解、语意不通顺、不符合通常听到的话 的地方都是错的
+
+然后我会在内心默默纠正、强调几次
+
+
+
+爱情公寓5里的挖掘机少女点醒了我：读哪个专业的人会哪个专业的东西并不稀奇，稀奇的是不是那个专业的人却精通另一个完全和专业不相关的行业的知识，这才是人才，并且还是有叛逆精神的和我比较类似的人才。
+
+所以我找女朋友还是不能只看普通话和英语能力，英语、教师专业的人会这些并不稀奇，要是找普通人就完全没意思了。
+
+
+
+
+凡是我提不起精力做的事都没有意义
+
+——————————————
+
+Jan 19, 2020
+
+
+程序员不健身就像做爱不用润滑剂，是不流畅的。 
+
+健身带来的 意志力的增强 和 精力的增强 无疑对写代码起到了巨大的推动力。
+
+
+
+
+We love the night for the peaceful feeling it gave to us.
+
+Only in such an quite environment, we can concentrate most on our work.
+
+Only in such an lonely environment, we could forget about the women. The less we see them, the less we miss them
+
+
+
+
+你的 性欲 和 你每天看到的女性数量 呈正相关
+
+我在家一个人呆着的时候，就不太会去想性爱
+
+(没准这和“眼不见心不烦”，有异曲同工之妙)
+
+
+
+
+大学生质量问题其实非常好理解:
+
+原来一人一个宿舍时，质量是100%
+
+变成4人间，除以4，质量变为25%
+
+变成6人间，除以6，质量变为16.6%
+
+变成8人间，除以8，质量变为12.5%
+
+(
+也就是说，原来一个人能干的活，现在需要8个人才能搞出来。
+并且你还不知道是不是一个人把活干了，其他人在玩游戏。
+于是玩游戏的人的能力就等于0%
+)
+
+说人话就是：一个人写作业，其他人抄袭，其他人的能力等于0。
+
+(寝室有8个人，一个人写作业，其他人抄袭，培养出来的8个人只有一个能用，其他人的能力等于0%)
+
+
+那为啥那一个人只能完成一下作业，不能做更厉害的事情呢？
+
+想想在篓子里的螃蟹，因为总有螃蟹扯后腿，所以爬不出来。
+
+同理，如果你住单身宿舍，你还可以没日没夜的搞发明创造。
+但你住在集体宿舍，你的室友最喜欢的事情就是闲聊和玩游戏(包括打牌)。
+你确定你可以克服一切噪音干扰做你自己的事？
+你不能，你要是可以，你就是万中无一的天才了，在嘈杂的工厂也能搞科研。
+
+更糟的是，你不光没法学习，你连觉都睡不好，因为室友活动时你是没法睡觉的。
+而要他们停止活动得等到午夜12点，这还是经过谈判后订立的休息时间。
+于是你每天晚上12点睡觉，早上6:30起来打卡跑操。掐指一算，你才睡6个多小时，严重睡眠不足。
+然后你白天还得上一整天的课，好学的你晚上还得抽时间备考四六级英语考试或升本考试。
+如此一来，任你是如何精神坚强的人，几个月下来，你也得焉下去。
+
+那你可能会问了，为什么你那些室友还活蹦乱跳的？哦，这个问题简单：逃课睡觉！上课睡觉！
+
+那你又会问了，为啥你不换寝室？
+天下乌鸦一般黑，学校学生整体素质在那里，搬到哪个寝室都有 开外放音响 旁若无人的 主儿。
+
+只要学校没有群体性调换宿舍的机制，你就永远没办法把一群素质高的人聚在一起组成一个寝室！
+
+——————————————
+
+Jan 20, 2020
+
+
+现在和以前完全不一样
+
+以前是英文思想占主导地位，思考问题都是英文
+
+现在是中文思想占主导地位，动不动就用中文思考，感觉我完了
+
+潜意识都是中文，怎么破？
+
+
+Simple, just stay awake as late as possible.
+
+After the the Chinese me got sleep, the me that left was English me.
+
+And also, stay calm, and focus on your task or mission.
+
+That'll help you get into that state.
+
+Most importantly: lay down on your comfortable bed, turn off the lights, close your eyes, enjoy the resting until you were satisfied.
+
+Now open your eyes, it's a new world.
+
+——————————————
+
+Jan 22, 2020
+
+
+Health is primary, money is secondary, future is the third.
+
+Health + Freetime = Anything
+
+Money = Anything
+
+Health + Future = Anything
+
+
+
+Fake things are beautiful, but for any smart people, we should always believe, only the truth could give us the right prediction. 
+
+You can't use fake data to build a right AI model.
+
+
+
+
+中国互联网是倒退式发展的典型案例
+
+他们并没有真正联网，企业做得越大，信息搞得越封闭
+
+你无法在搜索引擎上搜索到任何有意义的东西
+
+一方面是因为没人提供可被搜索引擎收录的页面，另一方面是政府的审查实在太严格，没人肯冒风险让资源自由流通
+
+直接结果是，中国的互联网企业不断的把用户提供的数据框定在一个APP中。
+
+他们不断地压缩你获取资源的方式，有时甚至倒退到“面对面快穿”。
+
+而它们利用网页技术的方式则更为奇葩，仍是把它框定在一个APP里，美其名曰“小程序”。这种网页仍然不能被搜索引擎收录。
+
+如果说不能被搜索引擎搜索到的网页被称为“暗网”，那我相信中国绝对是一个“暗网大国”。
+
+——————————————
+
+Jan 23, 2020
+
+
+https://youtu.be/u_QhvHb8pU8
+https://youtu.be/bP678nvQsuM
+
+9分36秒，甲骨文公司创始人在耶鲁大学发表鼓励大学生退学言论
+
+在中国估计不可能发生
+
+
+
+在中国生活和在外国生活还真是不同啊
+
+家旁边修了个停尸房，结果每天晚上都放死人音乐，隔几条街都能听见
+
+要是在国外，直接把尸体扔冰柜，哪里会折磨活人呢？（太吵了）
+
+——————————————
+
+Jan 24, 2020
+
+
+那些成功的人不是接受培训的能力超强，而是自学能力超强。
+
+
+
+During my past experience of coding, one thing I have learned is: never ask anyone any question before you do a lot of experiments.
+
+If you don't follow that rule, you'll lose the ability of problem-solving. 
+
+And also, you'll be stupid as time grows.
+
+
+
+
+I'm not a fucking professor, but I was the man who knows what I was doing when I do things.
+
+I just simply feel that it's not my world.
+
+
+
+
+强大的民族情怀给了傻逼们一个避风港，使他们认为别人屌就是自己屌，然而别人屌和你自己屌还是有区别的。你又穷又笨，又没房子又没豪车，更没有女朋友。还会为了每个月可怜的电费斤斤计较，不知道你在自豪什么。
+
+我看到了自己的失败，所以我才不安现状。
+
+——————————————
+
+Jan 25, 2020
+
+
+想想自己有时候真是一个 idiot
+
+作为一个开发者怎么能像普通人那样那么依赖腾讯(别人)的东西呢？
+
+自己写一个会死吗？（真是一眼就能被别人看穿自己的级别
+
+——————————————
+
+Jan 27, 2020
+
+
+不该你做的事情(强迫)你做了，怎么会不累呢？
+
+——————————————
+
+Jan 28, 2020
+
+
+"""
+We embrace open source just because we believe we can do better than it. (So you can buy our products)
+
+That doesn't means we have to open source.
+"""
+
+It's reasonable. That's how the software world grows. Earn money while keep updating.
+
+——————————————
+
+Jan 29, 2020
+
+
+所谓生产力，就是一种执行力
+
+我说要做什么，我就一定要把它做到
+
+当你习惯了这个过程，你就成了一个有能力的人
+
+如果你老是生产新的东西，那你就是一个有创造力的人
+
+
+
+大公司做广告（财大气粗，接一个广告收益几百万
+
+小程序员做会员（保存一个月的会员账号，这点存储你还是买得起的
+
+——————————————
+
+Jan 30, 2020
+
+
+Different people work on different things.
+
+
+
+IT行业是不会死的，只是会不断发生变化
+重要的不是你怎样改变世界
+而是你怎么盈利
+
+要是不赚钱，你就看不到明天的太阳
+
+有了钱，你才能请更多的人，搞一些造福世界的事情（比如按照你的想法改造世界
+
+先活下来
+
+
+
+How cloud storage platform make money: 
+
+Many files we save nowadays are not personal, they can be popular music or movies. So for a file, let's say it have a size of 1GB. Though seems like it took you 1GB of storage, indeed, for the cloud storage platform, they only use an ID to indicate that you have the same file. The ID is nothing but a number, it could be a few bytes. They just saved the file once, then use it everywhere. Eventually, you thought you bought a 2TB disk, but indeed, you have only used 10GB of that disk. The rest storage space is what the storage platform get from you.
+
+假设一个硬盘2T，如果你只存独一无二的个人文件，网盘就赚不到钱了。但如果你保存一些公共文件，如流行歌曲或电影，网盘就只需要存一份原始文件，再给你的存储空间贴个标签，说你拥有对那个文件的访问权。表面上你占用了很大的空间，实际上你就占用了一个字符串。网盘就是这么挣钱的。这相当于你买了2TB的硬盘，实际上只用了10个GB。剩下的空间送给了网盘提供商。
+
+——————————————
+
+Jan 31, 2020
+
+
+白天睡觉还是不行。
+
+随着年纪的增大，脑力有效时间会减少。
+
+撑不过一晚。在疲劳时的工作效率和冷静指数为0。
+
+只能在晚上先小睡一觉，比如晚9点睡到早上1点。这个时候环境比较安静。
+
+
+
+有多少人把 推特、微信朋友圈、QQ空间 当成了日记本？
+
+你们难道不知道那些东西是不被搜索引擎收录的吗？
+
+不被人看到的东西有什么意义？
+
+
+
+
+I love foreigners for their practical mind.
+
+Normally they won't talk shit.
+
+——————————————
+
+Feb 01, 2020
+
+
+Machine Learning is indeed amazing, but it requires three things: people who build models, computing resources, a lot of data.
+
+For me, I can only get free computing resources from foreign big companies like Google. (Google owns Colab and Kaggle)
+
+
+
+冬天手冷，看见代码不想敲。
+
+但是不敲是绝对学不会东西的，开空调吧！
+
+
+
+A: 你难道不是觉得这个东西好，才用的？
+B: 不好就不能用吗？
+
+A心想，这种人无法交流
+
+--------------------------------------
+
+A观察了对方一阵子，心想: 看这人不会写代码，应该不适合深入交往
+
+--------------------------------------
+
+我就是那A
+
+
+
+想了想，还是发出来，以减少不必要的误会。我从来都不是针对某个特定的人，我是针对一类人。(俗称开地图炮)
+
+从过往的经历来看，但凡我不遵循这些简单的原则交的朋友，都不得善终。感觉挺伤心的，浪费了两个人宝贵的时间和精力。
+
+还弄得别人觉得自己很弱，很难受。要是一开始就不接触，情况会好很多。干嘛给自己和别人找罪受呢？
+
+
+
+
+You can only get that wisdom when you are alone.
+
+这就是为什么真正的程序员一般都比较低调，不是他们真的低调，而是他们知道他们和普通人聊不到一块儿(没有共同语言)。实际上他们在技术圈内部还是很高调的，有自己的社团，blog，Twitter.
+
+——————————————
+
+Feb 03, 2020
+
+
+According to the explosion of software libraries, there is no absolutely right combination for you to build a product.
+
+The thing that really matters is to build that product which feeds your user's needs well.
+
+In other words, if they want, you build. As quickly as possible!
+
+But for those programmers who want to create a fresh new besiness, you indeed need some time to think about what kind of product you want to build, how you gonna make money with it. And also, how you gonna distribute your software.
+
+
+
+哪个老师让孩子讨厌学习，哪个老师就是傻屌老师。
+
+哪个老师让孩子喜欢学习，哪个老师就是特级教师。
+
+——————————————
+
+Feb 04, 2020
+
+
+There only has two things that could make a programmer getting stronger:
+
+1. Read a good book.
+2. Coding with experiments.
+
+——————————————
+
+Feb 06, 2020
+
+
+不好就推倒重建(，没商量)。
+
+
+
+
+"University of London has launched a online computer science course..."
+
+现在我肯定是掏不起这个钱的，
+
+但感觉比随便在国内读个垃圾大学划得来(国外工作生活，国外认可就行了)。
+
+(在垃圾大学什么都学不到)
+
+
+
+
+如果勤于思考的话，钱会来敲门。--- Eric Xu
+
+——————————————
+
+Feb 08, 2020
+
+
+所谓做人的道理，无非就是“请人办事，拿钱消灾”
+
+现在是21世纪第20年了，拿烟请人吃饭那一套早就过时了。大家都是隔了半个地球的陌生人，你做那一套给谁看？掏钱吧您勒！
+
+——————————————
+
+Feb 08, 2020
+
+
+不要说我俗。我要不俗今天就得挨饿，后天就得饿死。
+
+——————————————
+
+Feb 09, 2020
+
+
+Two kinds of books that I must read: 
+
+1. Machine Learning with *** Programming Language
+2. Data Structures and Algorithms with *** Programming Language
+
+——————————————
+
+Feb 10, 2020
+
+
+我决定不赚钱的事以后就不找人帮忙了
+
+找人帮忙就一定要让对方赚到钱，就这样
+
+----- 简称 “新的 yingshaoxo 做人法则”
+
+——————————————
+
+Feb 12, 2020
+
+
+差异化竞争：别人不做的事我们做。
+
+
+
+
+我目前的状态：写代码是一种排解空虚的自然生理反应。
+
+(不是真的想写代码，只是闲得无聊)
+
+
+
+
+那宣传机器的洗脑能力太强了
+
+有时候，你甚至连你的父母也救不了，更别说其他人了
+
+(他们只相信他们看到的，然而他们只能看到 被审查的CCTV 与 被审查的微信)
+
+
+就让他们自生自灭吧
+
+类似的例子还有很多，比如不敢讲真话或被学生举报的老师，撤热搜、封关键词的微博，发无脑的短视频的网红
+
+——————————————
+
+Feb 13, 2020
+
+
+和一个越南18岁妹子聊了1个多小时。然后搜了一下资料，我觉得娶越南女人做妻子是可行的。
+
+
+
+Most of the people in this world will probably won't be able to find the things that they love to do in their entire life.
+
+https://youtu.be/JCTPFqU8qQM
+
+
+
+
+For me, coding is more like a job that I don't hate. I was more love English speaking. (I know it sounds stupid, but that's it.)
+
+
+
+
+我突然发现，西游记有个严重的逻辑错误。
+
+天不怕地不怕，敢大闹天宫的孙悟空，竟然会怕头疼？死都不怕还怕头疼？
+
+依我看，孙悟空要么是个孬种，要么就不存在。
+
+
+
+
+
+中国的大多数人都对人权问题嗤之以鼻。
+
+他们十分冷漠，看别人下跪、被抓走，内心一点感觉都没有。
+
+他们只是想着自己没事就行。
+
+比如我父母，他们在听完我的观点后不会表示赞同，相反，他们会叫你不要在外面说。
+
+事实上，我认为，反正人生都没有什么意义，做不出大成就，出不了名，还不如早点死。
+
+——————————————
+
+Feb 14, 2020
+
+
+一口一句“然后”的人的思想是线性的，
+
+做事有条理。
+
+——————————————
+
+Feb 15, 2020
+
+
+我人生第一次坐飞机是去日本旅游的航班
+我人生第一次赚的钱是美元，且是以小时记的 remote job
+我人生第一次和男性视频聊天，是和南非的黄皮肤小哥( programmer )
+我人生第一次和女性视频聊天，是和越南的黄皮肤18岁小妹妹( high school student )
+
+Remember that! It's your glorious!
+
+——————————————
+
+Feb 17, 2020
+
+
+“千里之行，始于脚下”
+
+I believe in that as I believe in you.
+
+
+
+Life is full of opportunities, but opportunities itself won't make things happen. It needs constantly hard working.
+
+
+
+There is no fucking single fixed way for people to follow.
+
+
+
+Others will never tell you how to be richer than they are.
+
+
+
+
+我觉得人们应该很容易从被拒绝中失去信心。
+
+But I wasn't one of them.
+
+I got my job to do. (It's the destiny of a young programmer)
+
+——————————————
+
+Feb 18, 2020
+
+
+At least, I don't have to continue to waste my time.
+
+Efficiency is good. Easy come easy go.
+
+——————————————
+
+Feb 19, 2020
+
+
+正在以2倍速看 《天下第一》
+
+我是能把50集电视剧变成1集的男人
+
+50集变1集指我做人太直接了，他们要50集才能做完的事，我在第一集就把坑填上了，没有后续故事。
+(是在讲和妹子聊天的事。由于太直接，把妹子吓到了，然后把我拉黑。)
+
+——————————————
+
+Feb 20, 2020
+
+
+所见即所得
+
+一个人，如果不喜欢美国的电影，那他(她)很大程度上，接近99%，也不喜欢美国自由、民主、个人英雄主义的价值观
+
+所以，下次交朋友前，看看他(她)喜欢看什么影视剧就好了
+
+能把中国新闻联播、综艺节目当成宝一样看的人，99%是傻逼
+
+原理比较简单，除非被逼迫或者被强制要求
+
+一个人是不会主动观看自己不喜欢的东西的
+
+——————————————
+
+Feb 21, 2020
+
+
+If you wanna know whether an industry well developed, you could know that simply from how many money and technologies were putted into that industry.
+
+——————————————
+
+Feb 23, 2020
+
+
+Nowadays, hero use code as their weapon.
+
+现在，侠客们早就不用剑当武器，他们用代码！
+
+
+
+
+2倍速看了“天下第一”，这是一个关于金钱、权力、女人的故事。
+
+神侯为了皇位，苦心钻研权术谋略，花了一辈子也敌不过权力世袭的血缘关系。
+
+感情线是为了过审。武功线是为了构建吸引人的武侠世界。
+
+——————————————
+
+Feb 24, 2020
+
+
+An ideal company should only requires its employees to work 5-hours per day.
+
+理想中的公司，
+
+应该是5小时工作制。
+
+上午到公司上2小时的班，下午到公司上2小时的班，晚上回家利用业余时间为公司工作1小时。
+
+——————————————
+
+Feb 25, 2020
+
+
+What's the main difference between Chinese programmer and other programmers all around the world? 
+
+Chinese programmer won't remain their beard, others will.
+
+
+
+
+所谓吃一堑长一智，在学校里的痛苦生活对我来说还是有教育意义的，那就是：远离傻逼，越远越好。
+
+(这里的“傻逼”不是指人的智商，而是指人的道德素养：做事是否考虑别人的感受，是否永远坚持不随意打扰别人的原则 (也称“人权”：做事考虑别人应有的权利，不随意侵犯他人的权利))。
+
+别人晚上要睡觉，你用喇叭打游戏、聊天，那我只能说你是傻逼了，还是比较臭的那种。
+
+当然，如果在座的各位80%遇到的人或者你自己都是那样，那只能说明这个种族的人的平均素质就那样儿。如果不能跳出这个地域，远离人群不失为一个好选择。
+
+有人会叫了，说“那个胡英杰不是谁都瞧不起吗？一口一个傻逼，怎么又说不歧视低智商的人？”
+
+其实我从来不歧视知识少的人，我只是歧视懒惰的人、不上进的人、混吃等死的人。
+
+
+
+
+Someone asked me what is human rights.
+
+I said "think the human rights as a sentence of <everyone should have the right of  ***>, if that sentence was right for most of the people, then it is right".
+
+有人问我什么是人权，我回答到：
+
+“想象一个句子：<人人都要**>。如果这句话对大多数人来讲是正确的，那么那就是人权。比如<人人都要睡觉>，所以我有睡觉的权利。”
+
+——————————————
+
+Feb 27, 2020
+
+
+别人这个年纪在想怎么花天酒地，泡更多马子
+
+而我不一样，我什么都没有，我在想着怎么革命，怎么颠覆旧有的一切
+
+
+
+
+不争论，争论就是给别人送免费的知识。
+
+不过，争论也有好处，比如官员们为了当总统，在电视台上互相指责对方的缺点和丑事、激烈争论，这样有助于提升人民的智力。
+
+这也是为什么民主国家普遍较强。
+
+——————————————
+
+Feb 28, 2020
+
+
+人总需要点什么来标明自己与众不同
+
+——————————————
+
+Feb 29, 2020
+
+
+pornhub 看太多，渐渐就会对现实中的妹子失去兴趣
+
+因为网上的质量实在太好了
+
+
+
+
+If one day I suicided, that'll because I feel nothing I could do in my rest of life.
+
+——————————————
+
+Mar 01, 2020
+
+
+Computer Science is different than most of the subjects in this world. 
+
+It has a certain optimal effective solution at a period of time.
+
+——————————————
+
+Mar 02, 2020
+
+
+Genius generally existed in this world with the property of rare.
+
+You should never expect to see many of them existed in one career at once.
+
+——————————————
+
+Mar 03, 2020
+
+
+当你结了婚，
+
+特别是有了孩子，
+
+你就跳不起来了。
+
+你每天想的事情，
+
+就变成了：
+
+我要怎么挣钱？
+
+我要怎么挣更多钱？
+
+
+
+
+长得越大，信的东西越少。
+
+除了平等自愿交易外，只信钱和自由。
+
+没钱没有地方住、没有东西吃，自由等于等死。
+
+但是有钱没地方花、不敢花、要跪着生活，也和死了没啥区别。
+
+——————————————
+
+Mar 04, 2020
+
+
+人的常识是人在20岁之前接受的观念。
+
+这也是为什么人们总在强调：教育好孩子。
+
+因为一旦超过那个年龄，思想就不好改正了。
+
+年轻时候被洗脑，一辈子都改不了。
+
+——————————————
+
+Mar 06, 2020
+
+
+越新的东西越牛逼
+
+越老的东西偷奸耍滑越牛逼
+
+——————————————
+
+Mar 07, 2020
+
+
+你以为你做出了一个很屌的产品，你觉得大家都会去用
+
+然而大家手机里只有几个巨头软件，你不做宣传，相信我，几年之后用户还是个位数😏
+
+——————————————
+
+Mar 08, 2020
+
+
+自由职业者赚钱不能以小时计费
+
+计时就失去了其优越性
+
+
+应该以项目计费，你提需求，我做出来，我做多长时间你别管
+
+只有这样你才可以干一星期，玩一个月
+
+
+
+
+对于底层人民来讲
+
+你们每打一次游戏，都是在前往搬砖的道路上加一块砖
+
+
+对于有产的特权阶级而言，你们每打一次游戏都是在为缩小贫富差距做贡献
+
+
+
+
+Most people including me, nowadays, have a big problem: think too many, did so little.
+
+
+
+
+这个世界上根本没有报应
+
+如果有，你早就死了，因为你从小到大吃了太多尸体，在餐桌上间接杀死了无数的生物
+
+——————————————
+
+Mar 09, 2020
+
+
+动力自在心中，没有人鞭策的前行才能走得更远。
+
+
+
+
+让我告诉你在中国什么时候睡觉最好：下午5点 -> 第二天1点
+
+因为这段时间没有重要电话，同时也是人们比较吵的时间。他们吵，你戴上耳塞睡觉，他们不吵，你晚上起来工作。到第二天早上，你的工作基本上已经完成，你就可以娱乐了，看小说、看电影、甚至打游戏。你娱乐，他们吵，不影响。
+
+这样你就可以有一半的时间工作，一半的时间娱乐，剩下的时间睡觉。睡得好，玩儿得好，挣得到钱，还有什么不满意的？
+
+Let me tell you when it is best to sleep in China: from 5pm to 1am.
+
+Because there is no important call during that time. It is also a time when people are noisy.  When they are noisy, you put on earplugs to go to sleep, when they are no longer noisy, you get up to work.  
+
+At the next morning, your work is basically complete, you can then do some entertainment, watch novels, watch movies, and even play games.  You do entertainment, they make noises, no affects would be made between you and them.
+
+Only in this way you can have a balanced life, work half, enjoy half, and have a good sleep. 
+
+Sleep well, play well, earn some money, what do you expect more?
+
+——————————————
+
+Mar 10, 2020
+
+
+The honor belongs to those great mathematicians. 
+
+Just imagine a world without sum check algorithms like sha256.
+
+
+
+
+我找女朋友的态度：
+
+
+看尽弱水三千，我只取一瓢。
+
+慢慢来。
+
+志同道合这事儿急不得。
+
+
+
+
+我以前讲过，
+
+软件发展的最高境界是完全自动化，取代人类
+
+而游戏发展的最高境界是完全模拟，取代世界
+
+——————————————
+
+Mar 13, 2020
+
+
+我发现写论文是一件能让自己的思维和企业级编程挂钩的好办法：
+
+因为在论文里不能偷懒，一步一个脚印，理论必须解释得很清楚。
+
+如此一来，构建一个超大的项目也不是一件很难的事，因为蓝图都制定好了。
+
+
+
+
+A programmer's ability depends on how many useful algorithms he mastered.
+
+——————————————
+
+Mar 16, 2020
+
+
+从高中学习政治的一开始，我就嗅出了那本书的矛盾之处：党和人民到底哪个大？
+
+那也是为什么我从来都看不起那门学科
+
+https://telegra.ph/任志强一位剥光了衣服也要坚持当皇帝的小丑-03-16
+
+
+
+
+对于女生来讲，岁月就是你最大的敌人
+
+我的建议是，不要想太多，找个靠谱的男的就嫁了
+
+我对靠谱的定义：
+
+1. 不智障
+2. 对你好
+3. 不家暴
+4. 有工作
+5. 有房子(谁家现在没房子？
+
+——————————————
+
+Mar 17, 2020
+
+
+What the docker does is to let system free from hardware
+
+In other words, it provides you a cheaper way to get a virtual system
+
+Embrace it for installing anything...
+
+——————————————
+
+Mar 18, 2020
+
+
+不是每个人都长得像主角
+
+因为，你要是长的像，你就去演电影了
+
+
+
+
+让我们来做个实验：让你男友吊在单杠上，你吊在男友身上。
+
+如果你男友能坚持20秒，说明他很靠谱。
+
+如果不能，给他3个月，如果他能为你去做锻炼，并完成任务，就嫁给他。
+
+(考虑这个实验的合理性：
+1. 你男友很爱你，为了你愿意去做难事。
+2. 你男友的身体得到了锻炼，婚后身体健康，并且某些功能会得到增强。
+3. 坚持不懈的品质不管做什么都能用到，包括赚钱。
+4. 才提出要求就拒绝，要么是渣男，要么就是男尊女卑、大男子主义思想严重。
+)
+
+
+
+
+Let your boyfriend hang on at the horizontal bar. Then you hang on upon your boyfriend. 
+
+Can your boyfriend stay for 20 seconds? 
+
+If so, please marry him. He's a reliable person.
+
+
+Rationality of that experiment:
+
+1. Your boyfriend willing to do anything hard for you.
+2. His body got exercised. More healthy.
+3. The spirit of 'Never give up' works for every fields.
+
+——————————————
+
+Mar 18, 2020
+
+
+hello, world.
+
+The good thing about life is no one would really tell you how to be strong, how to get money.
+
+You have to find it out by yourself.
+
+——————————————
+
+Mar 19, 2020
+
+
+有时候你会想，大家都是沐浴在同一片阳光下，为什么差别那么大？
+
+有的地方出现了暴君专制，有的地方出现了全民民主。
+
+要是在 GTA6 里面体现出了东、西两块大陆，并且表现出专制与民主两种特色制度，那一定很有教育意义。
+
+
+
+有多少人就冲着电视剧里几句“爸爸”，就觉得很幸福，要了孩子。
+
+然而纵观我一生，就没叫过几次“爸爸”。
+
+想必年纪轻轻就成了孩子的奴隶应该是不明智的。
+
+——————————————
+
+Mar 20, 2020
+
+
+正在以2倍速快速观看 《我和僵尸有个约会》
+
+还行，片荒的日子里，在香港沦陷之后，重刷旧片没什么不妥
+
+这部电视剧的逻辑错误在于：不遵守“自愿变僵尸正当，不自愿变僵尸不正当”。
+
+如果按那个原则做了，就符合现实了。
+
+第二个矛盾的地方在于：如来佛祖如果可以随意实现愿望、改变历史，为啥他不自己消灭魔族。
+
+第三个不爽的地方：金正中 不净化 贞子，谁也阻止不了，他还是太弱了。
+
+第四个逻辑错误的地方在第二部第36集，不忠和不孝不是绝对捆绑的，不忠之后反而可以孝。毕竟皇帝也没把你当人看，kill 皇帝之后，家人、爱人自然平安。
+
+——————————————
+
+Mar 21, 2020
+
+
+Even though thinking is a painful process, you must do it.
+
+By rethink your life, your goal, your reality, your strategy, you will have a more clear way to go.
+
+——————————————
+
+Mar 22, 2020
+
+
+我觉得我在中国大学做得最错误的事情就是：没有把生活和工作分开，没有建小号，没有隐藏自己的政治立场，没有隐藏自己的能力。
+
+这给我带来了很多烦恼和麻烦。
+
+——————————————
+
+Mar 23, 2020
+
+
+The best way for getting advanced in programming is to reimplement a big project based on its commits history.
+
+
+
+如果人自己都不知道怎么挣钱，怎么能让机器学会挣钱？
+
+如果人自己都不知道如何让自己变得更智慧，机器怎么能学会让自己变得更聪明？
+
+——————————————
+
+Mar 24, 2020
+
+
+Python, JavaScript, C++ are the 3 programming languages that you have to learn.
+
+I've been read an article about whether a new programming language would dominate the world.
+
+It raised an interesting fact: if a new programming language want to dominate the world, first, it must based on the previous dominated language. Like C++ over C, Python over C, JavaScript over Chrome, Chrome over C and C++.
+
+C and C++ won't go anywhere as long as Linux was still written by c.
+
+
+
+另外，现实世界中隐藏自己的能力也有好处
+
+少装点逼，就少认识一些垃圾
+
+(我这里的垃圾只是指能力比你低的人。能力低的人仰慕能力高的人并且想和对方做朋友，这似乎是一条自然规律)
+
+在网上随意，因为对方再垃圾也不会打扰到你的正常生活。
+
+正确的处理方法是：
+
+从地缘上分，
+
+面对 凡是从现实生活中遇到你、认识你的人，一律讲假话：我什么都不会。(这是善意的谎言，减轻对方的负担)
+
+面对 从网上认识你的人，1给钱讲真话，2随心情讲真话。
+
+
+
+傻子不能想着学会所有的东西
+
+傻子只能找一个东西死命地学
+
+这就是傻子的宿命
+
+——————————————
+
+Mar 25, 2020
+
+
+我认识一个女人，70多岁了，给儿子女儿、孙子孙女做了一辈子仆人，带孩子、洗衣服、做饭、拖地、擦灶台。
+
+到老了，终究忍受不了这份简单且重复的无聊工作，在乡下找了一间房子，开始了自己无忧无虑、自由自在的个人生活。
+
+(这个女人，有人叫她老太婆，有人叫她妈，而我，则叫她外婆。)
+
+
+
+Sorry for your loss 是有含义的
+
+本来你和你妻子在一起过得很轻松、开心
+
+你妻子死了之后，生活变得艰难、不快乐，对比起以前，确实是一种利益上的失去
+
+
+
+
+我的2020年团员自我评价：
+
+做人对得起良心，对得起领导，对得起广大的纳税人。不偷鸡摸狗，不偷懒耍滑，不好逸恶劳，不成群结队，不结党营私，不打扰他人，不放弃无产阶级的阶级特征。
+
+热心帮助网上的无知群众便捷地获取有用的知识，热衷于传播有价值、有水准的新闻报道，为了科学事实和客观公正而不畏惧有权有钱之人。
+
+坚信“天下兴亡，匹夫有责”。
+
+——————————————
+
+Mar 27, 2020
+
+
+观孟加拉独立战争被屠杀300万人有感：
+
+独立战争几乎天生带有正义性
+
+因为如果不受压迫，怎么会闹独立呢？
+
+——————————————
+
+Mar 29, 2020
+
+
+How to let your user pay for your products at US or Europe? (I mean you have to master a pay method)
+
+This is an essential problem for you to survive.
+
+中国可以用支付宝 API， 美国呢？
+
+PayPal! Yes, that's what you need to learn.
+
+
+
+平凡人的一生是低风险的，当然，那也意味着低收益。
+
+——————————————
+
+Mar 30, 2020
+
+
+我和僵尸有个约会第二部，39集出现的 樋口明日嘉 好评，没有化妆美颜的时代都那么好看，都快忍不住给它 faceswap 了
+
+果然还是日本妹子好看
+
+
+
+成功者的特质：
+敢想敢做、敢拼敢闯。
+
+Successful people:
+Dare to dream, dare to do.
+Dare to go, dare to compete.
+
+
+
+如果你认为教育的成本太高，试试看无知的代价。
+
+----- 德里克博克
+
+——————————————
+
+Mar 31, 2020
+
+
+1. 我们相信人的激情与主观能动性
+2. 我们同时也认为不是所有人都有那样的能力，它属于少数精英
+
+1. We believe in passion. It gives people a lot of motivations.
+2. But we also believe not all of people have that power, it belongs to a few of talented people. (Because not all of us could do a thing persistently)
+
+
+
+你痛苦的根源在于想得太多，做得太少。
+
+Your pain roots on thinking too much, did so little.
+
+——————————————
+
+Apr 01, 2020
+
+
+如果不承认自己的愚蠢，恐怕永远也无法取得进步。
+
+If you want to be good at something, the first thing for you to do is to admit that you are stupid at it.
+
+
+
+纵观我的前半生，用四个字来形容就是：Too young, Too naïve.
+
+你们交朋友一定得选那些肯承认自己笨、能力不足的人啊。其他的都是缺心眼儿，对你来说没好处，还让你闹心。
+
+
+
+
+敢想敢做：想就是思考总结，做就是按策略执行。
+
+——————————————
+
+Apr 02, 2020
+
+
+可以这样说，今天我有多垃圾，未来我的进步空间就有多大。
+
+——————————————
+
+Apr 03, 2020
+
+
+智慧是痛苦的根源
+
+愚蠢是快乐的源泉
+
+——————————————
+
+Apr 04, 2020
+
+
+我讨厌只能发出一种声音的喇叭。
+
+
+
+They want me to be a fool, I disagree, I did the opposite. I got the knowledge that they don't want me to get.
+
+I should be proud of me.
+
+
+
+要赚钱
+
+首先你得有稳定的用户系统+支付方式，方便订阅
+
+然后你需要有不稳定的虚拟货币系统，方便坑钱（比如看广告得金币，金币可开宝箱
+
+实体货币进，虚拟货币出。实际上是只进不出。
+
+——————————————
+
+Apr 05, 2020
+
+
+I learn Bazel to help me reduce the hating to other programming languages that I don't know. 
+
+Bazel would always remind me, they aren't enemies, I can work with them commonly and easily. #Bazel
+
+——————————————
+
+Apr 06, 2020
+
+
+当一种机制或形式主义成了发工资的依据，它就很难改变了。
+
+——————————————
+
+Apr 07, 2020
+
+
+人们最可笑的时刻出现在他们误以为自己很厉害。
+
+
+
+Learning at a quiet place, sleep at a quiet place, sleep until you wake up naturally, these are essential for you to get wisdom.
+
+——————————————
+
+Apr 08, 2020
+
+
+The world only got two different people eventually: 0 and 1 .
+
+This is a basic fact that we can't change.
+
+——————————————
+
+Apr 09, 2020
+
+
+You success level depends on how much pleasures that you can give to others.
+
+Like Twitter, YouTube, Telegram, they gave me pleasures, so they are success.
+
+你的成功取决于你取悦别人的水平。
+
+感觉有点道理啊，因为一个好的服务就是要让人感到愉悦，比如 Twitter, YouTube, Telegram.
+
+与效率说不矛盾，减少重复劳动，有更多时间享受生活，that's a pleasure.
+
+This has no combat with the efficiency theory, because when you are efficiency, you do less repeated work. Then with the time you've saved, you can enjoy your life more.
+
+——————————————
+
+Apr 10, 2020
+
+
+我们可以做游戏，可以做网页，可以做用 IDE 做 Native App，但这些东西是个人都可以做。
+
+所以我不想做。
+
+We could make games, we could make websites, we could make Native Apps by using specific IDE.
+
+But I don't wanna do that because everybody could do that.
+
+
+
+我的悲伤源自我只会 Python and JavaScript
+
+然而 Python was written by C, V8 engine was written by C++.
+
+感觉我太渺小了
+
+
+
+
+对于男生来讲，外貌只是实力中的很小一部分，几乎可以忽略不计。
+
+如果你硬要计的话，100个男的里有99个是垃圾，请问这个结论你接不接受？
+
+
+
+
+Here's the life lessons I got:
+
+1. Do not help people unless they ask.
+2. Do not show your ability unless they pay you for that.
+
+——————————————
+
+Apr 11, 2020
+
+
+对一些女生讲：看你朋友这么多，一定不适合我。
+
+
+
+I hate to be a customer. I want to be a producer.
+
+
+
+我享受一个人的生活。
+
+记得初中时班主任问我这辈子最想干什么，我说我想当鲁宾逊。她当时以为我疯了(有精神病)。
+
+实际上，就目前来讲，如果鲁宾逊独自拥有一个小岛，一间自制别墅，一台可以上网的电脑。不知道他可以过得多么舒适！
+
+(更别说没人管你，没人从意识形态上评判你，没人连你脑袋里面想什么东西都要管，没人骂你，没人批评你的人生，没人和你唱反调，没有人情世故需要处理，不需要陪笑脸，不需要忍气吞声，不需要遭受许多不能说的痛苦)
+
+——————————————
+
+Apr 14, 2020
+
+
+Next time if I do freelance again, I'll make a contract.
+
+https://www.reddit.com/r/freelance/comments/5wnfu9/my_client_is_asking_me_for_source_codewhat_to_do/
+
+
+
+It's all about overcome the fucking obstacles. Mentally and physically.
+
+
+
+看杰伦《不能说的秘密》电影，总是觉得它很美好。
+
+细细一想，便发现了其中的秘密：它抛去了中式的虚伪文化，融合了英伦的复古高雅、日本的田园宁静。营造了一个架空世界，这个世界不在大陆，而在台湾。
+
+——————————————
+
+Apr 15, 2020
+
+
+要坚持锻炼身体
+
+我是最近才感受到腰肌强健的好处
+
+一旦我能一坐8小时腰不疼不难受，我就能做到任何事情
+
+ (锻炼方法：吊在单杠上。出气，身体慢慢向上，头越过单杠，再加把劲，双腿提升至垂直于身体。吸气，双腿落下，身体慢慢垂下。重复运动，把握节奏。)
+
+——————————————
+
+Apr 17, 2020
+
+
+［月光博客］
+
+在一群骗子和一群傻子组成的社会体系里，千万不要试图唤醒傻子和指责骗子，否则这两伙人会合伙儿弄死你。——盖伊·福克斯
+
+转发：在现实中有两种傻瓜群体存在，一种是从来或还未被社会毒打过；另外一种是虽然经常或曾经饱受社会毒打，但以他的智力从来不知道谁在打他。
+
+——————————————
+
+Apr 18, 2020
+
+
+https://youtu.be/4ODuHVZQmv0
+
+我高中的时候酷爱历史，特别是袁腾飞的东西
+
+记得当时《这个历史挺靠谱》这本书 被我翻来覆去看了好多遍
+
+后来了解到一个真理：中国5000年里，每一个政权上台之后做的第一件事，就是篡改历史。
+
+
+
+性生活不是生活的全部，而是生活的重要组成部分。
+
+
+
+Sex isn't all of life, but it's an important part of life.
+
+——————————————
+
+Apr 21, 2020
+
+
+我对自己厨艺的方向和要求：
+
+蒸、煮、烤、微，就是不炒、不炸。
+
+好吃大过天。
+
+——————————————
+
+Apr 23, 2020
+
+
+时代变迁、技术变革不用担心，你只需要比他们更强就行了。
+
+——————————————
+
+Apr 24, 2020
+
+
+佛祖真吃素的话怎么会长那么肥？
+
+肯定天天大鱼大肉。
+
+
+
+中国学生在学校里训练的是什么？不是独立思考能力，是服从。是忍受各种不合理、不规范的强加于人的制度与规则。
+
+这就是为什么你们当不了领导或领袖，因为没有任何一个人会真正告诉你如何挣钱、如何开公司、如何建立一个政权。如果有，那只有一种情况：你是对方的一条狗，别人说什么你就做什么。
+
+
+
+真正的高手，一句话也不敢说。
+
+那些自制力比较差的人，比如我，偶尔说两句，但也越来越避重就轻，虚多实少。
+
+而那些以为自己天下无敌的人，则扯着嗓子侃侃而谈。
+
+我嘛，还得改进学习，如果以后有人叫我多说两句，我一定回到：不行不行，我就是一粗人，别人说什么我就信什么，我脑袋里能想到的东西，大家都知道，没什么好讲的、也没什么独特的。
+
+——————————————
+
+Apr 25, 2020
+
+
+There has conflicts in my head.
+
+On the one hand, I don't wanna break the old design of a system for it'll bring me a lot of work. 
+
+On the other hand, I can't add new functionality easily without break the old designs, I don't wanna write codes like Spaghettis.
+
+——————————————
+
+Apr 27, 2020
+
+
+工作的好坏 与 宿舍同居人数 呈反比。
+
+同居人数越少，工作越好。
+
+比如安排住单人宿舍的，绝对是好工作。
+
+
+
+If it's not a 1 to 1 input to output process, then it has no standard answers.
+
+If you want to win at exams, find all fixed 1 to 1 algorithms.
+
+
+
+我们的考试特别扯，考的就是信息不对称。
+
+你都不知道一道题的固定思考模式与解答模式，你连规律都找不到，也没人告诉你，你考个鸡巴，垫底吧你。
