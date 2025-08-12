@@ -15,3 +15,5 @@ If you want to have a more stable diary application.
 
 Try to use your pen and paper.
 
+### About yingshaoxo diary
+It is in './2021/fetch/Mine/database.json', this version has time line information.
