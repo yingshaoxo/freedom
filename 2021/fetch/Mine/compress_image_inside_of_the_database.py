@@ -12,58 +12,51 @@ import json
 diary_list = json.loads(json_text)
 
 
-# step 1, delete all twitter image
-new_diary_list = []
-counting = 0
-for index, one in enumerate(diary_list):
-    type = one["type"]
-    if type == "twitter":
-        one["images"] = []
-        new_diary_list.append(one)
-        counting += 1
-    else:
-        new_diary_list.append(one)
-print(counting)
-with open("new_database.json", "w", encoding="utf-8") as f:
-    f.write(json.dumps(new_diary_list, indent=4, ensure_ascii=False))
-print("done: remove twitter image from diary")
-exit()
-
-#base64_image_list = []
+## step 1, delete all twitter image
+#new_diary_list = []
 #counting = 0
 #for index, one in enumerate(diary_list):
-#    images = one["images"]
-#    if len(images) > 0:
-#        base64_image_list.append([index, images])
-#        #print(one["content"][:10], images[0][-100:])
-#        #if index == 1578:
-#        #    print(one["content"])
-#        #    #with open("test.base64", "w") as f:
-#        #    #    f.write(images[0])
-#        if one["type"] == "twitter":
-#            print(one["content"][:20])
+#    type = one["type"]
+#    if type == "twitter":
+#        one["images"] = []
+#        new_diary_list.append(one)
 #        counting += 1
+#    else:
+#        new_diary_list.append(one)
 #print(counting)
+#with open("new_database.json", "w", encoding="utf-8") as f:
+#    f.write(json.dumps(new_diary_list, indent=4, ensure_ascii=False))
+#print("done: remove twitter image from diary")
 #exit()
 
-#
-#
-#import base64
-#
-## Encode an image to Base64
-#def encode_image_to_base64(image_path):
-#   with open(image_path, "rb") as image_file:
-#       encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
-#   return encoded_string
-#
-## Decode Base64 back to an image
-#def decode_base64_to_image(base64_string, output_path):
-#   with open(output_path, "wb") as image_file:
-#       image_file.write(base64.b64decode(base64_string))
-#
-#
-import socket
+## step 2, get all images
+base64_image_list = []
+counting = 0
+for index, one in enumerate(diary_list):
+    images = one["images"]
+    if len(images) > 0:
+        base64_image_list.append([index, images])
+        #print(one["content"][:10], images[0][-100:])
+        #if index == 680:
+        #    print(one["content"])
+        counting += 1
+print(counting)
+#exit()
 
+import base64
+# Encode an image to Base64
+def encode_image_to_base64(image_path):
+   with open(image_path, "rb") as image_file:
+       encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+   return encoded_string
+
+# Decode Base64 back to an image
+def decode_base64_to_image(base64_string, output_path):
+   with open(output_path, "wb") as image_file:
+       image_file.write(base64.b64decode(base64_string))
+
+
+import socket
 def tcp_request(ip, port, data):
     host = ip
     port = port  # socket server port number
@@ -83,20 +76,21 @@ def tcp_request(ip, port, data):
 
     client_socket.close()  # close the connection
     return bytes_data
-#
-#
-#from auto_everything import Disk
-#disk = Disk()
-#for index, base64_image_string_list in base64_image_list:
-#    disk.create_a_folder("./test_image/" + str(index))
-#    for index2, base64_image_string in enumerate(base64_image_string_list):
-#        decode_base64_to_image(base64_image_string, "./test_image/" + str(index) + "/" + str(index2) + ".jpg")
-#        #raw_bytes = base64.b64decode(base64_image_string)
-#        #new_bmp_bytes = tcp_request("192.168.56.119", 4141, "jpg_convert_to_bmp:".encode("ascii") + raw_bytes)
-#        #output_file_name = "./test_image/" + str(index) + "/" + str(index2) + ".bmp"
-#        #print(output_file_name)
-#        #with open(output_file_name, "wb") as image_file:
-#        #    image_file.write(new_bmp_bytes)
+
+
+from auto_everything import Disk
+disk = Disk()
+for index, base64_image_string_list in base64_image_list:
+    disk.create_a_folder("./test_image/" + str(index))
+    for index2, base64_image_string in enumerate(base64_image_string_list):
+        decode_base64_to_image(base64_image_string, "./test_image/" + str(index) + "/" + str(index2) + ".jpg")
+        #raw_bytes = base64.b64decode(base64_image_string)
+        #new_bmp_bytes = tcp_request("192.168.56.119", 4141, "jpg_convert_to_bmp:".encode("ascii") + raw_bytes)
+        #output_file_name = "./test_image/" + str(index) + "/" + str(index2) + ".bmp"
+        #print(output_file_name)
+        #with open(output_file_name, "wb") as image_file:
+        #    image_file.write(new_bmp_bytes)
+exit()
 
 
 #from auto_everything import Disk
