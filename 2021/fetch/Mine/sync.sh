@@ -18,3 +18,12 @@ cp ./all_yingshaoxo_data_2023_11_13.txt /home/yingshaoxo/Disk/Sync_Folder/Yingsh
 
 cp ./database.json /home/yingshaoxo/Disk/Sync_Folder/Yingshaoxo_Data/Core/Small_Core/My_Diary/freedom/2021/fetch/Mine/database.json
 cp ./all_yingshaoxo_data_2023_11_13.txt /home/yingshaoxo/Disk/Sync_Folder/Yingshaoxo_Data/Core/Small_Core/My_Diary/freedom/2021/fetch/Mine/all_yingshaoxo_data_2023_11_13.txt
+
+
+cp ./database.json /home/yingshaoxo/Downloads/mini_version_data/mini_yingshaoxo_data_2026_5_20/database.json
+cp ./database.json /home/yingshaoxo/Downloads/mini_version_data/512MB_tf_card/yingshaoxo_data_2026_2_15_upgraded/database.json
+cp ./database.json /home/yingshaoxo/Downloads/mini_version_data/512MB_tf_card/yingshaoxo_data_2026_6_19/database.json
+
+cp ./all_yingshaoxo_data_2023_11_13.txt /home/yingshaoxo/Downloads/mini_version_data/mini_yingshaoxo_data_2026_5_20/all_yingshaoxo_data_2023_11_13.txt
+cp ./all_yingshaoxo_data_2023_11_13.txt /home/yingshaoxo/Downloads/mini_version_data/512MB_tf_card/yingshaoxo_data_2026_2_15_upgraded/all_yingshaoxo_data_2023_11_13.txt
+cp ./all_yingshaoxo_data_2023_11_13.txt /home/yingshaoxo/Downloads/mini_version_data/512MB_tf_card/yingshaoxo_data_2026_6_19/all_yingshaoxo_data_2023_11_13.txt
